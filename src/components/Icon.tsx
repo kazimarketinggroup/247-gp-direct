@@ -12,7 +12,8 @@ export type IconName =
   | "arrow-right"
   | "chevron-down"
   | "plus"
-  | "minus";
+  | "minus"
+  | "check-circle";
 
 const paths: Record<IconName, string> = {
   clock: "M12 7v5l3 2M12 21a9 9 0 100-18 9 9 0 000 18z",
@@ -32,6 +33,7 @@ const paths: Record<IconName, string> = {
   "chevron-down": "M6 9l6 6 6-6",
   plus: "M12 5v14M5 12h14",
   minus: "M5 12h14",
+  "check-circle": "M12 21a9 9 0 100-18 9 9 0 000 18zM8.5 12l2.5 2.5 4.5-5",
 };
 
 export default function Icon({
