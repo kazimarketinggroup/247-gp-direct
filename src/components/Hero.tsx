@@ -1,93 +1,98 @@
 import Image from "next/image";
 import Link from "next/link";
-import { siteConfig } from "@/lib/site";
+import Icon from "@/components/Icon";
 
-const stats = [
-  { value: "24/7", label: "Always open" },
-  { value: "< 15 min", label: "Average wait" },
-  { value: "50k+", label: "Consultations" },
+const assurances = [
+  "CQC-registered",
+  "GMC-registered UK GPs",
+  "Data secured to NHS standards",
 ];
 
 export default function Hero() {
   return (
-    <section
-      id="home"
-      className="relative isolate overflow-hidden bg-gradient-to-b from-teal-50 via-white to-white"
-    >
-      <div className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
-        {/* Single column on mobile/tablet, two columns from lg up. */}
+    <section id="home" className="relative isolate overflow-hidden bg-cream">
+      {/* Decorative texture — sits behind content, never intercepts clicks. */}
+      <Image
+        src="/images/home/hero-texture.png"
+        alt=""
+        aria-hidden
+        fill
+        priority
+        sizes="100vw"
+        className="pointer-events-none -z-10 object-cover opacity-60"
+      />
+
+      <div className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8 lg:py-20">
         <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-12 xl:gap-16">
-          <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
-            <span className="inline-flex items-center gap-2 rounded-full border border-teal-200 bg-teal-50 px-3 py-1 text-xs font-medium text-teal-800 sm:text-sm">
-              <span
-                aria-hidden
-                className="h-1.5 w-1.5 shrink-0 rounded-full bg-teal-600"
-              />
-              Registered GPs online right now
+          <div className="flex flex-col items-start text-left">
+            <span className="inline-flex items-center gap-2 rounded-full border border-brand-teal/15 bg-white/70 px-3 py-1.5 text-[11px] font-medium text-brand-teal sm:text-xs">
+              <span aria-hidden className="h-1.5 w-1.5 shrink-0 rounded-full bg-coral" />
+              24 hours · 365 days · UK-qualified GPs
             </span>
 
-            {/* Fluid type: steps up at each breakpoint, wraps cleanly at 320px. */}
-            <h1 className="mt-4 text-3xl leading-tight font-extrabold tracking-tight text-balance text-slate-900 sm:mt-5 sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl">
-              {siteConfig.tagline}
+            <h1 className="mt-5 text-3xl leading-[1.1] font-bold tracking-tight text-balance text-brand-teal sm:text-4xl md:text-5xl xl:text-[3.5rem]">
+              See a GP in minutes.
+              <br className="hidden sm:block" />{" "}
+              <span className="sm:inline">Any time, day or night.</span>
             </h1>
 
-            <p className="mt-4 max-w-xl text-base leading-relaxed text-pretty text-slate-600 sm:mt-5 sm:text-lg lg:text-lg xl:text-xl">
-              {siteConfig.description}
+            <p className="mt-5 max-w-xl text-sm leading-relaxed text-pretty text-brand-teal/75 sm:text-base lg:text-lg">
+              Unlimited private GP appointments by phone or video, 24/7, 365 days
+              a year for you and your family. Keep your NHS GP.
             </p>
 
-            {/* Buttons stack full-width on small phones, sit inline from sm up. */}
-            <div className="mt-7 flex w-full flex-col gap-3 sm:mt-8 sm:w-auto sm:flex-row sm:flex-wrap sm:justify-center lg:justify-start">
+            <div className="mt-7 flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap">
               <Link
-                href="#book"
-                className="inline-flex items-center justify-center rounded-full bg-teal-600 px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-teal-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600 sm:px-7"
+                href="#pricing"
+                className="inline-flex items-center justify-center rounded-md bg-coral px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-coral-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral sm:text-base"
               >
-                Book a consultation
+                View Plans
               </Link>
               <Link
-                href="#how-it-works"
-                className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-6 py-3 text-base font-semibold text-slate-800 transition-colors hover:bg-slate-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600 sm:px-7"
+                href="#business"
+                className="inline-flex items-center justify-center rounded-md border border-brand-teal/25 bg-white/80 px-6 py-3 text-sm font-semibold text-brand-teal transition-colors hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral sm:text-base"
               >
-                How it works
+                Cover My Team
               </Link>
             </div>
 
-            <dl className="mt-10 grid w-full grid-cols-3 gap-3 border-t border-slate-200 pt-6 sm:gap-6 sm:pt-8 lg:max-w-lg">
-              {stats.map((stat) => (
-                <div key={stat.label} className="min-w-0">
-                  <dt className="sr-only">{stat.label}</dt>
-                  <dd className="text-xl font-bold text-slate-900 sm:text-2xl lg:text-3xl">
-                    {stat.value}
-                  </dd>
-                  <dd className="mt-1 text-xs leading-snug text-slate-500 sm:text-sm">
-                    {stat.label}
-                  </dd>
-                </div>
+            <div className="mt-8 flex flex-wrap items-center gap-x-3 gap-y-2">
+              <Image
+                src="/images/home/group_profiles.png"
+                alt=""
+                aria-hidden
+                width={96}
+                height={32}
+                className="h-8 w-auto shrink-0"
+              />
+              <p className="text-xs text-brand-teal/70 sm:text-sm">
+                Trusted by thousands of patients across the UK (TBC)
+              </p>
+            </div>
+
+            <ul className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-brand-teal/10 pt-5">
+              {assurances.map((item) => (
+                <li
+                  key={item}
+                  className="inline-flex items-center gap-1.5 text-[11px] text-brand-teal/70 sm:text-xs"
+                >
+                  <Icon name="check" className="h-3.5 w-3.5 shrink-0 text-coral" strokeWidth={2.5} />
+                  {item}
+                </li>
               ))}
-            </dl>
+            </ul>
           </div>
 
-          {/* Aspect-ratio box keeps the image from ever overflowing its column. */}
-          <div className="relative w-full">
-            <div className="relative mx-auto aspect-[4/3] w-full max-w-md overflow-hidden rounded-2xl bg-teal-100 shadow-xl ring-1 ring-slate-900/5 sm:aspect-[16/10] sm:max-w-xl sm:rounded-3xl lg:max-w-none">
-              <Image
-                src="/hero.svg"
-                alt="A patient speaking with a doctor during an online video consultation"
-                fill
-                priority
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 50vw"
-                className="object-cover"
-              />
-            </div>
-
-            {/* Floating card is hidden on the narrowest screens to avoid crowding. */}
-            <div className="absolute -bottom-4 left-1/2 hidden w-[min(20rem,90%)] -translate-x-1/2 rounded-xl border border-slate-200 bg-white/95 p-4 shadow-lg backdrop-blur sm:block lg:-bottom-6 lg:left-auto lg:right-6 lg:translate-x-0">
-              <p className="text-sm font-semibold text-slate-900">
-                Dr. Amina Rahman
-              </p>
-              <p className="mt-0.5 text-xs text-slate-500 sm:text-sm">
-                GMC registered · Available now
-              </p>
-            </div>
+          {/* Aspect box keeps the photo from ever overflowing its column. */}
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-brand-teal/5 shadow-lg sm:aspect-[16/11] lg:aspect-[4/3]">
+            <Image
+              src="/images/home/hero-family.png"
+              alt="A mother and her young daughter attending an online GP video consultation from home"
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover"
+            />
           </div>
         </div>
       </div>

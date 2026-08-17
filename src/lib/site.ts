@@ -1,49 +1,294 @@
 export type NavItem = {
   label: string;
   href: string;
+  children?: NavItem[];
 };
 
 export const siteConfig = {
   name: "247 GP Direct",
-  tagline: "Healthcare that never closes",
-  description:
-    "Speak to a registered GP in minutes, any hour of the day. Video consultations, prescriptions and referrals — all from your phone.",
+  phone: "0800 123 4567",
+  phoneDisplay: "1234 567 8900",
+  bookingLine: "0800 123 4567",
+  membersNote: "Members: call any time, no appointment needed",
 };
 
 export const navItems: NavItem[] = [
-  { label: "Home", href: "#home" },
-  { label: "Services", href: "#services" },
-  { label: "How it works", href: "#how-it-works" },
+  {
+    label: "For You & Your Family",
+    href: "#family",
+    children: [
+      { label: "Individual cover", href: "#individual" },
+      { label: "Family plans", href: "#family-plans" },
+      { label: "Cover while travelling", href: "#travel" },
+    ],
+  },
+  {
+    label: "For Business",
+    href: "#business",
+    children: [
+      { label: "Employee benefits", href: "#benefits" },
+      { label: "Case studies", href: "#case-studies" },
+      { label: "Request a quote", href: "#quote" },
+    ],
+  },
+  { label: "How It Works", href: "#how-it-works" },
   { label: "Pricing", href: "#pricing" },
-  { label: "Contact", href: "#contact" },
+  { label: "Health Hub", href: "#health-hub" },
+  {
+    label: "About",
+    href: "#about",
+    children: [
+      { label: "About us", href: "#about-us" },
+      { label: "Clinical standards", href: "#clinical" },
+      { label: "Contact", href: "#contact" },
+    ],
+  },
+];
+
+export const problemStats = [
+  {
+    value: "1 in 7 (TBC)",
+    body: "patients wait more than four weeks for a GP appointment in England.",
+    source: "Source: figure to be verified against current NHS England GP appointment data (2025).",
+  },
+  {
+    value: "Millions (TBC)",
+    body: "of attempts to contact a surgery fail at the first try each year.",
+    source: "Source: figure to be verified against current GP Patient Survey data (2025).",
+  },
+  {
+    value: "2,000+ (TBC)",
+    body: "patients on the list of a typical full-time equivalent GP.",
+    source: "Source: figure to be verified against current NHS Digital workforce data (2025).",
+  },
+];
+
+export const steps = [
+  {
+    number: "01",
+    title: "Call the 24/7 line",
+    body: "Answered any hour of any day by trained UK-based operators, not an answerphone.",
+    note: "No hold music. No automated menus. No Call Center. A person picks up.",
+  },
+  {
+    number: "02",
+    title: "Speak to a GP",
+    body: "Called back within our service window, by phone or video your choice.",
+    note: "Every GP is GMC-registered and currently practising in the UK.",
+  },
+  {
+    number: "03",
+    title: "Get what you need",
+    body: "Advice, a diagnosis, a private prescription delivered to your door, or a referral letter.",
+    note: "Most consultations end with a clear answer. Many need no further contact at all.",
+  },
+];
+
+export const included = [
+  {
+    title: "Unlimited appointments",
+    body: "No per-call charges, no fair-use catch.",
+    icon: "clock",
+  },
+  {
+    title: "24/7/365 availability",
+    body: "Nights, weekends and bank holidays.",
+    icon: "shield",
+  },
+  {
+    title: "Whole family covered",
+    body: "Partner and dependent children on a family plan.",
+    icon: "users",
+  },
+  {
+    title: "Phone or video",
+    body: "Your choice at the point of booking.",
+    icon: "video",
+  },
+  {
+    title: "Private prescriptions",
+    body: "Issued electronically, delivered to your door.",
+    icon: "pill",
+  },
+  {
+    title: "Cover while travelling",
+    body: "The service works wherever you are.",
+    icon: "globe",
+  },
+  {
+    title: "Referral letters",
+    body: "Open referrals to private consultants.",
+    icon: "document",
+  },
+  {
+    title: "Keep your NHS GP",
+    body: "No Hassle, No de-registration, ever.",
+    icon: "heart",
+  },
+];
+
+export const plans = [
+  {
+    name: "INDIVIDUAL",
+    price: "£TBC",
+    period: "/year",
+    sub: "£TBC a month",
+    covers: "One person",
+    features: [
+      "Unlimited GP consultations",
+      "24/7 access",
+      "Phone or video",
+      "Private prescriptions",
+      "Referral letters",
+      "Cover abroad",
+    ],
+    cta: "Get Started",
+    featured: false,
+  },
+  {
+    name: "FAMILY",
+    price: "£TBC",
+    period: "/year",
+    sub: "£TBC a month",
+    covers: "You, your partner & children",
+    features: [
+      "Everything in Individual",
+      "Partner included",
+      "Dependent children included",
+      "All ages, one price",
+      "One annual invoice",
+    ],
+    cta: "Get Started",
+    featured: true,
+    badge: "Most popular",
+  },
+  {
+    name: "COUPLE",
+    price: "£TBC",
+    period: "/year",
+    sub: "£TBC a month",
+    covers: "You and your partner",
+    features: [
+      "Everything in Individual",
+      "Partner included on one plan",
+      "Shared or separate bookings",
+    ],
+    cta: "Get Started",
+    featured: false,
+  },
+];
+
+export const planAssurances = [
+  "No medical questionnaire nobody is refused for a pre-existing condition",
+  "14-day cooling-off period, in full, no questions asked",
+  "No Call Center. No hidden per-call charges, ever",
+  "You can Cancel or change your plan at renewal",
+];
+
+export const credentials = [
+  {
+    src: "/images/home/cqc-registered.png",
+    alt: "Registered with the Care Quality Commission",
+    width: 300,
+    height: 120,
+  },
+  {
+    src: "/images/home/gmc-registered.png",
+    alt: "GMC Registered Doctors",
+    width: 300,
+    height: 120,
+  },
+  {
+    src: "/images/home/ico-registered.png",
+    alt: "ICO Registered",
+    width: 180,
+    height: 120,
+  },
+  {
+    src: "/images/home/cyber-essentials.png",
+    alt: "Cyber Essentials certified",
+    width: 300,
+    height: 120,
+  },
+];
+
+export const testimonials = [
+  {
+    quote: "Got my daughter seen at 11pm on a Sunday. We didn't have to sit in A&E.",
+    author: "Jenifer Blaze",
+  },
+  {
+    quote: "I was on a site in Aberdeen with a chest infection. Prescription arrived at the hotel the next morning.",
+    author: "Dan M., Bristol",
+  },
+  {
+    quote: "I manage my mum's appointments as well as my own. Not having to ration who gets seen is the whole point.",
+    author: "Priya S., Reading",
+  },
+];
+
+export const faqs = [
+  {
+    q: "Do I have to leave my NHS GP?",
+    a: "No. 247 GP Direct works alongside your NHS GP. Nothing changes there.",
+  },
+  {
+    q: "Is this a subscription?",
+    a: "Yes. You pay one annual fee that covers unlimited consultations for everyone on your plan. There are no per-call charges on top.",
+  },
+  {
+    q: "Who is covered on a family plan, and up to what age?",
+    a: "You, your partner and your dependent children. All ages are covered at one price — final age limits will be confirmed at client sign-off.",
+  },
+  {
+    q: "How quickly will a GP call me back?",
+    a: "The line is answered 24/7 by a UK-based operator, and a GP calls you back within our published service window.",
+  },
+  {
+    q: "Can the GP prescribe medication?",
+    a: "Yes. GPs can issue private prescriptions electronically, delivered to your door or to a pharmacy near you.",
+  },
 ];
 
 export const footerSections: Array<{ title: string; links: NavItem[] }> = [
   {
-    title: "Services",
+    title: "SERVICE",
     links: [
-      { label: "Video consultations", href: "#services" },
-      { label: "Private prescriptions", href: "#services" },
-      { label: "Specialist referrals", href: "#services" },
-      { label: "Sick notes", href: "#services" },
+      { label: "For Individuals & Families", href: "#family" },
+      { label: "For Business", href: "#business" },
+      { label: "How It Works", href: "#how-it-works" },
+      { label: "Prescriptions", href: "#prescriptions" },
+      { label: "Pricing & Join", href: "#pricing" },
+      { label: "Health Hub", href: "#health-hub" },
     ],
   },
   {
-    title: "Company",
+    title: "BUSINESS",
     links: [
-      { label: "About us", href: "#about" },
-      { label: "Our doctors", href: "#doctors" },
-      { label: "Careers", href: "#careers" },
+      { label: "Employee Benefit Overview", href: "#benefits" },
+      { label: "Case Studies", href: "#case-studies" },
+      { label: "Request a Quote", href: "#quote" },
+      { label: "Brokers & Partners", href: "#partners" },
+    ],
+  },
+  {
+    title: "COMPANY",
+    links: [
+      { label: "About Us", href: "#about-us" },
+      { label: "Clinical Standards", href: "#clinical" },
+      { label: "Regulation & Governance", href: "#regulation" },
+      { label: "Blog", href: "#blog" },
       { label: "Contact", href: "#contact" },
     ],
   },
   {
-    title: "Legal",
+    title: "LEGAL",
     links: [
-      { label: "Privacy policy", href: "#privacy" },
-      { label: "Terms of service", href: "#terms" },
-      { label: "Cookie policy", href: "#cookies" },
-      { label: "Complaints", href: "#complaints" },
+      { label: "Terms & Conditions", href: "#terms" },
+      { label: "Privacy Policy", href: "#privacy" },
+      { label: "Cookie Policy", href: "#cookies" },
+      { label: "Complaints Procedure", href: "#complaints" },
+      { label: "Cancellation Policy", href: "#cancellation" },
     ],
   },
 ];
