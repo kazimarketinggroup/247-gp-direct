@@ -33,7 +33,7 @@ export const navItems: NavItem[] = [
   },
   { label: "How It Works", href: "/how-it-works" },
   { label: "Pricing", href: "/pricing" },
-  { label: "Health Hub", href: "#health-hub" },
+  { label: "Health Hub", href: "/health-hub" },
   {
     label: "About",
     href: "#about",
@@ -358,6 +358,67 @@ export const joinPlanOptions = [
   { id: "family", name: "Family", detail: "Two adults and dependent children" },
 ];
 
+export const featuredArticle = {
+  category: "Featured · Access & waiting",
+  title: "Can't get through to your surgery? What your options actually are",
+  body: "A practical run-through of NHS routes, pharmacy first, 111 and private options and when each one is the right call.",
+  reviewer: "Reviewed by [Clinician name], [role] · [date]",
+  poster: "/images/health-hub/featured-video-poster.png",
+  duration: "0:15",
+  href: "#featured-article",
+};
+
+export const articles = [
+  {
+    category: "Access & waiting",
+    title: "How long are GP waits right now?",
+    meta: "6 min read · Reviewed : 12th August 2026",
+    href: "#gp-waits",
+  },
+  {
+    category: "Access & waiting",
+    title: "What to do when you can't get an appointment",
+    meta: "6 min read · Reviewed : 12th August 2026",
+    href: "#no-appointment",
+  },
+  {
+    category: "Private vs NHS",
+    title: "Private GP vs NHS: what's the difference?",
+    meta: "6 min read · Reviewed : 12th August 2026",
+    href: "#private-vs-nhs",
+  },
+  {
+    category: "Private vs NHS",
+    title: "Do you have to leave your NHS GP?",
+    meta: "6 min read · Reviewed : 12th August 2026",
+    href: "#leave-nhs-gp",
+  },
+  {
+    category: "Practical health",
+    title: "When to see a GP about a cough",
+    meta: "6 min read · Reviewed : 12th August 2026",
+    href: "#cough",
+  },
+  {
+    category: "Practical health",
+    title: "Children's fevers: when to worry",
+    meta: "6 min read · Reviewed : 12th August 2026",
+    href: "#childrens-fevers",
+  },
+  {
+    category: "Prescriptions",
+    title: "How private prescriptions work",
+    meta: "6 min read · Reviewed : 12th August 2026",
+    href: "#prescriptions-work",
+  },
+  {
+    category: "Employers",
+    title: "The cost of sickness absence",
+    meta: "6 min read · Reviewed : 12th August 2026",
+    href: "#sickness-absence",
+  },
+];
+
 export const footerSections: Array<{ title: string; links: NavItem[] }> = [
   {
     title: "SERVICE",
@@ -367,7 +428,7 @@ export const footerSections: Array<{ title: string; links: NavItem[] }> = [
       { label: "How It Works", href: "/how-it-works" },
       { label: "Prescriptions", href: "#prescriptions" },
       { label: "Pricing & Join", href: "/pricing" },
-      { label: "Health Hub", href: "#health-hub" },
+      { label: "Health Hub", href: "/health-hub" },
     ],
   },
   {
