@@ -43,7 +43,7 @@ export default function Hero() {
 
             <div className="mt-7 flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap">
               <Link
-                href="#pricing"
+                href="/pricing"
                 className="inline-flex items-center justify-center rounded-md bg-coral px-6 py-3 text-sm text-white transition-colors hover:bg-coral-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral sm:text-base"
               >
                 View Plans

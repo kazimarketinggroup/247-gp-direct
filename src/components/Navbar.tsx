@@ -142,7 +142,7 @@ export default function Navbar() {
             </a>
 
             <Link
-              href="/#pricing"
+              href="/pricing"
               onClick={closeAll}
               className="hidden rounded-md bg-coral px-4 py-2 text-sm text-white transition-colors hover:bg-coral-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral sm:inline-flex lg:px-5"
             >
@@ -248,7 +248,7 @@ export default function Navbar() {
                 {siteConfig.phoneDisplay}
               </a>
               <Link
-                href="/#pricing"
+                href="/pricing"
                 onClick={closeAll}
                 className="block rounded-md bg-coral px-5 py-3 text-center text-base text-white transition-colors hover:bg-coral-dark"
               >

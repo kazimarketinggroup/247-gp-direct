@@ -24,7 +24,7 @@ export default function CallToAction() {
         </h2>
 
         <Link
-          href="/#pricing"
+          href="/pricing"
           className="mt-8 inline-flex items-center justify-center rounded-md bg-coral px-7 py-3 text-sm text-white transition-colors hover:bg-coral-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral sm:text-base"
         >
           View plans

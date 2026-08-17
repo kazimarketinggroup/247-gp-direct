@@ -4,24 +4,39 @@ import SectionLabel from "@/components/SectionLabel";
 import { planAssurances, plans } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
-export default function Pricing() {
+export default function Pricing({
+  /** The pricing page carries its own hero heading, so it hides this one. */
+  showHeading = true,
+}: {
+  showHeading?: boolean;
+}) {
   return (
     <section
       id="pricing"
-      className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8 lg:py-20"
+      className={cn(
+        "mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8",
+        showHeading ? "py-10 sm:py-14 lg:py-20" : "pb-10 sm:pb-14",
+      )}
     >
-      <div className="flex flex-col items-center text-center">
-        <SectionLabel>Simple pricing</SectionLabel>
-        <h2 className="mt-5 max-w-2xl title-50 text-balance text-brand-teal">
-          One annual fee. No hidden charges.
-        </h2>
-        <p className="mt-3 max-w-xl text-sm text-pretty text-brand-teal/65 sm:text-base">
-          Prices shown are indicative pending final client confirmation.
-        </p>
-      </div>
+      {showHeading && (
+        <div className="flex flex-col items-center text-center">
+          <SectionLabel>Simple pricing</SectionLabel>
+          <h2 className="title-50 mt-5 max-w-2xl text-balance text-brand-teal">
+            One annual fee. No hidden charges.
+          </h2>
+          <p className="mt-3 max-w-xl text-sm text-pretty text-brand-teal/65 sm:text-base">
+            Prices shown are indicative pending final client confirmation.
+          </p>
+        </div>
+      )}
 
       {/* Featured card lifts only from lg, where all three sit in one row. */}
-      <div className="mx-auto mt-10 grid max-w-md grid-cols-1 items-start gap-5 sm:mt-12 sm:max-w-xl md:max-w-none md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+      <div
+        className={cn(
+          "mx-auto grid max-w-md grid-cols-1 items-start gap-5 sm:max-w-xl md:max-w-none md:grid-cols-2 lg:grid-cols-3 lg:gap-6",
+          showHeading && "mt-10 sm:mt-12",
+        )}
+      >
         {plans.map((plan) => (
           <div
             key={plan.name}
@@ -107,7 +122,7 @@ export default function Pricing() {
             </ul>
 
             <Link
-              href="#join"
+              href="/pricing#join"
               className={cn(
                 "mt-7 block rounded-md px-5 py-3 text-center text-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral",
                 plan.featured

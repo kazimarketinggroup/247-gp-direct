@@ -32,7 +32,7 @@ export const navItems: NavItem[] = [
     ],
   },
   { label: "How It Works", href: "/how-it-works" },
-  { label: "Pricing", href: "/#pricing" },
+  { label: "Pricing", href: "/pricing" },
   { label: "Health Hub", href: "#health-hub" },
   {
     label: "About",
@@ -310,6 +310,54 @@ export const journeyNotes = [
   },
 ];
 
+/** Comparison table. `true` renders a tick; a string renders as text. */
+export const comparisonRows: Array<{
+  label: string;
+  individual: string | true;
+  couple: string | true;
+  family: string | true;
+}> = [
+  {
+    label: "Who's covered",
+    individual: "One adult",
+    couple: "Two adults",
+    family: "Two adults + children",
+  },
+  { label: "Unlimited appointments", individual: true, couple: true, family: true },
+  { label: "24/7, 365 days a year", individual: true, couple: true, family: true },
+  { label: "Phone or video", individual: true, couple: true, family: true },
+  { label: "Private prescriptions", individual: true, couple: true, family: true },
+  { label: "Referral letters", individual: true, couple: true, family: true },
+  { label: "Cover abroad", individual: true, couple: true, family: true },
+  { label: "Notes to your NHS GP", individual: true, couple: true, family: true },
+  {
+    label: "Contract length",
+    individual: "12 months",
+    couple: "12 months",
+    family: "12 months",
+  },
+];
+
+export const pricingAssuranceCards = [
+  "No medical questionnaire and no health screening nobody is refused for a pre-existing condition (to be confirmed)",
+  "14-day cooling-off period, in full, no questions",
+  "No hidden per-call charges",
+  "Cancel or change your plan at renewal",
+];
+
+export const joinSteps = [
+  "1. Choose your plan",
+  "2. Your details",
+  "3. Payment",
+  "4. Confirmation",
+];
+
+export const joinPlanOptions = [
+  { id: "individual", name: "Individual", detail: "One adult" },
+  { id: "couple", name: "Couple", detail: "Two adults at the same address" },
+  { id: "family", name: "Family", detail: "Two adults and dependent children" },
+];
+
 export const footerSections: Array<{ title: string; links: NavItem[] }> = [
   {
     title: "SERVICE",
@@ -318,7 +366,7 @@ export const footerSections: Array<{ title: string; links: NavItem[] }> = [
       { label: "For Business", href: "#business" },
       { label: "How It Works", href: "/how-it-works" },
       { label: "Prescriptions", href: "#prescriptions" },
-      { label: "Pricing & Join", href: "/#pricing" },
+      { label: "Pricing & Join", href: "/pricing" },
       { label: "Health Hub", href: "#health-hub" },
     ],
   },
