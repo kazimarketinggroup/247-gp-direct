@@ -3,15 +3,31 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useSyncExternalStore } from "react";
 import Icon from "@/components/Icon";
+import MegaMenu from "@/components/MegaMenu";
 import { navItems, siteConfig } from "@/lib/site";
 import { cn } from "@/lib/utils";
+
+const DESKTOP_QUERY = "(min-width: 1024px)";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [expanded, setExpanded] = useState<string | null>(null);
   const pathname = usePathname();
+
+  // Gates the mega panel so its image is never requested on small screens.
+  // Server snapshot is `false`, matching the pre-hydration markup.
+  const subscribe = useCallback((onChange: () => void) => {
+    const mq = window.matchMedia(DESKTOP_QUERY);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
+  const isDesktop = useSyncExternalStore(
+    subscribe,
+    () => window.matchMedia(DESKTOP_QUERY).matches,
+    () => false,
+  );
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -22,7 +38,7 @@ export default function Navbar() {
 
   // Collapse the mobile panel if the viewport grows past the lg breakpoint.
   useEffect(() => {
-    const mq = window.matchMedia("(min-width: 1024px)");
+    const mq = window.matchMedia(DESKTOP_QUERY);
     const onChange = (e: MediaQueryListEvent) => {
       if (e.matches) {
         setOpen(false);
@@ -69,7 +85,8 @@ export default function Navbar() {
       <header className="sticky top-0 z-50 w-full border-b border-black/5 bg-cream/95 backdrop-blur-md">
         <nav
           aria-label="Main"
-          className="mx-auto flex w-full max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:gap-6 lg:px-8 lg:py-4"
+          // Anchor for the full-width mega panel.
+          className="relative mx-auto flex w-full max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:gap-6 lg:px-8 lg:py-4"
         >
           <Link
             href="/"
@@ -89,7 +106,12 @@ export default function Navbar() {
           {/* Desktop links */}
           <ul className="hidden items-center gap-0.5 lg:flex xl:gap-1">
             {navItems.map((item) => (
-              <li key={item.label} className="group relative">
+              <li
+                key={item.label}
+                // Mega items stay `static` so their absolute panel resolves
+                // against the nav row and can span its full width.
+                className={cn("group", item.mega ? "static" : "relative")}
+              >
                 <Link
                   href={item.href}
                   aria-current={pathname === item.href ? "page" : undefined}
@@ -112,7 +134,18 @@ export default function Navbar() {
                   )}
                 </Link>
 
-                {item.children && (
+                {/* Wide mega panel: anchored to the nav row, not this item,
+                    so it can span the full container width. */}
+                {item.mega && isDesktop && (
+                  <div className="invisible absolute inset-x-0 top-full z-50 pt-2 opacity-0 transition-all group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+                    <div className="mx-auto w-full max-w-5xl px-4">
+                      <MegaMenu data={item.mega} />
+                    </div>
+                  </div>
+                )}
+
+                {/* Standard narrow dropdown for the other groups. */}
+                {item.children && !item.mega && (
                   <div className="invisible absolute left-0 top-full w-60 pt-2 opacity-0 transition-all group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
                     <ul className="rounded-xl border border-black/5 bg-white p-2 shadow-lg">
                       {item.children.map((child) => (

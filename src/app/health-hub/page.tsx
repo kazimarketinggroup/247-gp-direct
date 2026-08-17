@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import ArticleGrid from "@/components/health-hub/ArticleGrid";
 import FeaturedArticle from "@/components/health-hub/FeaturedArticle";
-import GovernanceCta from "@/components/health-hub/GovernanceCta";
+import GovernanceCta from "@/components/GovernanceCta";
 import HubHero from "@/components/health-hub/HubHero";
 
 export const metadata: Metadata = {

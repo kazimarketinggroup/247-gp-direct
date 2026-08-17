@@ -1,7 +1,20 @@
+export type MegaMenu = {
+  /** Left promo column. */
+  eyebrow: string;
+  title: string;
+  body: string;
+  /** Heading above the link list. */
+  linksTitle: string;
+  links: NavItem[];
+  image: { src: string; alt: string };
+};
+
 export type NavItem = {
   label: string;
   href: string;
   children?: NavItem[];
+  /** When present the desktop dropdown renders as a full-width mega menu. */
+  mega?: MegaMenu;
 };
 
 export const siteConfig = {
@@ -36,12 +49,32 @@ export const navItems: NavItem[] = [
   { label: "Health Hub", href: "/health-hub" },
   {
     label: "About",
-    href: "#about",
+    href: "/about",
+    // Children drive the mobile accordion; `mega` drives the desktop panel.
     children: [
-      { label: "About us", href: "#about-us" },
-      { label: "Clinical standards", href: "#clinical" },
-      { label: "Contact", href: "#contact" },
+      { label: "Our Story", href: "/about" },
+      { label: "Clinical Standards & Governance", href: "#clinical" },
+      { label: "Regulation & Compliance", href: "#regulation" },
+      { label: "Meet the Clinical Team", href: "#clinical-team" },
+      { label: "Contact Us", href: "#contact" },
     ],
+    mega: {
+      eyebrow: "FOR YOU & YOUR FAMILY",
+      title: "Unlimited private GP appointments",
+      body: "for you and your family, 24/7. Keep your NHS GP. Add private care when you need it..",
+      linksTitle: "ABOUT 247 GP DIRECT",
+      links: [
+        { label: "Our Story", href: "/about" },
+        { label: "Clinical Standards & Governance", href: "#clinical" },
+        { label: "Regulation & Compliance", href: "#regulation" },
+        { label: "Meet the Clinical Team", href: "#clinical-team" },
+        { label: "Contact Us", href: "#contact" },
+      ],
+      image: {
+        src: "/images/about/mega-menu-family.png",
+        alt: "A mother and her daughter using a phone together at the kitchen table",
+      },
+    },
   },
 ];
 
@@ -358,6 +391,26 @@ export const joinPlanOptions = [
   { id: "family", name: "Family", detail: "Two adults and dependent children" },
 ];
 
+export const aboutPage = {
+  title: "Built around one problem: getting seen",
+  intro:
+    "247 GP Direct exists because access to a GP has become the hardest part of ordinary healthcare — not the medicine, the appointment.",
+  promiseTitle: "We provide unlimited access to UK-qualified private GPs",
+  commitmentTitle: "Our commitment to members",
+  commitments: [
+    "The line is answered by a person, at any hour.",
+    "No per-call charges, ever.",
+    "No medical questionnaire and no age loading.",
+    "Clear limits, stated plainly, including what we cannot do.",
+    "Your NHS registration stays exactly as it is.",
+  ],
+  paragraphs: [
+    "We provide unlimited access to UK-qualified private GPs, 24 hours a day, 365 days a year, by telephone and video consultation, on a single annual subscription. Members call one number and speak to a doctor — at 8am on a Tuesday or 2am on a Sunday.",
+    "We do not ask members to leave their NHS surgery, and we never will. This service is the layer that sits underneath NHS care: the everyday questions, the sudden temperatures, the infections that need answering tonight rather than a fortnight from now.",
+    "Consultations are delivered by our clinical provider and prescriptions are dispensed by a registered UK pharmacy partner. Both are named here in full once contractual confirmation is received.",
+  ],
+};
+
 export const featuredArticle = {
   category: "Featured · Access & waiting",
   title: "Can't get through to your surgery? What your options actually are",
@@ -443,7 +496,7 @@ export const footerSections: Array<{ title: string; links: NavItem[] }> = [
   {
     title: "COMPANY",
     links: [
-      { label: "About Us", href: "#about-us" },
+      { label: "About Us", href: "/about" },
       { label: "Clinical Standards", href: "#clinical" },
       { label: "Regulation & Governance", href: "#regulation" },
       { label: "Blog", href: "#blog" },
