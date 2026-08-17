@@ -31,8 +31,8 @@ export const navItems: NavItem[] = [
       { label: "Request a quote", href: "#quote" },
     ],
   },
-  { label: "How It Works", href: "#how-it-works" },
-  { label: "Pricing", href: "#pricing" },
+  { label: "How It Works", href: "/how-it-works" },
+  { label: "Pricing", href: "/#pricing" },
   { label: "Health Hub", href: "#health-hub" },
   {
     label: "About",
@@ -250,15 +250,75 @@ export const faqs = [
   },
 ];
 
+export const howItWorksAssurances = [
+  "CQC-registered",
+  "GMC-registered UK GPs",
+  "Data secured to NHS standards",
+];
+
+export const journeySteps = [
+  {
+    title: "Choose your plan and join online",
+    body: "Takes about three minutes. Card or direct debit. You'll need names and dates of birth for anyone else on the plan. No medical questions at any point.",
+    image: "/images/how-it-works/step-1-join.png",
+    alt: "A couple entering their card details to join a plan together",
+  },
+  {
+    title: "Your welcome pack arrives",
+    body: "By email, immediately. It contains your membership number, the 24/7 booking line, and a wallet card you can save to your phone. Cover starts straight away. (Qualifying period to be confirmed.)",
+    image: "/images/how-it-works/step-2-welcome-pack.png",
+    alt: "A parent reading her welcome email on a laptop with her child beside her",
+  },
+  {
+    title: "Call the booking line",
+    body: "Tell the operator which you'd prefer. Video appointments come with a secure link sent by text or email. Video is best when something needs to be seen.",
+    image: "/images/how-it-works/step-3-booking-line.png",
+    alt: "A woman calling the booking line from her laptop desk",
+  },
+  {
+    title: "The GP calls you back",
+    body: "Within our published service window. Consultations typically run around ten minutes but continue as long as clinically necessary. Callback standard to be inserted from the client's evidenced figure.",
+    image: "/images/how-it-works/step-4-gp-callback.png",
+    alt: "A GP speaking to a patient from his consulting room",
+  },
+  {
+    title: "You get an outcome",
+    body: "Advice and reassurance, a diagnosis, a private prescription, a referral letter, or a recommendation to be seen in person. Calls are recorded for audit and quality.",
+    image: "/images/how-it-works/step-5-outcome.png",
+    alt: "A patient in a video consultation with a doctor on screen",
+  },
+  {
+    title: "Follow-up if you need it",
+    body: "Call again the same day if things change. There is no charge and no limit. Unlimited means unlimited.",
+    image: "/images/how-it-works/step-6-follow-up.png",
+    alt: "A woman following up with the service by phone from her sofa",
+  },
+];
+
+export const journeyNotes = [
+  {
+    title: "Your first 24 hours as a member",
+    body: "Save the booking number to your phone, add the wallet card, and forward the welcome email to anyone else on your plan so they can use it too.",
+  },
+  {
+    title: "What to have ready before you call",
+    body: "Your membership number, a list of current medication, any allergies, and a rough timeline of symptoms. This one panel measurably improves consultation quality.",
+  },
+  {
+    title: "Using it for your children",
+    body: "A parent or guardian should be present for a child's consultation. Consent and age thresholds to be confirmed with the clinical provider.",
+  },
+];
+
 export const footerSections: Array<{ title: string; links: NavItem[] }> = [
   {
     title: "SERVICE",
     links: [
       { label: "For Individuals & Families", href: "#family" },
       { label: "For Business", href: "#business" },
-      { label: "How It Works", href: "#how-it-works" },
+      { label: "How It Works", href: "/how-it-works" },
       { label: "Prescriptions", href: "#prescriptions" },
-      { label: "Pricing & Join", href: "#pricing" },
+      { label: "Pricing & Join", href: "/#pricing" },
       { label: "Health Hub", href: "#health-hub" },
     ],
   },

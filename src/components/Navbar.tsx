@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import Icon from "@/components/Icon";
 import { navItems, siteConfig } from "@/lib/site";
@@ -10,6 +11,7 @@ import { cn } from "@/lib/utils";
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [expanded, setExpanded] = useState<string | null>(null);
+  const pathname = usePathname();
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -70,7 +72,7 @@ export default function Navbar() {
           className="mx-auto flex w-full max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:gap-6 lg:px-8 lg:py-4"
         >
           <Link
-            href="#home"
+            href="/"
             onClick={closeAll}
             className="shrink-0 rounded-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-coral"
           >
@@ -90,7 +92,13 @@ export default function Navbar() {
               <li key={item.label} className="group relative">
                 <Link
                   href={item.href}
-                  className="inline-flex items-center gap-1 rounded-md px-2.5 py-2 text-[13px] font-medium text-brand-teal/85 transition-colors hover:text-brand-teal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral xl:px-3 xl:text-sm"
+                  aria-current={pathname === item.href ? "page" : undefined}
+                  className={cn(
+                    "inline-flex items-center gap-1 rounded-md px-2.5 py-2 text-[13px] transition-colors hover:text-brand-teal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral xl:px-3 xl:text-sm",
+                    pathname === item.href
+                      ? "font-semibold text-brand-teal"
+                      : "font-medium text-brand-teal/85",
+                  )}
                 >
                   {item.label}
                   {item.children && (
@@ -132,7 +140,7 @@ export default function Navbar() {
             </a>
 
             <Link
-              href="#pricing"
+              href="/#pricing"
               onClick={closeAll}
               className="hidden rounded-md bg-coral px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-coral-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral sm:inline-flex lg:px-5"
             >
@@ -216,7 +224,13 @@ export default function Navbar() {
                   <Link
                     href={item.href}
                     onClick={closeAll}
-                    className="block rounded-lg px-3 py-3 text-base font-medium text-brand-teal transition-colors hover:bg-brand-teal/5"
+                    aria-current={pathname === item.href ? "page" : undefined}
+                    className={cn(
+                      "block rounded-lg px-3 py-3 text-base text-brand-teal transition-colors hover:bg-brand-teal/5",
+                      pathname === item.href
+                        ? "bg-brand-teal/5 font-semibold"
+                        : "font-medium",
+                    )}
                   >
                     {item.label}
                   </Link>
@@ -233,7 +247,7 @@ export default function Navbar() {
                 {siteConfig.phoneDisplay}
               </a>
               <Link
-                href="#pricing"
+                href="/#pricing"
                 onClick={closeAll}
                 className="block rounded-md bg-coral px-5 py-3 text-center text-base font-semibold text-white transition-colors hover:bg-coral-dark"
               >
