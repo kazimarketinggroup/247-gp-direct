@@ -10,7 +10,7 @@ export default function Included() {
     >
       <div className="flex flex-col items-start">
         <SectionLabel>What&apos;s included</SectionLabel>
-        <h2 className="mt-5 max-w-2xl text-2xl leading-tight font-bold tracking-tight text-balance text-brand-teal sm:text-3xl md:text-4xl">
+        <h2 className="mt-5 max-w-2xl title-50 text-balance text-brand-teal">
           One annual subscription. Everything below.
         </h2>
       </div>
@@ -28,7 +28,7 @@ export default function Included() {
             >
               <Icon name={item.icon as IconName} className="h-[18px] w-[18px]" />
             </span>
-            <h3 className="mt-4 text-sm font-semibold text-brand-teal sm:text-base">
+            <h3 className="mt-4 text-sm text-brand-teal sm:text-base">
               {item.title}
             </h3>
             <p className="mt-2 text-xs leading-relaxed text-pretty text-brand-teal/70 sm:text-sm">

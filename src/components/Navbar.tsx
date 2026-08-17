@@ -79,8 +79,8 @@ export default function Navbar() {
             <Image
               src="/images/home/logo.png"
               alt={`${siteConfig.name} home`}
-              width={160}
-              height={32}
+              width={264}
+              height={66}
               priority
               className="h-6 w-auto sm:h-7 lg:h-8"
             />
@@ -95,9 +95,11 @@ export default function Navbar() {
                   aria-current={pathname === item.href ? "page" : undefined}
                   className={cn(
                     "inline-flex items-center gap-1 rounded-md px-2.5 py-2 text-[13px] transition-colors hover:text-brand-teal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral xl:px-3 xl:text-sm",
+                    // No bold anywhere, so the current page is marked with a
+                    // coral underline rather than a heavier weight.
                     pathname === item.href
-                      ? "font-semibold text-brand-teal"
-                      : "font-medium text-brand-teal/85",
+                      ? "text-brand-teal underline decoration-coral decoration-2 underline-offset-8"
+                      : "text-brand-teal/85",
                   )}
                 >
                   {item.label}
@@ -133,7 +135,7 @@ export default function Navbar() {
           <div className="flex shrink-0 items-center gap-2 sm:gap-3">
             <a
               href={`tel:${siteConfig.phoneDisplay.replace(/\s/g, "")}`}
-              className="hidden items-center gap-1.5 text-sm font-semibold text-brand-teal transition-opacity hover:opacity-75 lg:inline-flex"
+              className="hidden items-center gap-1.5 text-sm text-brand-teal transition-opacity hover:opacity-75 lg:inline-flex"
             >
               <Icon name="phone" className="h-4 w-4 text-coral" />
               <span className="whitespace-nowrap">{siteConfig.phoneDisplay}</span>
@@ -142,7 +144,7 @@ export default function Navbar() {
             <Link
               href="/#pricing"
               onClick={closeAll}
-              className="hidden rounded-md bg-coral px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-coral-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral sm:inline-flex lg:px-5"
+              className="hidden rounded-md bg-coral px-4 py-2 text-sm text-white transition-colors hover:bg-coral-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral sm:inline-flex lg:px-5"
             >
               Join Now
             </Link>
@@ -189,7 +191,7 @@ export default function Navbar() {
                         setExpanded((c) => (c === item.label ? null : item.label))
                       }
                       aria-expanded={expanded === item.label}
-                      className="flex w-full items-center justify-between gap-2 rounded-lg px-3 py-3 text-left text-base font-medium text-brand-teal transition-colors hover:bg-brand-teal/5"
+                      className="flex w-full items-center justify-between gap-2 rounded-lg px-3 py-3 text-left text-base text-brand-teal transition-colors hover:bg-brand-teal/5"
                     >
                       <span>{item.label}</span>
                       <Icon
@@ -227,9 +229,8 @@ export default function Navbar() {
                     aria-current={pathname === item.href ? "page" : undefined}
                     className={cn(
                       "block rounded-lg px-3 py-3 text-base text-brand-teal transition-colors hover:bg-brand-teal/5",
-                      pathname === item.href
-                        ? "bg-brand-teal/5 font-semibold"
-                        : "font-medium",
+                      pathname === item.href &&
+                        "bg-brand-teal/5 border-l-2 border-coral",
                     )}
                   >
                     {item.label}
@@ -241,7 +242,7 @@ export default function Navbar() {
             <li className="mt-2 flex flex-col gap-2 border-t border-black/5 pt-3">
               <a
                 href={`tel:${siteConfig.phoneDisplay.replace(/\s/g, "")}`}
-                className="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-base font-semibold text-brand-teal"
+                className="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-base text-brand-teal"
               >
                 <Icon name="phone" className="h-4 w-4 text-coral" />
                 {siteConfig.phoneDisplay}
@@ -249,7 +250,7 @@ export default function Navbar() {
               <Link
                 href="/#pricing"
                 onClick={closeAll}
-                className="block rounded-md bg-coral px-5 py-3 text-center text-base font-semibold text-white transition-colors hover:bg-coral-dark"
+                className="block rounded-md bg-coral px-5 py-3 text-center text-base text-white transition-colors hover:bg-coral-dark"
               >
                 Join Now
               </Link>

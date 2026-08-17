@@ -23,7 +23,7 @@ export default function Business() {
         <div className="flex flex-col items-start">
           <SectionLabel>For Business</SectionLabel>
 
-          <h2 className="mt-5 max-w-xl text-2xl leading-tight font-bold tracking-tight text-balance text-brand-teal sm:text-3xl md:text-4xl">
+          <h2 className="mt-5 max-w-xl title-50 text-balance text-brand-teal">
             Looking after your team?
           </h2>
 
@@ -41,13 +41,13 @@ export default function Business() {
           <div className="mt-7 flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center">
             <Link
               href="#quote"
-              className="inline-flex items-center justify-center rounded-md bg-coral px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-coral-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral sm:text-base"
+              className="inline-flex items-center justify-center rounded-md bg-coral px-6 py-3 text-sm text-white transition-colors hover:bg-coral-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral sm:text-base"
             >
               Explore Business Cover
             </Link>
             <Link
               href="#brochure"
-              className="inline-flex items-center justify-center rounded-md px-2 py-3 text-sm font-semibold text-brand-teal underline-offset-4 transition-colors hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral sm:px-4 sm:text-base"
+              className="inline-flex items-center justify-center rounded-md px-2 py-3 text-sm text-brand-teal underline-offset-4 transition-colors hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral sm:px-4 sm:text-base"
             >
               Download Brochure
             </Link>

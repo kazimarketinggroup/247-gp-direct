@@ -12,7 +12,7 @@ export default function Pricing() {
     >
       <div className="flex flex-col items-center text-center">
         <SectionLabel>Simple pricing</SectionLabel>
-        <h2 className="mt-5 max-w-2xl text-2xl leading-tight font-bold tracking-tight text-balance text-brand-teal sm:text-3xl md:text-4xl">
+        <h2 className="mt-5 max-w-2xl title-50 text-balance text-brand-teal">
           One annual fee. No hidden charges.
         </h2>
         <p className="mt-3 max-w-xl text-sm text-pretty text-brand-teal/65 sm:text-base">
@@ -33,14 +33,14 @@ export default function Pricing() {
             )}
           >
             {plan.badge && (
-              <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-coral px-3 py-1 text-[11px] font-semibold whitespace-nowrap text-white">
+              <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-coral px-3 py-1 text-[11px] whitespace-nowrap text-white">
                 {plan.badge}
               </span>
             )}
 
             <p
               className={cn(
-                "text-[11px] font-semibold tracking-widest uppercase",
+                "text-[11px] tracking-widest uppercase",
                 plan.featured ? "text-white/60" : "text-brand-teal/50",
               )}
             >
@@ -50,7 +50,7 @@ export default function Pricing() {
             <p className="mt-4 flex items-baseline gap-1">
               <span
                 className={cn(
-                  "text-3xl font-bold tracking-tight sm:text-4xl",
+                  "text-3xl tracking-tight sm:text-4xl",
                   plan.featured ? "text-white" : "text-brand-teal",
                 )}
               >
@@ -109,7 +109,7 @@ export default function Pricing() {
             <Link
               href="#join"
               className={cn(
-                "mt-7 block rounded-md px-5 py-3 text-center text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral",
+                "mt-7 block rounded-md px-5 py-3 text-center text-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral",
                 plan.featured
                   ? "bg-coral text-white hover:bg-coral-dark"
                   : "bg-brand-teal text-white hover:bg-brand-teal-dark",

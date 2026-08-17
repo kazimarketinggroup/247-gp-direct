@@ -19,12 +19,12 @@ export default function Faq() {
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:gap-12 xl:gap-20">
         <div className="flex flex-col items-start">
           <SectionLabel>Good to know</SectionLabel>
-          <h2 className="mt-5 text-2xl leading-tight font-bold tracking-tight text-balance text-brand-teal sm:text-3xl md:text-4xl">
+          <h2 className="mt-5 title-50 text-balance text-brand-teal">
             Things people ask before they join
           </h2>
           <Link
             href="#all-faqs"
-            className="mt-6 inline-flex items-center gap-2 border-b border-brand-teal/30 pb-1 text-sm font-medium text-brand-teal transition-colors hover:border-coral hover:text-coral focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral"
+            className="mt-6 inline-flex items-center gap-2 border-b border-brand-teal/30 pb-1 text-sm text-brand-teal transition-colors hover:border-coral hover:text-coral focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral"
           >
             See all FAQs
             <Icon name="arrow-right" className="h-4 w-4" />
@@ -43,7 +43,7 @@ export default function Faq() {
                   aria-controls={`faq-panel-${i}`}
                   className="flex w-full items-start justify-between gap-4 py-5 text-left transition-colors hover:text-coral focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral"
                 >
-                  <span className="text-sm font-medium text-pretty text-brand-teal sm:text-base">
+                  <span className="text-sm text-pretty text-brand-teal sm:text-base">
                     {faq.q}
                   </span>
                   <Icon

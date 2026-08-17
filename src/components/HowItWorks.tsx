@@ -9,7 +9,7 @@ export default function HowItWorks() {
     >
       <SectionLabel>How it works</SectionLabel>
 
-      <h2 className="mt-5 max-w-2xl text-2xl leading-tight font-bold tracking-tight text-balance text-brand-teal sm:text-3xl md:text-4xl">
+      <h2 className="mt-5 max-w-2xl title-50 text-balance text-brand-teal">
         Three steps, from problem to answer
       </h2>
 
@@ -18,11 +18,11 @@ export default function HowItWorks() {
           <li key={step.number} className="flex flex-col">
             <span
               aria-hidden
-              className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-brand-teal text-sm font-bold text-white sm:h-12 sm:w-12 sm:text-base"
+              className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-brand-teal text-sm text-white sm:h-12 sm:w-12 sm:text-base"
             >
               {step.number}
             </span>
-            <h3 className="mt-5 text-base font-semibold text-brand-teal sm:text-lg">
+            <h3 className="mt-5 text-base text-brand-teal sm:text-lg">
               {step.title}
             </h3>
             <p className="mt-2.5 text-sm leading-relaxed text-pretty text-brand-teal/75 sm:text-base">
@@ -35,7 +35,7 @@ export default function HowItWorks() {
         ))}
       </ol>
 
-      <p className="mt-10 text-base font-medium text-coral sm:text-lg">
+      <p className="mt-10 text-base text-coral sm:text-lg">
         And you keep your NHS GP. Nothing changes there.
       </p>
     </section>

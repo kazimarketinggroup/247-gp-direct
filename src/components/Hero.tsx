@@ -25,12 +25,12 @@ export default function Hero() {
       <div className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8 lg:py-20">
         <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-12 xl:gap-16">
           <div className="flex flex-col items-start text-left">
-            <span className="inline-flex items-center gap-2 rounded-full border border-brand-teal/15 bg-white/70 px-3 py-1.5 text-[11px] font-medium text-brand-teal sm:text-xs">
+            <span className="inline-flex items-center gap-2 rounded-full border border-brand-teal/15 bg-white/70 px-3 py-1.5 text-[11px] text-brand-teal sm:text-xs">
               <span aria-hidden className="h-1.5 w-1.5 shrink-0 rounded-full bg-coral" />
               24 hours · 365 days · UK-qualified GPs
             </span>
 
-            <h1 className="mt-5 text-3xl leading-[1.1] font-bold tracking-tight text-balance text-brand-teal sm:text-4xl md:text-5xl xl:text-[3.5rem]">
+            <h1 className="mt-5 title-50 text-balance text-brand-teal xl:text-[3.5rem]">
               See a GP in minutes.
               <br className="hidden sm:block" />{" "}
               <span className="sm:inline">Any time, day or night.</span>
@@ -44,13 +44,13 @@ export default function Hero() {
             <div className="mt-7 flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap">
               <Link
                 href="#pricing"
-                className="inline-flex items-center justify-center rounded-md bg-coral px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-coral-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral sm:text-base"
+                className="inline-flex items-center justify-center rounded-md bg-coral px-6 py-3 text-sm text-white transition-colors hover:bg-coral-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral sm:text-base"
               >
                 View Plans
               </Link>
               <Link
                 href="#business"
-                className="inline-flex items-center justify-center rounded-md border border-brand-teal/25 bg-white/80 px-6 py-3 text-sm font-semibold text-brand-teal transition-colors hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral sm:text-base"
+                className="inline-flex items-center justify-center rounded-md border border-brand-teal/25 bg-white/80 px-6 py-3 text-sm text-brand-teal transition-colors hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral sm:text-base"
               >
                 Cover My Team
               </Link>

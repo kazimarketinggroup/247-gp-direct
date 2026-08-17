@@ -7,7 +7,7 @@ export default function Problem() {
       <div className="rounded-2xl bg-mint px-5 py-10 sm:rounded-3xl sm:px-8 sm:py-12 lg:px-12 lg:py-16">
         <SectionLabel>The problem</SectionLabel>
 
-        <h2 className="mt-5 max-w-3xl text-2xl leading-tight font-bold tracking-tight text-balance text-brand-teal sm:text-3xl md:text-4xl">
+        <h2 className="mt-5 max-w-3xl title-50 text-balance text-brand-teal">
           Getting a GP appointment has never been harder.
         </h2>
 
@@ -22,7 +22,7 @@ export default function Problem() {
                   : "md:pr-6 lg:pr-8"
               }
             >
-              <dt className="text-xl font-bold text-brand-teal sm:text-2xl lg:text-3xl">
+              <dt className="text-xl text-brand-teal sm:text-2xl lg:text-3xl">
                 {stat.value}
               </dt>
               <dd className="mt-2 text-sm leading-relaxed text-pretty text-brand-teal/75 sm:text-base">

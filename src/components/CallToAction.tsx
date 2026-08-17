@@ -9,7 +9,7 @@ export default function CallToAction() {
         <SectionLabel>Private GP care, made simple</SectionLabel>
 
         {/* Number wraps to its own line on narrow screens rather than overflowing. */}
-        <h2 className="mt-6 max-w-3xl text-2xl leading-tight font-bold tracking-tight text-balance text-brand-teal sm:text-3xl md:text-4xl lg:text-5xl">
+        <h2 className="mt-6 max-w-3xl title-50 text-balance text-brand-teal">
           When you need a GP,{" "}
           <span className="block sm:inline">
             Call{" "}
@@ -25,7 +25,7 @@ export default function CallToAction() {
 
         <Link
           href="/#pricing"
-          className="mt-8 inline-flex items-center justify-center rounded-md bg-coral px-7 py-3 text-sm font-semibold text-white transition-colors hover:bg-coral-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral sm:text-base"
+          className="mt-8 inline-flex items-center justify-center rounded-md bg-coral px-7 py-3 text-sm text-white transition-colors hover:bg-coral-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral sm:text-base"
         >
           View plans
         </Link>

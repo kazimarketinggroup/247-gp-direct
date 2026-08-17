@@ -10,7 +10,7 @@ export default function Credentials() {
     >
       <div className="flex flex-col items-center text-center">
         <SectionLabel>Credentials</SectionLabel>
-        <h2 className="mt-5 max-w-2xl text-2xl leading-tight font-bold tracking-tight text-balance text-brand-teal sm:text-3xl md:text-4xl">
+        <h2 className="mt-5 max-w-2xl title-50 text-balance text-brand-teal">
           A regulated service, not an app
         </h2>
       </div>

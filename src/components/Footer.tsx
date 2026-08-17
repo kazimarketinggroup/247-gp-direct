@@ -9,7 +9,7 @@ export default function Footer() {
         {/* Brand block and call card stack on mobile, split from lg. */}
         <div className="flex flex-col gap-8 border-b border-white/10 pb-10 lg:flex-row lg:items-start lg:justify-between lg:gap-12">
           <div className="max-w-md">
-            <p className="text-lg font-bold tracking-tight">
+            <p className="text-lg tracking-tight">
               <span className="text-coral">247</span> GP Direct
             </p>
             <p className="mt-4 text-sm leading-relaxed text-pretty text-white/65">
@@ -30,7 +30,7 @@ export default function Footer() {
             </span>
             <span className="min-w-0">
               <span className="block text-[11px] text-white/55">24/7 booking line</span>
-              <span className="block text-base font-semibold whitespace-nowrap">
+              <span className="block text-base whitespace-nowrap">
                 {siteConfig.phoneDisplay}
               </span>
             </span>
@@ -41,7 +41,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-8 py-10 sm:grid-cols-2 sm:gap-10 lg:grid-cols-4 lg:gap-8">
           {footerSections.map((section) => (
             <nav key={section.title} aria-label={section.title} className="min-w-0">
-              <h2 className="text-[11px] font-semibold tracking-widest text-coral uppercase">
+              <h2 className="text-[11px] tracking-widest text-coral uppercase">
                 {section.title}
               </h2>
               <ul className="mt-4 flex flex-col gap-2.5">
@@ -67,7 +67,7 @@ export default function Footer() {
             Registration: (TBC). CQC Registration: (TBC).
           </p>
           <p className="text-[11px] leading-relaxed text-pretty text-white/45 lg:max-w-xs lg:text-right">
-            <span className="font-medium text-white/60">
+            <span className="text-white/60">
               This service is not a substitute for emergency medical care.
             </span>{" "}
             If you or someone else is experiencing a medical emergency, call 999

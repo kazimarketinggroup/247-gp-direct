@@ -8,6 +8,7 @@ const chivo = Chivo({
   variable: "--font-chivo",
   subsets: ["latin"],
   display: "swap",
+  weight: ["400"],
 });
 
 export const metadata: Metadata = {

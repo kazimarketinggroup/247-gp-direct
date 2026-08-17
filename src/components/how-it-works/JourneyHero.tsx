@@ -25,7 +25,7 @@ export default function JourneyHero() {
         <div className="max-w-xl">
           <SectionLabel>How it works</SectionLabel>
 
-          <h1 className="mt-5 text-3xl leading-[1.1] font-bold tracking-tight text-balance text-brand-teal sm:text-4xl md:text-5xl">
+          <h1 className="mt-5 title-50 text-balance text-brand-teal">
             Join in three minutes.
             <br className="hidden sm:block" />{" "}
             <span className="sm:inline">Use it the same night.</span>

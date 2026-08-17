@@ -6,7 +6,7 @@ export default function JourneyNotes() {
       <ul className="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-x-10 lg:grid-cols-3 lg:gap-x-12">
         {journeyNotes.map((note) => (
           <li key={note.title} className="border-l-2 border-brand-teal/25 pl-5">
-            <h2 className="text-sm font-semibold text-pretty text-brand-teal sm:text-base">
+            <h2 className="text-sm text-pretty text-brand-teal sm:text-base">
               {note.title}
             </h2>
             <p className="mt-2.5 text-xs leading-relaxed text-pretty text-brand-teal/70 sm:text-sm">
