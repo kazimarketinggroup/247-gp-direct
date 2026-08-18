@@ -39,9 +39,9 @@ export const navItems: NavItem[] = [
       { label: "What's Included", href: "/whats-included" },
       { label: "What Our GPs Can Help With", href: "/gp-help" },
       { label: "Cover for Your Family", href: "/family-cover" },
-      { label: "Keeping Your NHS GP", href: "/family#what-it-isnt" },
+      { label: "Keeping Your NHS GP", href: "/nhs-gp" },
       { label: "How It Works", href: "/how-it-works" },
-      { label: "Prescriptions Explained", href: "/family#prescriptions" },
+      { label: "Prescriptions Explained", href: "/prescriptions" },
       { label: "Using the Service Abroad", href: "/whats-included" },
       { label: "FAQs", href: "/family#faqs" },
     ],
@@ -54,12 +54,12 @@ export const navItems: NavItem[] = [
         { label: "What's Included", href: "/whats-included" },
         { label: "What Our GPs Can Help With", href: "/gp-help" },
         { label: "Cover for Your Family", href: "/family-cover" },
-        { label: "Keeping Your NHS GP", href: "/family#what-it-isnt" },
+        { label: "Keeping Your NHS GP", href: "/nhs-gp" },
       ],
       linksTitle2: "GETTING STARTED",
       links2: [
         { label: "How It Works", href: "/how-it-works" },
-        { label: "Prescriptions Explained", href: "/family#prescriptions" },
+        { label: "Prescriptions Explained", href: "/prescriptions" },
         { label: "Using the Service Abroad", href: "/whats-included" },
         { label: "FAQs", href: "/family#faqs" },
       ],
@@ -628,6 +628,96 @@ export const familyCoverPage = {
   ],
 };
 
+export const prescriptionsPage = {
+  label: "Prescriptions",
+  title: "Medication, without the second appointment",
+  intro:
+    "Where a GP judges medication to be appropriate, they can issue a private prescription electronically during or immediately after your consultation.",
+  pathwayTitle: "The pathway, end to end",
+  pathway: [
+    {
+      number: "1",
+      title: "Consultation",
+      body: "You speak to the GP by phone or video.",
+    },
+    {
+      number: "2",
+      title: "The GP raises the prescription",
+      body: "Electronically, during or immediately after the call.",
+    },
+    {
+      number: "3",
+      title: "Clinical check and authorisation",
+      body: "Two-stage check and digital signature.",
+    },
+    {
+      number: "4",
+      title: "Sent to the dispensing pharmacy",
+      body: "A registered UK pharmacy partner.",
+    },
+    {
+      number: "5",
+      title: "Pharmacist checks and dispenses",
+      body: "A second, independent clinical check.",
+    },
+    {
+      number: "6",
+      title: "Dispatched to your address",
+      body: "Home or workplace, your choice.",
+    },
+  ],
+  deliveryTitle: "Delivery",
+  deliveryBody:
+    "Orders placed before the pharmacy's daily cut-off are dispatched the same working day. Exact cut-off time and dispatch standard to be stated from the pharmacy partner's actual service levels, not estimated.",
+  costTitle: "Cost, stated openly",
+  costBody:
+    "Your subscription covers the consultation. Medication, dispensing and delivery are charged separately at the point of order, and you'll see the total before you confirm.",
+  canTitle: "What can be prescribed",
+  can: [
+    "Antibiotics, where clinically indicated",
+    "Prescription-only pain relief and anti-inflammatories",
+    "Treatment for digestive complaints",
+    "Hormonal medication",
+    "Emergency replacements when you're away from home without your usual medication",
+  ],
+  cannotTitle: "What cannot be prescribed",
+  cannot: [
+    "Controlled drugs",
+    "NHS-funded prescriptions",
+    "Anything requiring a physical examination or monitoring we cannot provide",
+    "Repeat prescriptions for long-term conditions (client position to be confirmed)",
+  ],
+  collectingTitle: "Collecting somewhere else",
+  collectingBody:
+    "If you'd rather use your own pharmacy than the delivery partner, tell the GP at the point of prescribing. (Client to confirm whether this is supported in all cases.)",
+  safetyTitle: "A safety note",
+  safetyBody:
+    "Previous prescriptions raised through the service are visible to the treating GP, so repeat requests are clinically reviewed rather than automatically repeated.",
+};
+
+export const nhsGpPage = {
+  label: "For You & Your Family",
+  title: "Keeping Your NHS GP",
+  intro:
+    "Private GP membership that works alongside your NHS GP and does not change your NHS registration.",
+  blocks: [
+    {
+      title: "Private care alongside NHS care",
+      paragraphs: [
+        "Joining 247 GP Direct does not mean leaving your NHS GP. Your NHS registration, NHS appointments, prescriptions, and ongoing care continue as normal.",
+        "Our service is an additional route for timely advice and reassurance when you need help between NHS appointments.",
+      ],
+    },
+    {
+      title: "A joined-up approach",
+      paragraphs: [
+        "Your private GP may recommend that you follow up with your NHS GP or another NHS service. With your permission, relevant information can be shared to support continuity of care.",
+        "247 GP Direct does not replace emergency services, specialist care, or your NHS GP's role in managing long-term conditions.",
+      ],
+    },
+  ],
+};
+
 export const gpHelpPage = {
   label: "For You & Your Family",
   title: "What Our GPs Can Help With",
@@ -911,7 +1001,7 @@ export const footerSections: Array<{ title: string; links: NavItem[] }> = [
       { label: "For Individuals & Families", href: "/family" },
       { label: "For Business", href: "#business" },
       { label: "How It Works", href: "/how-it-works" },
-      { label: "Prescriptions", href: "#prescriptions" },
+      { label: "Prescriptions", href: "/prescriptions" },
       { label: "Pricing & Join", href: "/pricing" },
       { label: "Health Hub", href: "/health-hub" },
     ],
