@@ -12,8 +12,12 @@ export default function StandardsList() {
           <li
             key={item.title}
             className={cn(
-              "rounded-2xl px-5 py-6 sm:px-7 sm:py-7",
-              item.featured ? "bg-brand-teal text-white" : "bg-white",
+              // On hover a plain card takes on the featured card's dark teal.
+              // Motion is skipped for users who prefer reduced motion.
+              "group rounded-2xl px-5 py-6 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg motion-reduce:transform-none motion-reduce:transition-none sm:px-7 sm:py-7",
+              item.featured
+                ? "bg-brand-teal text-white hover:shadow-brand-teal/25"
+                : "bg-white hover:bg-brand-teal hover:shadow-brand-teal/25",
             )}
           >
             {/* Title column then body; stacked on phones, side by side from md. */}
@@ -22,20 +26,31 @@ export default function StandardsList() {
                 <Icon
                   name={item.icon as IconName}
                   className={cn(
-                    "h-5 w-5 shrink-0",
-                    item.featured ? "text-white/80" : "text-brand-teal/70",
+                    "h-5 w-5 shrink-0 transition-colors duration-300",
+                    item.featured
+                      ? "text-white/80"
+                      : "text-brand-teal/70 group-hover:text-white/80",
                   )}
                   strokeWidth={1.6}
                 />
-                <span className={item.featured ? "text-white" : "text-brand-teal"}>
+                <span
+                  className={cn(
+                    "transition-colors duration-300",
+                    item.featured
+                      ? "text-white"
+                      : "text-brand-teal group-hover:text-white",
+                  )}
+                >
                   {item.title}
                 </span>
               </h3>
 
               <p
                 className={cn(
-                  "text-xs leading-relaxed text-pretty sm:text-sm",
-                  item.featured ? "text-white/80" : "text-brand-teal/70",
+                  "text-xs leading-relaxed text-pretty transition-colors duration-300 sm:text-sm",
+                  item.featured
+                    ? "text-white/80"
+                    : "text-brand-teal/70 group-hover:text-white/80",
                 )}
               >
                 {item.body}
