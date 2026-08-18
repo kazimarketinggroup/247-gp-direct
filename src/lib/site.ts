@@ -55,7 +55,7 @@ export const navItems: NavItem[] = [
       { label: "Our Story", href: "/about" },
       { label: "Clinical Standards & Governance", href: "/clinical-standards" },
       { label: "Regulation & Compliance", href: "/regulation" },
-      { label: "Meet the Clinical Team", href: "#clinical-team" },
+      { label: "Meet the Clinical Team", href: "/clinical-team" },
       { label: "Contact Us", href: "#contact" },
     ],
     mega: {
@@ -67,7 +67,7 @@ export const navItems: NavItem[] = [
         { label: "Our Story", href: "/about" },
         { label: "Clinical Standards & Governance", href: "/clinical-standards" },
         { label: "Regulation & Compliance", href: "/regulation" },
-        { label: "Meet the Clinical Team", href: "#clinical-team" },
+        { label: "Meet the Clinical Team", href: "/clinical-team" },
         { label: "Contact Us", href: "#contact" },
       ],
       image: {
@@ -409,6 +409,46 @@ export const aboutPage = {
     "We do not ask members to leave their NHS surgery, and we never will. This service is the layer that sits underneath NHS care: the everyday questions, the sudden temperatures, the infections that need answering tonight rather than a fortnight from now.",
     "Consultations are delivered by our clinical provider and prescriptions are dispensed by a registered UK pharmacy partner. Both are named here in full once contractual confirmation is received.",
   ],
+};
+
+export const clinicalTeamPage = {
+  label: "Meet the Clinical Team",
+  title: "The GPs behind the phone line",
+  intro:
+    "Every consultation is with a GMC-registered doctor, practising in the UK. Here's who you'll be speaking to.",
+  leadTitle: "When you call, you're not speaking to a call centre.",
+  leadBody:
+    "When you call, you're not speaking to a call centre. You're speaking to a UK-qualified, GMC-registered GP — the same standard of doctor you'd see at a surgery, available at a time that actually works for you. Our clinical team is led by [Clinical Director Name], and every GP on the rota goes through the same recruitment, vetting and revalidation process before they take a single call.",
+  /** Placeholder profiles pending real names, photos and GMC numbers. */
+  members: Array.from({ length: 5 }, (_, i) => ({
+    id: `gp-${i + 1}`,
+    name: "Dr. Name",
+    role: "General physician",
+    status: "Available",
+  })),
+  helpTitle: "What our GPs can help with",
+  helpColumns: [
+    [
+      "Coughs, colds and chest infections",
+      "Skin complaints, rashes and eczema",
+      "Digestive problems",
+      "Joint and back pain",
+      "Contraception and sexual health",
+      "Medication queries and side effects",
+      "Menopause symptoms",
+    ],
+    [
+      "Sore throats and ear infections",
+      "Urinary tract infections",
+      "Headaches and migraine",
+      "Anxiety, low mood and sleep problems",
+      "Travel health advice",
+      "Children's illnesses",
+      "Long-term condition management & general reassurance",
+    ],
+  ],
+  helpNote:
+    "Most consultations end with a clear answer advice, a diagnosis, a prescription, or a recommendation about what to do next. A meaningful proportion need no further medical contact at all.",
 };
 
 export const clinicalStandardsPage = {
