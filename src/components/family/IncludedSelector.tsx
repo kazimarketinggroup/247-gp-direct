@@ -6,11 +6,19 @@ import Icon from "@/components/Icon";
 import { familyPage } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
-export default function IncludedSelector() {
+export default function IncludedSelector({
+  /** The What's Included page supplies its own heading and image. */
+  showHeading = true,
+  image,
+}: {
+  showHeading?: boolean;
+  image?: { src: string; alt: string };
+} = {}) {
   // Selecting a row on the left swaps the copy under the image on the right.
   const [selected, setSelected] = useState(0);
   const active = familyPage.included[selected];
   const detailRef = useRef<HTMLDivElement>(null);
+  const panelImage = image ?? familyPage.includedImage;
 
   const select = (i: number) => {
     setSelected(i);
@@ -29,17 +37,26 @@ export default function IncludedSelector() {
       id="whats-included"
       className="mx-auto w-full max-w-7xl scroll-mt-24 px-4 py-10 sm:px-6 sm:py-14 lg:px-8"
     >
-      <p className="text-xs text-brand-teal/55">What&apos;s included</p>
-      <div className="mt-3 border-t border-coral/40 pt-6 sm:pt-8">
-        <h2 className="title-50 text-balance text-brand-teal">
-          {familyPage.includedTitle}
-        </h2>
-        <p className="mt-3 text-sm text-brand-teal/65">
-          {familyPage.includedSub}
-        </p>
-      </div>
+      {showHeading && (
+        <>
+          <p className="text-xs text-brand-teal/55">What&apos;s included</p>
+          <div className="mt-3 border-t border-coral/40 pt-6 sm:pt-8">
+            <h2 className="title-50 text-balance text-brand-teal">
+              {familyPage.includedTitle}
+            </h2>
+            <p className="mt-3 text-sm text-brand-teal/65">
+              {familyPage.includedSub}
+            </p>
+          </div>
+        </>
+      )}
 
-      <div className="mt-8 grid grid-cols-1 items-start gap-6 sm:mt-10 lg:grid-cols-2 lg:gap-8">
+      <div
+        className={cn(
+          "grid grid-cols-1 items-start gap-6 lg:grid-cols-2 lg:gap-8",
+          showHeading && "mt-8 sm:mt-10",
+        )}
+      >
         {/* Left: selectable list. */}
         <ul className="flex flex-col gap-2">
           {familyPage.included.map((item, i) => {
@@ -93,8 +110,8 @@ export default function IncludedSelector() {
         >
           <div className="relative aspect-[16/10] w-full overflow-hidden rounded-lg bg-brand-teal/5">
             <Image
-              src={familyPage.includedImage.src}
-              alt={familyPage.includedImage.alt}
+              src={panelImage.src}
+              alt={panelImage.alt}
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"

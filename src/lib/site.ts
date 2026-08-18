@@ -36,13 +36,13 @@ export const navItems: NavItem[] = [
     href: "/family",
     // Children drive the mobile accordion; `mega` drives the desktop panel.
     children: [
-      { label: "What's Included", href: "/family#whats-included" },
-      { label: "What Our GPs Can Help With", href: "/family#gp-help" },
-      { label: "Cover for Your Family", href: "/family#whats-included" },
+      { label: "What's Included", href: "/whats-included" },
+      { label: "What Our GPs Can Help With", href: "/gp-help" },
+      { label: "Cover for Your Family", href: "/whats-included" },
       { label: "Keeping Your NHS GP", href: "/family#what-it-isnt" },
       { label: "How It Works", href: "/how-it-works" },
       { label: "Prescriptions Explained", href: "/family#prescriptions" },
-      { label: "Using the Service Abroad", href: "/family#whats-included" },
+      { label: "Using the Service Abroad", href: "/whats-included" },
       { label: "FAQs", href: "/family#faqs" },
     ],
     mega: {
@@ -51,16 +51,16 @@ export const navItems: NavItem[] = [
       body: "Private GP access for you, your partner, and the people you look after.",
       linksTitle: "THE SERVICE",
       links: [
-        { label: "What's Included", href: "/family#whats-included" },
-        { label: "What Our GPs Can Help With", href: "/family#gp-help" },
-        { label: "Cover for Your Family", href: "/family#whats-included" },
+        { label: "What's Included", href: "/whats-included" },
+        { label: "What Our GPs Can Help With", href: "/gp-help" },
+        { label: "Cover for Your Family", href: "/whats-included" },
         { label: "Keeping Your NHS GP", href: "/family#what-it-isnt" },
       ],
       linksTitle2: "GETTING STARTED",
       links2: [
         { label: "How It Works", href: "/how-it-works" },
         { label: "Prescriptions Explained", href: "/family#prescriptions" },
-        { label: "Using the Service Abroad", href: "/family#whats-included" },
+        { label: "Using the Service Abroad", href: "/whats-included" },
         { label: "FAQs", href: "/family#faqs" },
       ],
       image: {
@@ -584,6 +584,32 @@ export const familyPage = {
       a: "You, your partner and your dependent children on a single annual subscription. (Age limit and residency definition to be confirmed.)",
     },
   ],
+};
+
+export const whatsIncludedPage = {
+  label: "For You & Your Family",
+  title: "What's Included",
+  intro:
+    "See what your 247 GP Direct membership includes, from 24/7 access to practical support by phone or video.",
+  membershipTitle: "A practical GP membership",
+  membershipParagraphs: [
+    "Your membership gives you a straightforward way to speak with a private GP by phone or video, without needing to book a traditional clinic appointment.",
+    "Use the service for everyday health concerns, advice about symptoms, treatment questions, and guidance on what to do next.",
+  ],
+  includedTitle: "What is included",
+  includedIntro:
+    "Access to the member line, remote GP consultations, clinical advice, and support with next steps are included in the membership structure. Where clinically appropriate, a GP may discuss prescriptions, tests, or referrals. The final scope and exclusions will be confirmed before launch.",
+  image: {
+    src: "/images/whats-included/family-video-call.png",
+    alt: "A family waving during a video call with their grandmother",
+  },
+};
+
+export const gpHelpPage = {
+  label: "For You & Your Family",
+  title: "What Our GPs Can Help With",
+  intro:
+    "Understand the everyday health questions and concerns our GPs can assess through the service.",
 };
 
 export const contactPage = {

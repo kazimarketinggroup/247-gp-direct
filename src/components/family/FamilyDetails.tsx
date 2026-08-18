@@ -1,5 +1,7 @@
 import Link from "next/link";
+import GpHelpTable from "@/components/GpHelpTable";
 import Icon from "@/components/Icon";
+import NotServicePanel from "@/components/NotServicePanel";
 import { clinicalTeamPage, familyPage } from "@/lib/site";
 
 /** Small section header: label, coral rule, then the title. */
@@ -23,27 +25,8 @@ export default function FamilyDetails() {
       >
         <SectionHead label="What Gps help with" title={clinicalTeamPage.helpTitle} />
 
-        <div className="mt-8 rounded-2xl border border-brand-teal/10 bg-white sm:mt-10">
-          <div className="grid grid-cols-1 divide-y divide-brand-teal/10 lg:grid-cols-3 lg:divide-x lg:divide-y-0">
-            {clinicalTeamPage.helpColumns.map((column, i) => (
-              <ul
-                key={i}
-                className="flex list-disc flex-col gap-3 py-6 pr-6 pl-10 marker:text-brand-teal/40 sm:py-7 sm:pr-7 sm:pl-11"
-              >
-                {column.map((item) => (
-                  <li
-                    key={item}
-                    className="text-sm leading-relaxed text-pretty text-brand-teal/85"
-                  >
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            ))}
-            <p className="flex items-center px-6 py-6 text-center text-sm leading-relaxed text-pretty text-coral sm:px-7 sm:py-7">
-              {clinicalTeamPage.helpNote}
-            </p>
-          </div>
+        <div className="mt-8 sm:mt-10">
+          <GpHelpTable />
         </div>
       </section>
 
@@ -53,15 +36,8 @@ export default function FamilyDetails() {
       >
         <SectionHead label="What it isn't" title={familyPage.notServiceTitle} />
 
-        <div className="mt-8 flex flex-col gap-4 rounded-2xl bg-mint/50 p-6 sm:mt-10 sm:p-8">
-          {familyPage.notService.map((para) => (
-            <p
-              key={para.slice(0, 28)}
-              className="text-sm leading-relaxed text-pretty text-brand-teal/80"
-            >
-              {para}
-            </p>
-          ))}
+        <div className="mt-8 sm:mt-10">
+          <NotServicePanel />
         </div>
       </section>
 

@@ -6,7 +6,14 @@ import { cn } from "@/lib/utils";
  * Member-line and emergency cards. Shared by How It Works and
  * Regulation & Compliance, which place them in a side column.
  */
-export default function SupportCards({ className }: { className?: string }) {
+export default function SupportCards({
+  className,
+  /** The What's Included page shows only the member-line card. */
+  showEmergency = true,
+}: {
+  className?: string;
+  showEmergency?: boolean;
+}) {
   return (
     <div
       className={cn(
@@ -31,15 +38,17 @@ export default function SupportCards({ className }: { className?: string }) {
         </a>
       </div>
 
-      <div className="w-full rounded-xl bg-coral p-5 text-white sm:flex-1 sm:p-6">
-        <p className="text-base text-balance sm:text-lg">
-          This is not an emergency service.
-        </p>
-        <p className="mt-3 text-xs leading-relaxed text-pretty text-white/90 sm:text-sm">
-          If someone is seriously unwell or you believe their life is at risk,
-          call 999. For urgent advice, call NHS 111.
-        </p>
-      </div>
+      {showEmergency && (
+        <div className="w-full rounded-xl bg-coral p-5 text-white sm:flex-1 sm:p-6">
+          <p className="text-base text-balance sm:text-lg">
+            This is not an emergency service.
+          </p>
+          <p className="mt-3 text-xs leading-relaxed text-pretty text-white/90 sm:text-sm">
+            If someone is seriously unwell or you believe their life is at risk,
+            call 999. For urgent advice, call NHS 111.
+          </p>
+        </div>
+      )}
     </div>
   );
 }
