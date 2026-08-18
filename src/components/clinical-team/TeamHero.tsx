@@ -36,7 +36,7 @@ export default function TeamHero() {
         {/* Stacks full-width on phones, sits inline from sm. */}
         <div className="mx-auto mt-8 flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:justify-center">
           <Link
-            href="/#family"
+            href="/family"
             className="inline-flex items-center justify-center rounded-md bg-coral px-6 py-3 text-sm text-white transition-colors hover:bg-coral-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral"
           >
             For You &amp; Your Family

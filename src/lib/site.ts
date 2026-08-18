@@ -6,7 +6,12 @@
   /** Heading above the link list. */
   linksTitle: string;
   links: NavItem[];
+  /** Optional second link column. */
+  linksTitle2?: string;
+  links2?: NavItem[];
   image: { src: string; alt: string };
+  /** When set, the image sits in a card with this caption and link. */
+  promo?: { caption: string; linkLabel: string; href: string };
 };
 
 export type NavItem = {
@@ -28,12 +33,46 @@ export const siteConfig = {
 export const navItems: NavItem[] = [
   {
     label: "For You & Your Family",
-    href: "#family",
+    href: "/family",
+    // Children drive the mobile accordion; `mega` drives the desktop panel.
     children: [
-      { label: "Individual cover", href: "#individual" },
-      { label: "Family plans", href: "#family-plans" },
-      { label: "Cover while travelling", href: "#travel" },
+      { label: "What's Included", href: "/family#whats-included" },
+      { label: "What Our GPs Can Help With", href: "/family#gp-help" },
+      { label: "Cover for Your Family", href: "/family#whats-included" },
+      { label: "Keeping Your NHS GP", href: "/family#what-it-isnt" },
+      { label: "How It Works", href: "/how-it-works" },
+      { label: "Prescriptions Explained", href: "/family#prescriptions" },
+      { label: "Using the Service Abroad", href: "/family#whats-included" },
+      { label: "FAQs", href: "/family#faqs" },
     ],
+    mega: {
+      eyebrow: "FOR YOU & YOUR FAMILY",
+      title: "Care for real life",
+      body: "Private GP access for you, your partner, and the people you look after.",
+      linksTitle: "THE SERVICE",
+      links: [
+        { label: "What's Included", href: "/family#whats-included" },
+        { label: "What Our GPs Can Help With", href: "/family#gp-help" },
+        { label: "Cover for Your Family", href: "/family#whats-included" },
+        { label: "Keeping Your NHS GP", href: "/family#what-it-isnt" },
+      ],
+      linksTitle2: "GETTING STARTED",
+      links2: [
+        { label: "How It Works", href: "/how-it-works" },
+        { label: "Prescriptions Explained", href: "/family#prescriptions" },
+        { label: "Using the Service Abroad", href: "/family#whats-included" },
+        { label: "FAQs", href: "/family#faqs" },
+      ],
+      image: {
+        src: "/images/family/mega-menu-kitchen.png",
+        alt: "A woman video-calling a GP from her kitchen in the evening",
+      },
+      promo: {
+        caption: "From £TBC a year for the whole family",
+        linkLabel: "See Plans",
+        href: "/pricing",
+      },
+    },
   },
   {
     label: "For Business",
@@ -411,6 +450,142 @@ export const aboutPage = {
   ],
 };
 
+export const familyPage = {
+  label: "For You & Your Family",
+  title: "A GP for your family, whenever you need one",
+  intro:
+    "Unlimited appointments by phone or video, 24 hours a day, every day of the year. One annual subscription covers you, your partner and your children.",
+  sections: [
+    { id: "who-its-for", label: "Who it's for" },
+    { id: "whats-included", label: "What's included" },
+    { id: "gp-help", label: "What GPs help with" },
+    { id: "what-it-isnt", label: "What it isn't" },
+    { id: "prescriptions", label: "Prescriptions" },
+    { id: "plans", label: "Plans" },
+    { id: "faqs", label: "FAQs" },
+  ],
+  audienceTitle: "Different lives, the same problem: access",
+  audiences: [
+    {
+      tag: "Young family",
+      title: "When it's 9pm and their temperature won't come down",
+      body: "Children get ill outside surgery hours. Being able to speak to a GP that evening changes the whole night & often avoids a needless trip to A&E.",
+      image: "/images/family/audience-young-family.png",
+      alt: "A couple at home with their baby, speaking to a GP on a laptop",
+    },
+    {
+      tag: "The sandwich generation",
+      title: "Looking after your parents as well as your children",
+      body: "You're managing appointments for people who aren't you. Unlimited access means you never have to ration who gets seen.",
+      image: "/images/family/audience-sandwich-generation.png",
+      alt: "An older couple and their adult son looking at a laptop together",
+    },
+    {
+      tag: "Self-employed & shift workers",
+      title: "You can't spend a morning on hold",
+      body: "Book around your work, not the other way round. Early morning, late night, weekend the line is always answered.",
+      image: "/images/family/audience-shift-workers.png",
+      alt: "A woman working at a laptop in a small warehouse office",
+    },
+  ],
+  includedTitle: "Everything the subscription covers",
+  includedSub: "No tiers, no add-ons, no per-call charges.",
+  /** Accordion: first item open by default, matching the design. */
+  included: [
+    {
+      title: "Unlimited appointments",
+      body: "There is no cap and no per-consultation fee. Call as often as you genuinely need to. Members who use the service ten times a year pay exactly what members who use it once pay.",
+    },
+    {
+      title: "24 hours a day, 365 days a year",
+      body: "Including nights, weekends, Christmas Day and every bank holiday. The line is answered by trained UK-based operators at all times, not a voicemail or a callback form.",
+    },
+    {
+      title: "Phone or video, your choice",
+      body: "Decide at the point of booking. Video is useful when something needs to be seen a rash, a swelling, a wound. Phone is usually quicker for everything else.",
+    },
+    {
+      title: "Your whole family",
+      body: "One family subscription covers you, your partner and your dependent children. (Exact definition age limit and whether same-address residency is required to be confirmed.)",
+    },
+    {
+      title: "Private prescriptions",
+      body: "Where clinically appropriate, the GP can issue a private prescription electronically, dispensed by a registered pharmacy and delivered to your home or workplace. Medication and dispensing costs are charged separately.",
+    },
+    {
+      title: "Referral letters",
+      body: "Where a specialist opinion is needed, the GP can write an open referral letter for private consultant care.",
+    },
+    {
+      title: "Cover while you're away",
+      body: "The service works wherever you are, so a holiday illness doesn't mean navigating a foreign healthcare system alone.",
+    },
+    {
+      title: "Notes shared with your own GP",
+      body: "With your consent, a record of your consultation can be sent to your NHS practice so your medical history stays joined up.",
+    },
+    {
+      title: "Keep your NHS GP",
+      body: "You never de-register. This sits alongside your NHS care, it does not replace it.",
+    },
+  ],
+  includedImage: {
+    src: "/images/family/included-three-generations.png",
+    alt: "Three generations of women looking through a photo album together",
+  },
+  notServiceTitle: "What this service is not",
+  notService: [
+    "This is not an emergency service. If someone is seriously unwell or you think their life is at risk, call 999. For urgent advice, call NHS 111.",
+    "Our GPs cannot prescribe controlled drugs, cannot issue NHS prescriptions, cannot carry out physical examinations, tests or scans, and cannot issue fit notes for NHS purposes. (Fit-note position to be confirmed with the clinical provider.)",
+  ],
+  prescriptionsTitle: "From consultation to your front door",
+  prescriptionSteps: [
+    {
+      number: "1",
+      title: "The GP raises it",
+      body: "Electronically, during or straight after your consultation.",
+    },
+    {
+      number: "2",
+      title: "It's checked and dispensed",
+      body: "By a registered pharmacy, with a clinical check.",
+    },
+    {
+      number: "3",
+      title: "It's delivered",
+      body: "To your home or workplace. Medication cost is separate.",
+    },
+  ],
+  prescriptionsLink: "How prescriptions work in full",
+  faqTitle: "The things HR buyers ask us",
+  faqs: [
+    {
+      q: "Do I have to leave my NHS GP?",
+      a: "No. You stay registered with your NHS surgery exactly as you are today. This service sits alongside your NHS care, it does not replace it, and there is no de-registration at any point.",
+    },
+    {
+      q: "Are these real, UK-practising GPs?",
+      a: "Every GP you speak to is GMC-registered and practising in the UK. Registration is verified at recruitment and monitored through revalidation.",
+    },
+    {
+      q: "How quickly will a GP call me back?",
+      a: "Within our published service window. The booking line itself is answered around the clock by trained UK-based operators, not an answerphone. (Exact callback standard to be confirmed by the client.)",
+    },
+    {
+      q: "How many appointments do I get?",
+      a: "Unlimited. There is no cap and no per-consultation charge. A member who calls ten times a year pays the same as a member who calls once.",
+    },
+    {
+      q: "Can the GP prescribe medication?",
+      a: "Where it is clinically appropriate, the GP can issue a private prescription electronically, dispensed by a registered pharmacy and delivered to your address. Medication and dispensing costs are charged separately.",
+    },
+    {
+      q: "Who is covered on a family plan?",
+      a: "You, your partner and your dependent children on a single annual subscription. (Age limit and residency definition to be confirmed.)",
+    },
+  ],
+};
+
 export const contactPage = {
   label: "Contact",
   title: "Three ways to reach us",
@@ -684,7 +859,7 @@ export const footerSections: Array<{ title: string; links: NavItem[] }> = [
   {
     title: "SERVICE",
     links: [
-      { label: "For Individuals & Families", href: "#family" },
+      { label: "For Individuals & Families", href: "/family" },
       { label: "For Business", href: "#business" },
       { label: "How It Works", href: "/how-it-works" },
       { label: "Prescriptions", href: "#prescriptions" },

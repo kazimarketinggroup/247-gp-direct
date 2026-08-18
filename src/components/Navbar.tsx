@@ -138,8 +138,14 @@ export default function Navbar() {
                     so it can span the full container width. */}
                 {item.mega && isDesktop && (
                   <div className="invisible absolute inset-x-0 top-full z-50 pt-2 opacity-0 transition-all group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
-                    <div className="mx-auto w-full max-w-5xl px-4">
-                      <MegaMenu data={item.mega} />
+                    {/* Four-column panels need more room than three. */}
+                    <div
+                      className={cn(
+                        "mx-auto w-full px-4",
+                        item.mega.links2 ? "max-w-6xl" : "max-w-5xl",
+                      )}
+                    >
+                      <MegaMenu data={item.mega} onNavigate={closeAll} />
                     </div>
                   </div>
                 )}
