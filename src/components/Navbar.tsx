@@ -75,7 +75,7 @@ export default function Navbar() {
             <Link href="#faqs" className="transition-opacity hover:opacity-80">
               FAQs
             </Link>
-            <Link href="#contact" className="transition-opacity hover:opacity-80">
+            <Link href="/contact" className="transition-opacity hover:opacity-80">
               Contact
             </Link>
           </div>

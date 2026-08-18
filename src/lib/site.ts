@@ -56,7 +56,7 @@ export const navItems: NavItem[] = [
       { label: "Clinical Standards & Governance", href: "/clinical-standards" },
       { label: "Regulation & Compliance", href: "/regulation" },
       { label: "Meet the Clinical Team", href: "/clinical-team" },
-      { label: "Contact Us", href: "#contact" },
+      { label: "Contact Us", href: "/contact" },
     ],
     mega: {
       eyebrow: "FOR YOU & YOUR FAMILY",
@@ -68,7 +68,7 @@ export const navItems: NavItem[] = [
         { label: "Clinical Standards & Governance", href: "/clinical-standards" },
         { label: "Regulation & Compliance", href: "/regulation" },
         { label: "Meet the Clinical Team", href: "/clinical-team" },
-        { label: "Contact Us", href: "#contact" },
+        { label: "Contact Us", href: "/contact" },
       ],
       image: {
         src: "/images/about/mega-menu-family.png",
@@ -411,6 +411,53 @@ export const aboutPage = {
   ],
 };
 
+export const contactPage = {
+  label: "Contact",
+  title: "Three ways to reach us",
+  routes: [
+    {
+      title: "Members:",
+      subtitle: "book an appointment",
+      body: "Answered 24 hours a day, every day of the year. Have your membership number ready.",
+      cta: { label: "1234 567 89000", href: "tel:1234567890000", type: "tel" as const },
+    },
+    {
+      title: "General enquiries",
+      body: "Use the form and we'll reply within one working day.",
+      cta: { label: "1234 567 89000", href: "tel:1234567890000", type: "tel" as const },
+    },
+    {
+      title: "Business enquiries",
+      body: "Cover for a workforce, broker and partner arrangements.",
+      cta: { label: "Request a quote", href: "#quote", type: "link" as const },
+    },
+  ],
+  formTitle: "Send us a message",
+  company: {
+    title: "Company details",
+    rows: [
+      { label: "Company registration no.", value: "00000000 (to be confirmed)" },
+      {
+        label: "Registered office:",
+        value: "1 Example Street, London, EC1A 0AA (to be confirmed)",
+      },
+      { label: "ICO registration no.", value: "ZA000000 (to be confirmed)" },
+    ],
+    complaints: {
+      label: "Complaints:",
+      value:
+        "named contact and response timescales are set out in our complaints procedure.",
+    },
+  },
+  notService: {
+    title: "What this service is not",
+    paragraphs: [
+      "This is not an emergency service. If someone is seriously unwell or you think their life is at risk, call 999. For urgent advice, call NHS 111.",
+      "Our GPs cannot prescribe controlled drugs, cannot issue NHS prescriptions, cannot carry out physical examinations, tests or scans, and cannot issue fit notes for NHS purposes.",
+    ],
+  },
+};
+
 export const clinicalTeamPage = {
   label: "Meet the Clinical Team",
   title: "The GPs behind the phone line",
@@ -661,7 +708,7 @@ export const footerSections: Array<{ title: string; links: NavItem[] }> = [
       { label: "Clinical Standards", href: "/clinical-standards" },
       { label: "Regulation & Governance", href: "/regulation" },
       { label: "Blog", href: "#blog" },
-      { label: "Contact", href: "#contact" },
+      { label: "Contact", href: "/contact" },
     ],
   },
   {

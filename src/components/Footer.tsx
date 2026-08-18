@@ -4,7 +4,7 @@ import { footerSections, siteConfig } from "@/lib/site";
 
 export default function Footer() {
   return (
-    <footer id="contact" className="mt-auto bg-brand-teal-dark text-white">
+    <footer className="mt-auto bg-brand-teal-dark text-white">
       <div className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 sm:py-14 lg:px-8 lg:py-16">
         {/* Brand block and call card stack on mobile, split from lg. */}
         <div className="flex flex-col gap-8 border-b border-white/10 pb-10 lg:flex-row lg:items-start lg:justify-between lg:gap-12">
