@@ -13,7 +13,13 @@ export type IconName =
   | "chevron-down"
   | "plus"
   | "minus"
-  | "check-circle";
+  | "check-circle"
+  | "briefcase"
+  | "user-check"
+  | "clipboard"
+  | "sparkles"
+  | "shield-plus"
+  | "compass";
 
 const paths: Record<IconName, string> = {
   clock: "M12 7v5l3 2M12 21a9 9 0 100-18 9 9 0 000 18z",
@@ -34,6 +40,17 @@ const paths: Record<IconName, string> = {
   plus: "M12 5v14M5 12h14",
   minus: "M5 12h14",
   "check-circle": "M12 21a9 9 0 100-18 9 9 0 000 18zM8.5 12l2.5 2.5 4.5-5",
+  briefcase:
+    "M4 7h16a1 1 0 011 1v11a1 1 0 01-1 1H4a1 1 0 01-1-1V8a1 1 0 011-1zM9 7V5a1 1 0 011-1h4a1 1 0 011 1v2M12 12v3",
+  "user-check":
+    "M12 11a4 4 0 100-8 4 4 0 000 8zM4 21v-1a6 6 0 016-6h1M15.5 18.5l1.8 1.8 3.2-3.6",
+  clipboard:
+    "M9 4h6a1 1 0 011 1v1H8V5a1 1 0 011-1zM8 6H6a1 1 0 00-1 1v13a1 1 0 001 1h12a1 1 0 001-1V7a1 1 0 00-1-1h-2M9 13l2 2 4-4",
+  sparkles:
+    "M12 4l1.6 4.4L18 10l-4.4 1.6L12 16l-1.6-4.4L6 10l4.4-1.6L12 4zM18.5 16l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7.7-1.8z",
+  "shield-plus":
+    "M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4zM12 9v6M9 12h6",
+  compass: "M12 21a9 9 0 100-18 9 9 0 000 18zM15.5 8.5l-2 5-5 2 2-5 5-2z",
 };
 
 export default function Icon({

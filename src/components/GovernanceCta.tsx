@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import Icon from "@/components/Icon";
 import SectionLabel from "@/components/SectionLabel";
 
@@ -18,7 +18,7 @@ export default function GovernanceCta() {
         </p>
 
         <Link
-          href="#clinical"
+          href="/clinical-standards"
           className="mt-8 inline-flex items-center gap-2 rounded-md bg-coral px-6 py-3 text-sm text-white transition-colors hover:bg-coral-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral"
         >
           Clinical standards &amp; governance

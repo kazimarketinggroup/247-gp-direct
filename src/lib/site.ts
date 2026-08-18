@@ -1,4 +1,4 @@
-export type MegaMenu = {
+﻿export type MegaMenu = {
   /** Left promo column. */
   eyebrow: string;
   title: string;
@@ -53,7 +53,7 @@ export const navItems: NavItem[] = [
     // Children drive the mobile accordion; `mega` drives the desktop panel.
     children: [
       { label: "Our Story", href: "/about" },
-      { label: "Clinical Standards & Governance", href: "#clinical" },
+      { label: "Clinical Standards & Governance", href: "/clinical-standards" },
       { label: "Regulation & Compliance", href: "/regulation" },
       { label: "Meet the Clinical Team", href: "#clinical-team" },
       { label: "Contact Us", href: "#contact" },
@@ -65,7 +65,7 @@ export const navItems: NavItem[] = [
       linksTitle: "ABOUT 247 GP DIRECT",
       links: [
         { label: "Our Story", href: "/about" },
-        { label: "Clinical Standards & Governance", href: "#clinical" },
+        { label: "Clinical Standards & Governance", href: "/clinical-standards" },
         { label: "Regulation & Compliance", href: "/regulation" },
         { label: "Meet the Clinical Team", href: "#clinical-team" },
         { label: "Contact Us", href: "#contact" },
@@ -271,7 +271,7 @@ export const faqs = [
   },
   {
     q: "Who is covered on a family plan, and up to what age?",
-    a: "You, your partner and your dependent children. All ages are covered at one price — final age limits will be confirmed at client sign-off.",
+    a: "You, your partner and your dependent children. All ages are covered at one price â€” final age limits will be confirmed at client sign-off.",
   },
   {
     q: "How quickly will a GP call me back?",
@@ -394,7 +394,7 @@ export const joinPlanOptions = [
 export const aboutPage = {
   title: "Built around one problem: getting seen",
   intro:
-    "247 GP Direct exists because access to a GP has become the hardest part of ordinary healthcare — not the medicine, the appointment.",
+    "247 GP Direct exists because access to a GP has become the hardest part of ordinary healthcare â€” not the medicine, the appointment.",
   promiseTitle: "We provide unlimited access to UK-qualified private GPs",
   commitmentTitle: "Our commitment to members",
   commitments: [
@@ -405,9 +405,60 @@ export const aboutPage = {
     "Your NHS registration stays exactly as it is.",
   ],
   paragraphs: [
-    "We provide unlimited access to UK-qualified private GPs, 24 hours a day, 365 days a year, by telephone and video consultation, on a single annual subscription. Members call one number and speak to a doctor — at 8am on a Tuesday or 2am on a Sunday.",
+    "We provide unlimited access to UK-qualified private GPs, 24 hours a day, 365 days a year, by telephone and video consultation, on a single annual subscription. Members call one number and speak to a doctor â€” at 8am on a Tuesday or 2am on a Sunday.",
     "We do not ask members to leave their NHS surgery, and we never will. This service is the layer that sits underneath NHS care: the everyday questions, the sudden temperatures, the infections that need answering tonight rather than a fortnight from now.",
     "Consultations are delivered by our clinical provider and prescriptions are dispensed by a registered UK pharmacy partner. Both are named here in full once contractual confirmation is received.",
+  ],
+};
+
+export const clinicalStandardsPage = {
+  label: "Clinical standards & governance",
+  title: "A real medical service, governed like one",
+  intro:
+    "The single biggest unspoken question in this category is whether this is genuine clinical care or a call centre. Here is the answer in detail.",
+  /** First row is highlighted in the design. */
+  standards: [
+    {
+      title: "Our GPs",
+      body: "Every GP is GMC-registered and practising in the UK. Registration is checked at recruitment and monitored through the GMC's revalidation cycle.",
+      icon: "briefcase",
+      featured: true,
+    },
+    {
+      title: "Recruitment & vetting",
+      body: "References, identity checks, DBS clearance and a review of the GP's appraisal and revalidation history before any consultation is taken.",
+      icon: "user-check",
+    },
+    {
+      title: "Clinical audit",
+      body: "A proportion of consultations is reviewed against agreed clinical standards, with findings fed back to the treating GP and to the clinical lead.",
+      icon: "clipboard",
+    },
+    {
+      title: "Call recording",
+      body: "Calls are recorded for audit, quality and safeguarding, retained under our published retention schedule and accessible only to authorised staff.",
+      icon: "phone",
+    },
+    {
+      title: "Complaints",
+      body: "A named complaints contact, an acknowledgement timescale, a response timescale and a defined escalation route, all published in the complaints procedure.",
+      icon: "sparkles",
+    },
+    {
+      title: "Data protection",
+      body: "Health data is special category data under UK GDPR. Our privacy notice sets out the lawful basis, the retention period, who can access records and how to exercise your rights. ICO registration number is in the footer.",
+      icon: "document",
+    },
+    {
+      title: "Professional indemnity",
+      body: "All treating clinicians hold professional indemnity cover appropriate to remote consultation.",
+      icon: "shield-plus",
+    },
+    {
+      title: "Regulatory position",
+      body: "Our CQC registration status is stated here precisely and verbatim once written confirmation is received. No regulatory badge appears anywhere on this site until it is evidenced.",
+      icon: "compass",
+    },
   ],
 };
 
@@ -424,7 +475,7 @@ export const regulationPage = {
     {
       name: "General Medical Council (GMC)",
       role: "Regulator of the individual doctors",
-      body: "The GMC licenses and revalidates every GP who takes a member call. GMC numbers can be checked by any member on the public register. The GMC regulates the doctor; the CQC regulates the service — the two are separate and both apply.",
+      body: "The GMC licenses and revalidates every GP who takes a member call. GMC numbers can be checked by any member on the public register. The GMC regulates the doctor; the CQC regulates the service â€” the two are separate and both apply.",
     },
     {
       name: "General Pharmaceutical Council (GPhC)",
@@ -477,7 +528,7 @@ export const regulationPage = {
     title: "Looking for our clinical standards instead?",
     body: "How GPs are recruited and vetted, how consultations are audited, how prescriptions are authorised and how complaints are handled internally are covered on the clinical standards & governance page.",
     label: "Clinical standards & governance",
-    href: "#clinical",
+    href: "/clinical-standards",
   },
 };
 
@@ -567,7 +618,7 @@ export const footerSections: Array<{ title: string; links: NavItem[] }> = [
     title: "COMPANY",
     links: [
       { label: "About Us", href: "/about" },
-      { label: "Clinical Standards", href: "#clinical" },
+      { label: "Clinical Standards", href: "/clinical-standards" },
       { label: "Regulation & Governance", href: "/regulation" },
       { label: "Blog", href: "#blog" },
       { label: "Contact", href: "#contact" },
