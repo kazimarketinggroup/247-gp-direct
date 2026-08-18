@@ -1,14 +1,23 @@
 import Image from "next/image";
 import { familyPage } from "@/lib/site";
 
-export default function AudienceCards() {
+export default function AudienceCards({
+  /** The family-cover page shows the heading without the label and rule. */
+  showLabel = true,
+}: {
+  showLabel?: boolean;
+} = {}) {
   return (
     <section
       id="who-its-for"
       className="mx-auto w-full max-w-7xl scroll-mt-24 px-4 py-10 sm:px-6 sm:py-14 lg:px-8"
     >
-      <p className="text-xs text-brand-teal/55">Who it&apos;s for</p>
-      <div className="mt-3 border-t border-coral/40 pt-6 sm:pt-8">
+      {showLabel && <p className="text-xs text-brand-teal/55">Who it&apos;s for</p>}
+      <div
+        className={
+          showLabel ? "mt-3 border-t border-coral/40 pt-6 sm:pt-8" : undefined
+        }
+      >
         <h2 className="title-50 text-balance text-brand-teal">
           {familyPage.audienceTitle}
         </h2>

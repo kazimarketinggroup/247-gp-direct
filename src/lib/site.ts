@@ -38,7 +38,7 @@ export const navItems: NavItem[] = [
     children: [
       { label: "What's Included", href: "/whats-included" },
       { label: "What Our GPs Can Help With", href: "/gp-help" },
-      { label: "Cover for Your Family", href: "/whats-included" },
+      { label: "Cover for Your Family", href: "/family-cover" },
       { label: "Keeping Your NHS GP", href: "/family#what-it-isnt" },
       { label: "How It Works", href: "/how-it-works" },
       { label: "Prescriptions Explained", href: "/family#prescriptions" },
@@ -53,7 +53,7 @@ export const navItems: NavItem[] = [
       links: [
         { label: "What's Included", href: "/whats-included" },
         { label: "What Our GPs Can Help With", href: "/gp-help" },
-        { label: "Cover for Your Family", href: "/whats-included" },
+        { label: "Cover for Your Family", href: "/family-cover" },
         { label: "Keeping Your NHS GP", href: "/family#what-it-isnt" },
       ],
       linksTitle2: "GETTING STARTED",
@@ -603,6 +603,29 @@ export const whatsIncludedPage = {
     src: "/images/whats-included/family-video-call.png",
     alt: "A family waving during a video call with their grandmother",
   },
+};
+
+export const familyCoverPage = {
+  label: "For You & Your Family",
+  title: "Cover for Your Family",
+  intro:
+    "One family membership designed to support the people you look after, including children where appropriate.",
+  blocks: [
+    {
+      title: "One membership for your household",
+      paragraphs: [
+        "Family cover is designed to make private GP support available to the people you look after, including children where appropriate.",
+        "It gives your household one simple route to advice when a new symptom appears, a child is unwell, or you need a private conversation about a sensitive concern.",
+      ],
+    },
+    {
+      title: "Support for parents and carers",
+      paragraphs: [
+        "You can speak to a GP about your own health or ask for guidance about a dependent. The GP will explain what can be managed remotely and when an in-person assessment is needed.",
+        "Family eligibility, dependent age limits, and the number of people covered will be confirmed in the final plan details.",
+      ],
+    },
+  ],
 };
 
 export const gpHelpPage = {
