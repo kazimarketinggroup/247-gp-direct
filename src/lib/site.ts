@@ -42,8 +42,8 @@ export const navItems: NavItem[] = [
       { label: "Keeping Your NHS GP", href: "/nhs-gp" },
       { label: "How It Works", href: "/how-it-works" },
       { label: "Prescriptions Explained", href: "/prescriptions" },
-      { label: "Using the Service Abroad", href: "/whats-included" },
-      { label: "FAQs", href: "/family#faqs" },
+      { label: "Using the Service Abroad", href: "/abroad" },
+      { label: "FAQs", href: "/faqs" },
     ],
     mega: {
       eyebrow: "FOR YOU & YOUR FAMILY",
@@ -60,8 +60,8 @@ export const navItems: NavItem[] = [
       links2: [
         { label: "How It Works", href: "/how-it-works" },
         { label: "Prescriptions Explained", href: "/prescriptions" },
-        { label: "Using the Service Abroad", href: "/whats-included" },
-        { label: "FAQs", href: "/family#faqs" },
+        { label: "Using the Service Abroad", href: "/abroad" },
+        { label: "FAQs", href: "/faqs" },
       ],
       image: {
         src: "/images/family/mega-menu-kitchen.png",
@@ -713,6 +713,222 @@ export const nhsGpPage = {
       paragraphs: [
         "Your private GP may recommend that you follow up with your NHS GP or another NHS service. With your permission, relevant information can be shared to support continuity of care.",
         "247 GP Direct does not replace emergency services, specialist care, or your NHS GP's role in managing long-term conditions.",
+      ],
+    },
+  ],
+};
+
+export const abroadPage = {
+  label: "For You & Your Family",
+  title: "Using the Service Abroad",
+  intro:
+    "Find out how members may use 247 GP Direct while travelling, and where the service has limits.",
+  blocks: [
+    {
+      title: "Support while you travel",
+      paragraphs: [
+        "Members may be able to contact 247 GP Direct while travelling abroad for general health guidance and help understanding what to do next.",
+        "A remote consultation can be useful for questions about common symptoms, medicines, or whether you need local medical attention.",
+      ],
+    },
+    {
+      title: "Important travel limits",
+      paragraphs: [
+        "The service cannot replace travel insurance, local emergency services, or an in-person doctor. Prescriptions, referrals, and medical certificates may not be available across every country.",
+        "Availability, jurisdictions, and any international access rules will be confirmed before launch.",
+      ],
+    },
+  ],
+};
+
+export const faqsPage = {
+  label: "FAQs",
+  title: "Everything people ask before joining",
+  intro:
+    "If your question isn't here, call the line — it's answered around the clock.",
+  categories: [
+    {
+      id: "joining",
+      name: "Joining & cover",
+      items: [
+        {
+          q: "Do I have to leave my NHS GP?",
+          a: "No. You stay registered with your NHS surgery. This service sits alongside your NHS care and there is no de-registration at any point.",
+        },
+        {
+          q: "Who is covered on a family plan, and up to what age?",
+          a: "You, your partner and your dependent children. Exact age limit and residency requirement to be confirmed by the client.",
+        },
+        {
+          q: "Is there a medical questionnaire or health check?",
+          a: "No. There are no medical questions in the join flow.",
+        },
+        {
+          q: "Can I be turned down for a pre-existing condition?",
+          a: "No subject to confirmation of the underwriting position with the provider.",
+        },
+        {
+          q: "When does my cover start?",
+          a: "Cover starts on joining. Any qualifying period to be confirmed.",
+        },
+        {
+          q: "Can I add someone to my plan later?",
+          a: "Yes, plans can be changed mid-term. Pricing for mid-term additions to be confirmed.",
+        },
+      ],
+    },
+    {
+      id: "using",
+      name: "Using the service",
+      items: [
+        {
+          q: "How quickly will a GP call me back?",
+          a: "Within our published service window. Exact standard to be inserted from the client's evidenced figure.",
+        },
+        {
+          q: "Is the line really answered at 3am?",
+          a: "Yes. Trained UK-based operators answer the booking line at all hours, including bank holidays and Christmas Day.",
+        },
+        {
+          q: "How long does a consultation last?",
+          a: "Typically around ten minutes, and as long as is clinically necessary.",
+        },
+        {
+          q: "Can I choose phone or video?",
+          a: "Yes you choose at the point of booking.",
+        },
+        {
+          q: "How many times can I call?",
+          a: "As often as you genuinely need to. There is no cap.",
+        },
+        {
+          q: "Can I use it for my children?",
+          a: "Yes, on a family plan. A parent or guardian should be present. Consent policy to be confirmed.",
+        },
+        {
+          q: "Does it work if I'm abroad?",
+          a: "Yes. The service is available wherever you are.",
+        },
+        {
+          q: "Are calls recorded?",
+          a: "Yes, for audit and quality purposes, and handled under our privacy notice.",
+        },
+      ],
+    },
+    {
+      id: "clinical",
+      name: "Clinical",
+      items: [
+        {
+          q: "What can the GP actually help with?",
+          a: "Most things you'd take to your own surgery: infections, skin complaints, digestive problems, pain, mental health, contraception, children's illnesses, menopause and medication queries.",
+        },
+        {
+          q: "What can't they do?",
+          a: "They cannot examine you physically, order NHS tests or scans, prescribe controlled drugs, or issue NHS prescriptions.",
+        },
+        {
+          q: "Are these real NHS-practising GPs?",
+          a: "Every GP is GMC-registered and practising in the UK.",
+        },
+        {
+          q: "Will my own GP be told about the consultation?",
+          a: "With your consent, a record can be sent to your NHS practice so your history stays joined up.",
+        },
+        {
+          q: "Can I get a fit note or sick note?",
+          a: "Position on fit notes to be confirmed with the clinical provider.",
+        },
+        {
+          q: "Can I get a referral to a specialist?",
+          a: "Yes an open referral letter for private consultant care.",
+        },
+      ],
+    },
+    {
+      id: "prescriptions",
+      name: "Prescriptions",
+      items: [
+        {
+          q: "Can the GP prescribe medication?",
+          a: "Yes, where clinically appropriate, as a private prescription issued electronically.",
+        },
+        {
+          q: "How much does a prescription cost?",
+          a: "Medication, dispensing and delivery are charged separately at the point of order. Indicative range to be confirmed.",
+        },
+        {
+          q: "How quickly does it arrive?",
+          a: "Dispatch standard to be stated from the pharmacy partner's service levels.",
+        },
+        {
+          q: "Can I collect it from my own pharmacy?",
+          a: "Tell the GP at the point of prescribing. Availability to be confirmed.",
+        },
+        {
+          q: "Can I get repeat prescriptions?",
+          a: "Position on repeats for long-term conditions to be confirmed.",
+        },
+        {
+          q: "Why can't controlled drugs be prescribed?",
+          a: "Remote prescribing of controlled drugs is restricted for patient safety and regulatory reasons.",
+        },
+      ],
+    },
+    {
+      id: "billing",
+      name: "Billing & cancellation",
+      items: [
+        {
+          q: "How much is it and what's included?",
+          a: "See the pricing page for plans. Everything listed is included in the annual price.",
+        },
+        {
+          q: "Are there any additional charges?",
+          a: "No per-call charges. Medication and dispensing are charged separately.",
+        },
+        {
+          q: "Can I pay monthly?",
+          a: "To be confirmed. If monthly direct debit is not available we will not imply that it is.",
+        },
+        {
+          q: "How do I cancel, and what's the cooling-off period?",
+          a: "You have 14 days from purchase to cancel in full under the Consumer Contracts Regulations 2013.",
+        },
+        {
+          q: "Does it renew automatically?",
+          a: "Yes, annually, and we notify you before renewal.",
+        },
+      ],
+    },
+    {
+      id: "employers",
+      name: "For employers",
+      items: [
+        {
+          q: "How is it priced for a business?",
+          a: "Per employee, per year, banded by headcount, on one invoice.",
+        },
+        {
+          q: "How long does rollout take?",
+          a: "Days rather than months. Exact working-day timeline to be confirmed.",
+        },
+        {
+          q: "What reporting do we get?",
+          a: "Anonymised utilisation reporting you can present at budget time.",
+        },
+        {
+          q: "Does it cover employees' families?",
+          a: "Yes family cover is what drives take-up.",
+        },
+        {
+          q: "Is it a taxable benefit?",
+          a: "Generally a P11D consideration. We do not give tax advice — please take your own.",
+        },
+        {
+          q: "What happens when someone leaves?",
+          a: "Cover ends when they leave the scheme and can be reallocated.",
+        },
       ],
     },
   ],

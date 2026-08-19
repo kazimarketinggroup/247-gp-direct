@@ -23,7 +23,7 @@ export default function Faq() {
             Things people ask before they join
           </h2>
           <Link
-            href="#all-faqs"
+            href="/faqs"
             className="mt-6 inline-flex items-center gap-2 border-b border-brand-teal/30 pb-1 text-sm text-brand-teal transition-colors hover:border-coral hover:text-coral focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral"
           >
             See all FAQs

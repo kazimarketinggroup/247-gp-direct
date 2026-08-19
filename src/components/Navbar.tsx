@@ -72,7 +72,7 @@ export default function Navbar() {
             </span>
           </div>
           <div className="flex items-center gap-5">
-            <Link href="#faqs" className="transition-opacity hover:opacity-80">
+            <Link href="/faqs" className="transition-opacity hover:opacity-80">
               FAQs
             </Link>
             <Link href="/contact" className="transition-opacity hover:opacity-80">
