@@ -14,6 +14,17 @@ function Cell({ value }: { value: string | true }) {
       </>
     );
   }
+  // A lone dash reads as noise to a screen reader, so name what it means.
+  if (value === "—") {
+    return (
+      <>
+        <span className="sr-only">Not included</span>
+        <span aria-hidden className="text-brand-teal/50">
+          —
+        </span>
+      </>
+    );
+  }
   return <span className="text-brand-teal/75">{value}</span>;
 }
 
@@ -34,13 +45,10 @@ export default function ComparisonTable() {
                 What&apos;s included
               </th>
               <th scope="col" className="px-3 py-3 text-center text-sm text-brand-teal">
-                Individual
+                Individual &amp; Family
               </th>
               <th scope="col" className="px-3 py-3 text-center text-sm text-brand-teal">
-                Couple
-              </th>
-              <th scope="col" className="px-3 py-3 text-center text-sm text-brand-teal">
-                Family
+                Holiday Cover
               </th>
             </tr>
           </thead>
@@ -54,13 +62,10 @@ export default function ComparisonTable() {
                   {row.label}
                 </th>
                 <td className="px-3 py-3.5 text-center text-xs sm:text-sm">
-                  <Cell value={row.individual} />
-                </td>
-                <td className="px-3 py-3.5 text-center text-xs sm:text-sm">
-                  <Cell value={row.couple} />
-                </td>
-                <td className="px-3 py-3.5 text-center text-xs sm:text-sm">
                   <Cell value={row.family} />
+                </td>
+                <td className="px-3 py-3.5 text-center text-xs sm:text-sm">
+                  <Cell value={row.holiday} />
                 </td>
               </tr>
             ))}

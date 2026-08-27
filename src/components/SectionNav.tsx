@@ -1,17 +1,18 @@
 import Link from "next/link";
-import { familyPage } from "@/lib/site";
 
-export default function SectionNav() {
+/** Sticky-free in-page nav strip. Shared by the family and business pages. */
+export default function SectionNav({
+  sections,
+}: {
+  sections: Array<{ id: string; label: string }>;
+}) {
   return (
-    <nav
-      aria-label="On this page"
-      className="border-y border-brand-teal/10 bg-cream"
-    >
+    <nav aria-label="On this page" className="border-y border-brand-teal/10 bg-cream">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Seven items can't fit on a phone, so the strip scrolls sideways
+        {/* Too many items to fit on a phone, so the strip scrolls sideways
             inside its own bounded container rather than breaking the page. */}
         <ul className="flex w-full max-w-full min-w-0 gap-5 overflow-x-auto py-3.5 sm:gap-7">
-          {familyPage.sections.map((section) => (
+          {sections.map((section) => (
             <li key={section.id} className="shrink-0">
               <Link
                 href={`#${section.id}`}

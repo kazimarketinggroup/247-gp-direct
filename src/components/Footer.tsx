@@ -29,7 +29,7 @@ export default function Footer() {
               <Icon name="phone" className="h-4 w-4 text-white" />
             </span>
             <span className="min-w-0">
-              <span className="block text-[11px] text-white/55">24/7 booking line</span>
+              <span className="block text-[11px] text-white/55">24/7 Booking Line</span>
               <span className="block text-base whitespace-nowrap">
                 {siteConfig.phoneDisplay}
               </span>
@@ -60,20 +60,25 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="flex flex-col gap-4 border-t border-white/10 pt-8 lg:flex-row lg:items-start lg:justify-between lg:gap-8">
-          <p className="text-[11px] leading-relaxed text-pretty text-white/45">
-            © {new Date().getFullYear()} 247 GP Direct Ltd. Company No. (TBC).
-            Registered in England &amp; Wales. Registered address: (TBC). ICO
-            Registration: (TBC). CQC Registration: (TBC).
-          </p>
-          <p className="text-[11px] leading-relaxed text-pretty text-white/45 lg:max-w-xs lg:text-right">
-            <span className="text-white/60">
-              This service is not a substitute for emergency medical care.
-            </span>{" "}
-            If you or someone else is experiencing a medical emergency, call 999
+        <div className="border-t border-white/10 pt-8">
+          {/* Registration details and the emergency strapline share one row from lg. */}
+          <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between lg:gap-8">
+            <p className="text-[11px] leading-relaxed text-pretty text-white/45">
+              © {new Date().getFullYear()} 247 GP Direct Ltd. Company No. (TBC)
+              · Registered in England &amp; Wales · Registered address: (TBC) ·
+              ICO Registration: (TBC) · CQC Registration: (TBC)
+            </p>
+            <p className="text-[11px] leading-relaxed text-white/45 lg:whitespace-nowrap">
+              Not for emergencies call 999 or NHS 111
+            </p>
+          </div>
+
+          <p className="mt-6 text-[11px] leading-relaxed text-pretty text-coral">
+            This service is not a substitute for emergency medical care. If you
+            or someone else is experiencing a medical emergency, call 999
             immediately. For urgent non-emergency medical advice, call NHS 111.
             247 GP Direct provides private GP consultations only and does not
-            replace your NHS patient registration.
+            replace your NHS primary care registration.
           </p>
         </div>
       </div>

@@ -33,7 +33,7 @@ export default function Pricing({
       {/* Featured card lifts only from lg, where all three sit in one row. */}
       <div
         className={cn(
-          "mx-auto grid max-w-md grid-cols-1 items-start gap-5 sm:max-w-xl md:max-w-none md:grid-cols-2 lg:grid-cols-3 lg:gap-6",
+          "mx-auto grid max-w-md grid-cols-1 items-start gap-5 sm:max-w-xl md:max-w-none md:grid-cols-2 lg:gap-6",
           showHeading && "mt-10 sm:mt-12",
         )}
       >
@@ -43,12 +43,12 @@ export default function Pricing({
             className={cn(
               "relative flex h-full flex-col rounded-2xl p-6 sm:p-7",
               plan.featured
-                ? "bg-brand-teal text-white shadow-xl md:col-span-2 lg:col-span-1 lg:-mt-4 lg:pb-9"
+                ? "bg-brand-teal text-white shadow-xl lg:-mt-4 lg:pb-9"
                 : "border border-brand-teal/10 bg-white",
             )}
           >
             {plan.badge && (
-              <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-coral px-3 py-1 text-[11px] whitespace-nowrap text-white">
+              <span className="absolute -top-3 right-5 rounded-full bg-coral px-3 py-1 text-[11px] whitespace-nowrap text-white sm:right-6">
                 {plan.badge}
               </span>
             )}

@@ -42,7 +42,7 @@ export default function TeamHero() {
             For You &amp; Your Family
           </Link>
           <Link
-            href="/#business"
+            href="/business"
             className="inline-flex items-center justify-center rounded-md border border-brand-teal/25 bg-white px-6 py-3 text-sm text-brand-teal transition-colors hover:bg-white/70 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral"
           >
             For Business

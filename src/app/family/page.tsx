@@ -6,7 +6,8 @@ import FamilyDetails from "@/components/family/FamilyDetails";
 import FamilyFaq from "@/components/family/FamilyFaq";
 import FamilyHero from "@/components/family/FamilyHero";
 import IncludedSelector from "@/components/family/IncludedSelector";
-import SectionNav from "@/components/family/SectionNav";
+import SectionNav from "@/components/SectionNav";
+import { familyPage } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "For You & Your Family — 247 GP Direct",
@@ -18,7 +19,7 @@ export default function FamilyPage() {
   return (
     <>
       <FamilyHero />
-      <SectionNav />
+      <SectionNav sections={familyPage.sections} />
       <AudienceCards />
       <IncludedSelector />
       <FamilyDetails />

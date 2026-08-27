@@ -68,7 +68,7 @@ export const navItems: NavItem[] = [
         alt: "A woman video-calling a GP from her kitchen in the evening",
       },
       promo: {
-        caption: "From £TBC a year for the whole family",
+        caption: "Family package £100/year · Holiday cover £30/15 days",
         linkLabel: "See Plans",
         href: "/pricing",
       },
@@ -76,12 +76,46 @@ export const navItems: NavItem[] = [
   },
   {
     label: "For Business",
-    href: "#business",
+    href: "/business",
+    // Children drive the mobile accordion; `mega` drives the desktop panel.
     children: [
-      { label: "Employee benefits", href: "#benefits" },
-      { label: "Case studies", href: "#case-studies" },
-      { label: "Request a quote", href: "#quote" },
+      { label: "Why Offer Private GP Access", href: "/business/why-offer-private-gp-access" },
+      { label: "What Your Team Gets", href: "/business/what-your-team-gets" },
+      { label: "Pricing for Business", href: "/business/pricing" },
+      { label: "Request a Quote", href: "/business/request-a-quote" },
+      { label: "Rollout & Implementation", href: "/business/rollout-implementation" },
+      { label: "Utilisation Reporting", href: "/business/utilisation-reporting" },
+      { label: "Sectors We Work With", href: "/business/sectors" },
+      { label: "Brokers & Partners", href: "/business/brokers-partners" },
     ],
+    mega: {
+      eyebrow: "FOR BUSINESS",
+      title: "Healthier teams, better supported",
+      body: "A simple private GP benefit your people can actually use.",
+      linksTitle: "EMPLOYEE COVER",
+      links: [
+        { label: "Why Offer Private GP Access", href: "/business/why-offer-private-gp-access" },
+        { label: "What Your Team Gets", href: "/business/what-your-team-gets" },
+        { label: "Pricing for Business", href: "/business/pricing" },
+        { label: "Request a Quote", href: "/business/request-a-quote" },
+      ],
+      linksTitle2: "RESOURCES",
+      links2: [
+        { label: "Rollout & Implementation", href: "/business/rollout-implementation" },
+        { label: "Utilisation Reporting", href: "/business/utilisation-reporting" },
+        { label: "Sectors We Work With", href: "/business/sectors" },
+        { label: "Brokers & Partners", href: "/business/brokers-partners" },
+      ],
+      image: {
+        src: "/images/business/mega-menu-team.png",
+        alt: "A workplace team gathered around a laptop with two clinicians",
+      },
+      promo: {
+        caption: "Request the employer brochure",
+        linkLabel: "Request Now",
+        href: "/business/request-a-quote",
+      },
+    },
   },
   { label: "How It Works", href: "/how-it-works" },
   { label: "Pricing", href: "/pricing" },
@@ -119,19 +153,19 @@ export const navItems: NavItem[] = [
 
 export const problemStats = [
   {
-    value: "1 in 7 (TBC)",
-    body: "patients wait more than four weeks for a GP appointment in England.",
-    source: "Source: figure to be verified against current NHS England GP appointment data (2025).",
+    value: "1 in 20",
+    body: "GP appointments in England took place 28+ days after booking (2023, most recent full-year data).",
+    source: "Source: NHS England, Appointments in General Practice, 2023.",
   },
   {
-    value: "Millions (TBC)",
-    body: "of attempts to contact a surgery fail at the first try each year.",
-    source: "Source: figure to be verified against current GP Patient Survey data (2025).",
+    value: "1 in 3",
+    body: "patients report difficulty getting through to their GP surgery by phone.",
+    source: "Source: GP Patient Survey, NHS England.",
   },
   {
-    value: "2,000+ (TBC)",
-    body: "patients on the list of a typical full-time equivalent GP.",
-    source: "Source: figure to be verified against current NHS Digital workforce data (2025).",
+    value: "2,200+",
+    body: "patients on the list of a typical fully qualified full-time GP.",
+    source: "Source: NHS Digital, General Practice Workforce statistics.",
   },
 ];
 
@@ -201,11 +235,11 @@ export const included = [
 
 export const plans = [
   {
-    name: "INDIVIDUAL",
-    price: "£TBC",
-    period: "/year",
-    sub: "£TBC a month",
-    covers: "One person",
+    name: "HOLIDAY COVER",
+    price: "£30",
+    period: "one-off",
+    sub: "Per trip",
+    covers: "15 days of medical advice with a GP while you're abroad",
     features: [
       "Unlimited GP consultations",
       "24/7 access",
@@ -214,15 +248,16 @@ export const plans = [
       "Referral letters",
       "Cover abroad",
     ],
-    cta: "Get Started",
+    cta: "Choose Individual & Family",
     featured: false,
   },
   {
-    name: "FAMILY",
-    price: "£TBC",
+    name: "INDIVIDUAL & FAMILY",
+    price: "£100",
     period: "/year",
-    sub: "£TBC a month",
-    covers: "You, your partner & children",
+    sub: "a year · £8.33 a month equivalent",
+    covers:
+      "One adult, sole traders included partner & dependent children covered as standard",
     features: [
       "Everything in Individual",
       "Partner included",
@@ -230,23 +265,9 @@ export const plans = [
       "All ages, one price",
       "One annual invoice",
     ],
-    cta: "Get Started",
+    cta: "Choose Holiday Cover",
     featured: true,
     badge: "Most popular",
-  },
-  {
-    name: "COUPLE",
-    price: "£TBC",
-    period: "/year",
-    sub: "£TBC a month",
-    covers: "You and your partner",
-    features: [
-      "Everything in Individual",
-      "Partner included on one plan",
-      "Shared or separate bookings",
-    ],
-    cta: "Get Started",
-    featured: false,
   },
 ];
 
@@ -310,7 +331,7 @@ export const faqs = [
   },
   {
     q: "Who is covered on a family plan, and up to what age?",
-    a: "You, your partner and your dependent children. All ages are covered at one price â€” final age limits will be confirmed at client sign-off.",
+    a: "You, your partner and your dependent children. All ages are covered at one price — final age limits will be confirmed at client sign-off.",
   },
   {
     q: "How quickly will a GP call me back?",
@@ -385,29 +406,30 @@ export const journeyNotes = [
 /** Comparison table. `true` renders a tick; a string renders as text. */
 export const comparisonRows: Array<{
   label: string;
-  individual: string | true;
-  couple: string | true;
   family: string | true;
+  holiday: string | true;
 }> = [
   {
     label: "Who's covered",
-    individual: "One adult",
-    couple: "Two adults",
-    family: "Two adults + children",
+    family: "You, your partner and dependent children",
+    holiday: "The named member, while abroad",
   },
-  { label: "Unlimited appointments", individual: true, couple: true, family: true },
-  { label: "24/7, 365 days a year", individual: true, couple: true, family: true },
-  { label: "Phone or video", individual: true, couple: true, family: true },
-  { label: "Private prescriptions", individual: true, couple: true, family: true },
-  { label: "Referral letters", individual: true, couple: true, family: true },
-  { label: "Cover abroad", individual: true, couple: true, family: true },
-  { label: "Notes to your NHS GP", individual: true, couple: true, family: true },
   {
-    label: "Contract length",
-    individual: "12 months",
-    couple: "12 months",
-    family: "12 months",
+    label: "Unlimited appointments",
+    family: true,
+    holiday: "Within the 15-day period",
   },
+  { label: "24/7, 365 days a year", family: true, holiday: true },
+  { label: "Phone or video", family: true, holiday: true },
+  {
+    label: "Private prescriptions",
+    family: true,
+    holiday: "Subject to local pharmacy rules",
+  },
+  { label: "Referral letters", family: true, holiday: "—" },
+  { label: "Cover abroad", family: true, holiday: true },
+  { label: "Notes to your NHS GP", family: true, holiday: true },
+  { label: "Contract length", family: "12 months", holiday: "15 days" },
 ];
 
 export const pricingAssuranceCards = [
@@ -425,15 +447,25 @@ export const joinSteps = [
 ];
 
 export const joinPlanOptions = [
-  { id: "individual", name: "Individual", detail: "One adult" },
-  { id: "couple", name: "Couple", detail: "Two adults at the same address" },
-  { id: "family", name: "Family", detail: "Two adults and dependent children" },
+  {
+    id: "family",
+    name: "Individual & Family",
+    detail:
+      "One adult, sole traders included - partner and dependent children covered as standard",
+    summary: "£100 a year, renewing annually",
+  },
+  {
+    id: "holiday",
+    name: "Holiday Cover",
+    detail: "15 days of medical advice with a GP while you're abroad",
+    summary: "£30 one-off, 15 days of cover abroad",
+  },
 ];
 
 export const aboutPage = {
   title: "Built around one problem: getting seen",
   intro:
-    "247 GP Direct exists because access to a GP has become the hardest part of ordinary healthcare â€” not the medicine, the appointment.",
+    "247 GP Direct exists because access to a GP has become the hardest part of ordinary healthcare — not the medicine, the appointment.",
   promiseTitle: "We provide unlimited access to UK-qualified private GPs",
   commitmentTitle: "Our commitment to members",
   commitments: [
@@ -444,7 +476,7 @@ export const aboutPage = {
     "Your NHS registration stays exactly as it is.",
   ],
   paragraphs: [
-    "We provide unlimited access to UK-qualified private GPs, 24 hours a day, 365 days a year, by telephone and video consultation, on a single annual subscription. Members call one number and speak to a doctor â€” at 8am on a Tuesday or 2am on a Sunday.",
+    "We provide unlimited access to UK-qualified private GPs, 24 hours a day, 365 days a year, by telephone and video consultation, on a single annual subscription. Members call one number and speak to a doctor — at 8am on a Tuesday or 2am on a Sunday.",
     "We do not ask members to leave their NHS surgery, and we never will. This service is the layer that sits underneath NHS care: the everyday questions, the sudden temperatures, the infections that need answering tonight rather than a fortnight from now.",
     "Consultations are delivered by our clinical provider and prescriptions are dispensed by a registered UK pharmacy partner. Both are named here in full once contractual confirmation is received.",
   ],
@@ -557,7 +589,7 @@ export const familyPage = {
     },
   ],
   prescriptionsLink: "How prescriptions work in full",
-  faqTitle: "The things HR buyers ask us",
+  faqTitle: "The things families ask us",
   faqs: [
     {
       q: "Do I have to leave my NHS GP?",
@@ -934,6 +966,169 @@ export const faqsPage = {
   ],
 };
 
+export const businessPage = {
+  label: "For Business",
+  title: "Healthier teams. Fewer lost days.",
+  intro:
+    "Give every employee unlimited 24/7 access to a UK GP for less than the cost of a single day's absence.",
+  sections: [
+    { id: "business-case", label: "The business case" },
+    { id: "team-gets", label: "What your team gets" },
+    { id: "you-get", label: "What you get" },
+    { id: "rollout", label: "Rollout" },
+    { id: "pricing", label: "Pricing" },
+    { id: "questions", label: "Questions" },
+    { id: "quote", label: "Request a quote" },
+  ],
+  caseTitle: "What poor GP access costs an employer",
+  caseStats: [
+    "4.4 days lost to sickness absence per employee per year.",
+    "£140 average cost of a single day's absence to the employer.",
+    "Half a day typically lost when an employee attends a daytime GP appointment.",
+  ],
+  caseSource:
+    "Source: UK benchmark estimates. 4.4 working days per employee from ONS 2024 sickness absence data; £140 per day is an indicative employer-cost estimate and varies by salary, cover, productivity and management time.",
+  caseNotes: [
+    "Absence is the visible cost. The invisible one is the half-days lost when people leave work to sit in a waiting room for a ten-minute conversation.",
+    "Wellbeing provision is consistently cited in retention research. Replacing someone costs considerably more than covering them.",
+    "And presenteeism: people working through illness because getting seen is too much hassle. That's slower work and longer recovery.",
+  ],
+  teamTitle: "What your team gets",
+  teamIntro:
+    "Cover extends to employees' families, which is what turns a benefit from a line in a handbook into something people actually value.",
+  teamItems: [
+    "Unlimited GP appointments, no per-call charge",
+    "Phone or video, their choice",
+    "Private prescriptions delivered to the door",
+    "Access while travelling or working abroad",
+    "24 hours a day, 365 days a year",
+    "Cover for partner and dependent children",
+    "Referral letters for private consultant care",
+    "They keep their NHS GP",
+  ],
+  employerTitle: "What you get as the employer",
+  employerItems: [
+    {
+      title: "Simple pricing",
+      body: "Per employee, per year. One invoice.",
+    },
+    {
+      title: "No underwriting",
+      body: "No individual medical questions, no age loading.",
+    },
+    {
+      title: "Rollout in days",
+      body: "Not months. Send a list, we do the rest.",
+    },
+    {
+      title: "A full comms pack",
+      body: "Email templates, posters, intranet copy & wallet cards, so HR isn't left explaining it.",
+    },
+    {
+      title: "Utilisation reporting",
+      body: "Anonymised, so you can evidence the spend at budget time.",
+    },
+    {
+      title: "A named contact",
+      body: "One person who knows your account, plus mid-term joiners and leavers.",
+    },
+  ],
+  rolloutTitle: "Live in days, not months",
+  rolloutIntro:
+    "We sit across the tools you already run, turns their data into a live operational picture & executes the routine work on your behalf continuously.",
+  rolloutSteps: [
+    { number: "1", title: "Agree cover and sign", day: "Day 0" },
+    { number: "2", title: "Send your employee list", day: "Day 1-2" },
+    { number: "3", title: "Comms pack issued, members notified", day: "Day 3-4" },
+    { number: "4", title: "Cover live", day: "Day 5" },
+  ],
+  sectorsTitle: "Where it earns its keep",
+  sectors: [
+    {
+      title: "Construction",
+      body: "Remote sites, physical injury and a workforce that's hard to reach in hours.",
+      icon: "briefcase",
+    },
+    {
+      title: "Professional services",
+      body: "Retention pressure and benefits benchmarking against competitors.",
+      icon: "document",
+    },
+    {
+      title: "Care providers",
+      body: "Staff wellbeing and the operational cost of unplanned absence.",
+      icon: "heart",
+    },
+    {
+      title: "Hospitality & retail",
+      body: "A young workforce, high churn and unsocial hours.",
+      icon: "users",
+    },
+    {
+      title: "Logistics & Travel",
+      body: "Shift patterns, night work and driver medical requirements.",
+      icon: "globe",
+    },
+    {
+      title: "Manufacturing",
+      body: "Shift cover gaps and the knock-on disruption of a missing operator.",
+      icon: "clock",
+    },
+  ],
+  pricingCardTitle: "For employers & teams",
+  pricingFeatures: [
+    "Unlimited consultations for your whole team",
+    "No time limits on any consultation",
+    "Reduced absenteeism & faster care",
+    "One flat payment no per-employee fees",
+    "Priority same-day appointment availability",
+    "Dedicated account management",
+  ],
+  pricingTableTitle: "SME cover from £150 a year",
+  pricingTableIntro:
+    "Banded by headcount, billed annually on one invoice. No per-call charges.",
+  pricingRows: [
+    { band: "Up to 25", price: "£150", family: "Yes" },
+    { band: "26-50", price: "£410", family: "Yes" },
+    { band: "51-100", price: "£650", family: "Yes" },
+    { band: "101+", price: "Bespoke", family: "Yes" },
+  ],
+  faqTitle: "The things HR buyers ask us",
+  faqs: [
+    {
+      q: "We already have an EAP",
+      a: "An EAP is a counselling and support service. This is clinical access to a GP. They answer different needs and most employers we work with run both alongside each other.",
+    },
+    {
+      q: "We have private medical insurance",
+      a: "PMI covers treatment once a diagnosis exists. This covers the everyday access problem that comes before it, at a fraction of the premium.",
+    },
+    {
+      q: "Will anyone actually use it?",
+      a: "Family cover is the driver. Utilisation reporting shows you exactly what take-up looks like, anonymised.",
+    },
+    {
+      q: "What about part-time and seasonal staff?",
+      a: "Cover can be scoped to your headcount definition. Mid-term joiners and leavers are handled by your named contact.",
+    },
+    {
+      q: "Is it a taxable benefit?",
+      a: "Generally a P11D consideration. We do not give tax advice, please take your own.",
+    },
+    {
+      q: "What happens to cover when someone leaves?",
+      a: "Cover ends when they leave the scheme and the place can be reallocated to a new joiner.",
+    },
+  ],
+  quoteTitle: "Six fields. One conversation.",
+  quoteIntro:
+    "We reply within one working day with indicative pricing for your headcount.",
+  brokersTitle: "Brokers and benefits consultants",
+  brokersBody:
+    "We work with brokers on referral and commission terms. Get in touch for the partner pack and rate card.",
+  brokersCta: "Partner enquiry",
+};
+
 export const gpHelpPage = {
   label: "For You & Your Family",
   title: "What Our GPs Can Help With",
@@ -949,17 +1144,17 @@ export const contactPage = {
       title: "Members:",
       subtitle: "book an appointment",
       body: "Answered 24 hours a day, every day of the year. Have your membership number ready.",
-      cta: { label: "1234 567 89000", href: "tel:1234567890000", type: "tel" as const },
+      cta: { label: siteConfig.phoneDisplay, href: `tel:${siteConfig.phoneDisplay.replace(/\s/g, "")}`, type: "tel" as const },
     },
     {
       title: "General enquiries",
       body: "Use the form and we'll reply within one working day.",
-      cta: { label: "1234 567 89000", href: "tel:1234567890000", type: "tel" as const },
+      cta: { label: siteConfig.phoneDisplay, href: `tel:${siteConfig.phoneDisplay.replace(/\s/g, "")}`, type: "tel" as const },
     },
     {
       title: "Business enquiries",
       body: "Cover for a workforce, broker and partner arrangements.",
-      cta: { label: "Request a quote", href: "#quote", type: "link" as const },
+      cta: { label: "Request a quote", href: "/business/request-a-quote", type: "link" as const },
     },
   ],
   formTitle: "Send us a message",
@@ -1092,7 +1287,7 @@ export const regulationPage = {
     {
       name: "General Medical Council (GMC)",
       role: "Regulator of the individual doctors",
-      body: "The GMC licenses and revalidates every GP who takes a member call. GMC numbers can be checked by any member on the public register. The GMC regulates the doctor; the CQC regulates the service â€” the two are separate and both apply.",
+      body: "The GMC licenses and revalidates every GP who takes a member call. GMC numbers can be checked by any member on the public register. The GMC regulates the doctor; the CQC regulates the service — the two are separate and both apply.",
     },
     {
       name: "General Pharmaceutical Council (GPhC)",
@@ -1182,7 +1377,7 @@ export const articles = [
     category: "Private vs NHS",
     title: "Do you have to leave your NHS GP?",
     meta: "6 min read · Reviewed : 12th August 2026",
-    href: "#leave-nhs-gp",
+    href: "/nhs-gp",
   },
   {
     category: "Practical health",
@@ -1200,13 +1395,13 @@ export const articles = [
     category: "Prescriptions",
     title: "How private prescriptions work",
     meta: "6 min read · Reviewed : 12th August 2026",
-    href: "#prescriptions-work",
+    href: "/prescriptions",
   },
   {
     category: "Employers",
     title: "The cost of sickness absence",
     meta: "6 min read · Reviewed : 12th August 2026",
-    href: "#sickness-absence",
+    href: "/business/why-offer-private-gp-access",
   },
 ];
 
@@ -1215,20 +1410,20 @@ export const footerSections: Array<{ title: string; links: NavItem[] }> = [
     title: "SERVICE",
     links: [
       { label: "For Individuals & Families", href: "/family" },
-      { label: "For Business", href: "#business" },
+      { label: "For Business", href: "/business" },
       { label: "How It Works", href: "/how-it-works" },
       { label: "Prescriptions", href: "/prescriptions" },
-      { label: "Pricing & Join", href: "/pricing" },
       { label: "Health Hub", href: "/health-hub" },
     ],
   },
   {
     title: "BUSINESS",
     links: [
-      { label: "Employee Benefit Overview", href: "#benefits" },
-      { label: "Case Studies", href: "#case-studies" },
-      { label: "Request a Quote", href: "#quote" },
-      { label: "Brokers & Partners", href: "#partners" },
+      { label: "Employee Benefit Overview", href: "/business/what-your-team-gets" },
+      { label: "Case Studies", href: "/business/sectors" },
+      { label: "Request a Quote", href: "/business/request-a-quote" },
+      { label: "Brokers & Partners", href: "/business/brokers-partners" },
+      { label: "Sectors We Work With", href: "/business/sectors" },
     ],
   },
   {
@@ -1237,7 +1432,7 @@ export const footerSections: Array<{ title: string; links: NavItem[] }> = [
       { label: "About Us", href: "/about" },
       { label: "Clinical Standards", href: "/clinical-standards" },
       { label: "Regulation & Governance", href: "/regulation" },
-      { label: "Blog", href: "#blog" },
+      { label: "Pricing & Join", href: "/pricing" },
       { label: "Contact", href: "/contact" },
     ],
   },

@@ -2,51 +2,55 @@ import Image from "next/image";
 import Link from "next/link";
 import Icon from "@/components/Icon";
 import SectionLabel from "@/components/SectionLabel";
-import { howItWorksAssurances } from "@/lib/site";
+import { businessPage, howItWorksAssurances } from "@/lib/site";
 
-export default function HubHero() {
+export default function BusinessHero() {
   return (
     <section className="relative isolate overflow-hidden bg-cream">
       <Image
-        src="/images/health-hub/hero-leaf.png"
+        src="/images/_business-subpages/Screenshot 2026-07-25 190912 1.png"
         alt=""
         aria-hidden
         fill
         priority
         sizes="100vw"
-        className="pointer-events-none -z-10 object-cover object-right opacity-45 sm:opacity-70 lg:opacity-100"
+        className="pointer-events-none -z-10 object-cover object-right"
       />
-      {/* Keeps the copy readable where it sits over the artwork. */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-r from-cream via-cream/75 to-transparent lg:via-cream/45"
       />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-32 bg-gradient-to-b from-transparent to-cream"
+      />
 
-      <div className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
+      <div className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
         <div className="max-w-xl">
-          <SectionLabel>Health Hub</SectionLabel>
+          <SectionLabel>{businessPage.label}</SectionLabel>
 
           <h1 className="title-50 mt-5 text-balance text-brand-teal">
-            Plain guidance, reviewed by clinicians
+            {businessPage.title}
           </h1>
 
           <p className="mt-5 max-w-md text-sm leading-relaxed text-pretty text-brand-teal/75 sm:text-base">
-            Every article carries a named clinical reviewer and a last-reviewed
-            date.
+            {businessPage.intro}
           </p>
 
           <div className="mt-8 flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap">
             <Link
-              href="/family"
+              href="#quote"
               className="inline-flex items-center justify-center rounded-md bg-coral px-6 py-3 text-sm text-white transition-colors hover:bg-coral-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral"
             >
-              For You &amp; Your Family
+              Request a Quote
             </Link>
+            {/* No brochure asset exists yet, so this asks for one via the
+                quote form rather than offering a download that cannot run. */}
             <Link
-              href="/business"
+              href="/business/request-a-quote"
               className="inline-flex items-center justify-center rounded-md border border-brand-teal/25 bg-white px-6 py-3 text-sm text-brand-teal transition-colors hover:bg-white/70 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral"
             >
-              For Business
+              Request Employer Brochure
             </Link>
           </div>
 

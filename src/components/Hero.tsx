@@ -49,7 +49,7 @@ export default function Hero() {
                 View Plans
               </Link>
               <Link
-                href="#business"
+                href="/business"
                 className="inline-flex items-center justify-center rounded-md border border-brand-teal/25 bg-white/80 px-6 py-3 text-sm text-brand-teal transition-colors hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral sm:text-base"
               >
                 Cover My Team
@@ -66,7 +66,7 @@ export default function Hero() {
                 className="h-8 w-auto shrink-0"
               />
               <p className="text-xs text-brand-teal/70 sm:text-sm">
-                Trusted by thousands of patients across the UK (TBC)
+                Trusted by thousands of patients across the UK
               </p>
             </div>
 
