@@ -1,4 +1,4 @@
-﻿export type MegaMenu = {
+export type MegaMenu = {
   /** Left promo column. */
   eyebrow: string;
   title: string;
@@ -123,31 +123,6 @@ export const navItems: NavItem[] = [
   {
     label: "About",
     href: "/about",
-    // Children drive the mobile accordion; `mega` drives the desktop panel.
-    children: [
-      { label: "Our Story", href: "/about" },
-      { label: "Clinical Standards & Governance", href: "/clinical-standards" },
-      { label: "Regulation & Compliance", href: "/regulation" },
-      { label: "Meet the Clinical Team", href: "/clinical-team" },
-      { label: "Contact Us", href: "/contact" },
-    ],
-    mega: {
-      eyebrow: "FOR YOU & YOUR FAMILY",
-      title: "Unlimited private GP appointments",
-      body: "for you and your family, 24/7. Keep your NHS GP. Add private care when you need it..",
-      linksTitle: "ABOUT 247 GP DIRECT",
-      links: [
-        { label: "Our Story", href: "/about" },
-        { label: "Clinical Standards & Governance", href: "/clinical-standards" },
-        { label: "Regulation & Compliance", href: "/regulation" },
-        { label: "Meet the Clinical Team", href: "/clinical-team" },
-        { label: "Contact Us", href: "/contact" },
-      ],
-      image: {
-        src: "/images/about/mega-menu-family.png",
-        alt: "A mother and her daughter using a phone together at the kitchen table",
-      },
-    },
   },
 ];
 
@@ -185,7 +160,7 @@ export const steps = [
   {
     number: "03",
     title: "Get what you need",
-    body: "Advice, a diagnosis, a private prescription delivered to your door, or a referral letter.",
+    body: "Advice, a diagnosis, a medical prescription emailed or delivered to your door, can also include a referral letter.",
     note: "Most consultations end with a clear answer. Many need no further contact at all.",
   },
 ];
@@ -212,8 +187,8 @@ export const included = [
     icon: "video",
   },
   {
-    title: "Private prescriptions",
-    body: "Issued electronically, delivered to your door.",
+    title: "Medical Prescriptions",
+    body: "Issued electronically or delivered to your door.",
     icon: "pill",
   },
   {
@@ -244,7 +219,7 @@ export const plans = [
       "Unlimited GP consultations",
       "24/7 access",
       "Phone or video",
-      "Private prescriptions",
+      "Medical prescriptions (as required)",
       "Referral letters",
       "Cover abroad",
     ],
@@ -273,7 +248,6 @@ export const plans = [
 
 export const planAssurances = [
   "No medical questionnaire nobody is refused for a pre-existing condition",
-  "14-day cooling-off period, in full, no questions asked",
   "No Call Center. No hidden per-call charges, ever",
   "You can Cancel or change your plan at renewal",
 ];
@@ -339,7 +313,7 @@ export const faqs = [
   },
   {
     q: "Can the GP prescribe medication?",
-    a: "Yes. GPs can issue private prescriptions electronically, delivered to your door or to a pharmacy near you.",
+    a: "Yes. GPs can issue medical prescriptions electronically, delivered to your door or to a pharmacy near you. The cost of the medication will be charged to you and paid online if you decide to proceed and generally this will be less than the standard prescription charge.",
   },
 ];
 
@@ -376,7 +350,7 @@ export const journeySteps = [
   },
   {
     title: "You get an outcome",
-    body: "Advice and reassurance, a diagnosis, a private prescription, a referral letter, or a recommendation to be seen in person. Calls are recorded for audit and quality.",
+    body: "Advice and reassurance, a diagnosis, a medication prescription, a referral letter, or a recommendation to be seen in person by your own GP. Calls are recorded for audit and quality.",
     image: "/images/how-it-works/step-5-outcome.png",
     alt: "A patient in a video consultation with a doctor on screen",
   },
@@ -422,7 +396,7 @@ export const comparisonRows: Array<{
   { label: "24/7, 365 days a year", family: true, holiday: true },
   { label: "Phone or video", family: true, holiday: true },
   {
-    label: "Private prescriptions",
+    label: "Medical prescriptions",
     family: true,
     holiday: "Subject to local pharmacy rules",
   },
@@ -434,7 +408,6 @@ export const comparisonRows: Array<{
 
 export const pricingAssuranceCards = [
   "No medical questionnaire and no health screening nobody is refused for a pre-existing condition (to be confirmed)",
-  "14-day cooling-off period, in full, no questions",
   "No hidden per-call charges",
   "Cancel or change your plan at renewal",
 ];
@@ -541,8 +514,8 @@ export const familyPage = {
       body: "One family subscription covers you, your partner and your dependent children. (Exact definition age limit and whether same-address residency is required to be confirmed.)",
     },
     {
-      title: "Private prescriptions",
-      body: "Where clinically appropriate, the GP can issue a private prescription electronically, dispensed by a registered pharmacy and delivered to your home or workplace. Medication and dispensing costs are charged separately.",
+      title: "Medical prescriptions",
+      body: "Where clinically appropriate, the GP can issue a medical prescription electronically, dispensed by a registered pharmacy and delivered to your home or workplace. Medication and dispensing costs are charged separately.",
     },
     {
       title: "Referral letters",
@@ -609,7 +582,7 @@ export const familyPage = {
     },
     {
       q: "Can the GP prescribe medication?",
-      a: "Where it is clinically appropriate, the GP can issue a private prescription electronically, dispensed by a registered pharmacy and delivered to your address. Medication and dispensing costs are charged separately.",
+      a: "Where it is clinically appropriate, the GP can issue a medical prescription electronically, dispensed by a registered pharmacy and delivered to your address. The cost of the medication will be charged to you and paid online if you decide to proceed and generally this will be less than the standard prescription charge.",
     },
     {
       q: "Who is covered on a family plan?",
@@ -664,7 +637,7 @@ export const prescriptionsPage = {
   label: "Prescriptions",
   title: "Medication, without the second appointment",
   intro:
-    "Where a GP judges medication to be appropriate, they can issue a private prescription electronically during or immediately after your consultation.",
+    "Where a GP judges medication to be appropriate, they can issue a medical prescription electronically during or immediately after your consultation.",
   pathwayTitle: "The pathway, end to end",
   pathway: [
     {
@@ -883,7 +856,7 @@ export const faqsPage = {
       items: [
         {
           q: "Can the GP prescribe medication?",
-          a: "Yes, where clinically appropriate, as a private prescription issued electronically.",
+          a: "Yes, where clinically appropriate, as a medical prescription issued electronically. The cost of the medication will be charged to you and paid online if you decide to proceed and generally this will be less than the standard prescription charge.",
         },
         {
           q: "How much does a prescription cost?",
@@ -924,7 +897,7 @@ export const faqsPage = {
           a: "To be confirmed. If monthly direct debit is not available we will not imply that it is.",
         },
         {
-          q: "How do I cancel, and what's the cooling-off period?",
+          q: "How do I cancel?",
           a: "You have 14 days from purchase to cancel in full under the Consumer Contracts Regulations 2013.",
         },
         {
@@ -959,7 +932,7 @@ export const faqsPage = {
         },
         {
           q: "What happens when someone leaves?",
-          a: "Cover ends when they leave the scheme and can be reallocated.",
+          a: "Joiners during the year are automatically included and can be issued with access instructions at no cost. At renewal, the renewal price for the following year will be based on the number of employees on the payroll at renewal. There will be no retrospective charge for new employees taken on since the last purchase/renewal, and no refund for any leavers during the previous period.",
         },
       ],
     },
@@ -999,7 +972,7 @@ export const businessPage = {
   teamItems: [
     "Unlimited GP appointments, no per-call charge",
     "Phone or video, their choice",
-    "Private prescriptions delivered to the door",
+    "Medical prescriptions delivered to the door",
     "Access while travelling or working abroad",
     "24 hours a day, 365 days a year",
     "Cover for partner and dependent children",
@@ -1007,6 +980,7 @@ export const businessPage = {
     "They keep their NHS GP",
   ],
   employerTitle: "What you get as the employer",
+  employerIntro: "Simple setup with no employee names or mid-year notifications required.",
   employerItems: [
     {
       title: "Simple pricing",
@@ -1023,10 +997,6 @@ export const businessPage = {
     {
       title: "A full comms pack",
       body: "Email templates, posters, intranet copy & wallet cards, so HR isn't left explaining it.",
-    },
-    {
-      title: "Utilisation reporting",
-      body: "Anonymised, so you can evidence the spend at budget time.",
     },
     {
       title: "A named contact",
@@ -1105,7 +1075,7 @@ export const businessPage = {
     },
     {
       q: "Will anyone actually use it?",
-      a: "Family cover is the driver. Utilisation reporting shows you exactly what take-up looks like, anonymised.",
+      a: "Yes, but take-up needs to be driven. That’s why we provide a ready-to-use comms pack designed to build awareness and drive employee take-up from day one. Take-up is a launch problem, not a product problem.",
     },
     {
       q: "What about part-time and seasonal staff?",
@@ -1117,7 +1087,7 @@ export const businessPage = {
     },
     {
       q: "What happens to cover when someone leaves?",
-      a: "Cover ends when they leave the scheme and the place can be reallocated to a new joiner.",
+      a: "Joiners during the year are automatically included and can be issued with access instructions at no cost. At renewal, the renewal price for the following year will be based on the number of employees on the payroll at renewal. There will be no retrospective charge for new employees taken on since the last purchase/renewal, and no refund for any leavers during the previous period.",
     },
   ],
   quoteTitle: "Six fields. One conversation.",
@@ -1292,7 +1262,7 @@ export const regulationPage = {
     {
       name: "General Pharmaceutical Council (GPhC)",
       role: "Regulator of the dispensing pharmacy",
-      body: "Private prescriptions raised by our GPs are dispensed by a GPhC-registered pharmacy operating under its own registration. We do not dispense medicines ourselves.",
+      body: "Medical prescriptions raised by our GPs are dispensed by a GPhC-registered pharmacy operating under its own registration. We do not dispense medicines ourselves.",
     },
     {
       name: "MHRA and prescribing law",
@@ -1393,7 +1363,7 @@ export const articles = [
   },
   {
     category: "Prescriptions",
-    title: "How private prescriptions work",
+    title: "How medical prescriptions work",
     meta: "6 min read · Reviewed : 12th August 2026",
     href: "/prescriptions",
   },
@@ -1430,8 +1400,6 @@ export const footerSections: Array<{ title: string; links: NavItem[] }> = [
     title: "COMPANY",
     links: [
       { label: "About Us", href: "/about" },
-      { label: "Clinical Standards", href: "/clinical-standards" },
-      { label: "Regulation & Governance", href: "/regulation" },
       { label: "Pricing & Join", href: "/pricing" },
       { label: "Contact", href: "/contact" },
     ],

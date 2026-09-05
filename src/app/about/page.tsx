@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import AboutHero from "@/components/about/AboutHero";
 import AboutPromise from "@/components/about/AboutPromise";
-import GovernanceCta from "@/components/GovernanceCta";
 
 export const metadata: Metadata = {
   title: "About — 247 GP Direct",
@@ -14,7 +13,6 @@ export default function AboutPage() {
     <>
       <AboutHero />
       <AboutPromise />
-      <GovernanceCta />
     </>
   );
 }

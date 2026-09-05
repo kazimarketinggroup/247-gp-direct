@@ -1,9 +1,8 @@
-import Link from "next/link";
 import Icon from "@/components/Icon";
 import SectionLabel from "@/components/SectionLabel";
 import { regulationPage } from "@/lib/site";
 
-const { wider, standardsCta } = regulationPage;
+const { wider } = regulationPage;
 
 export default function WiderObligations() {
   return (
@@ -37,22 +36,6 @@ export default function WiderObligations() {
           </li>
         ))}
       </ul>
-
-      <div className="mt-12 rounded-2xl bg-mint/60 px-5 py-10 text-center sm:mt-14 sm:rounded-3xl sm:px-8 sm:py-12">
-        <h2 className="mx-auto max-w-2xl text-xl leading-tight text-balance text-brand-teal sm:text-2xl md:text-3xl">
-          {standardsCta.title}
-        </h2>
-        <p className="mx-auto mt-4 max-w-2xl text-xs leading-relaxed text-pretty text-brand-teal/70 sm:text-sm">
-          {standardsCta.body}
-        </p>
-        <Link
-          href={standardsCta.href}
-          className="mt-7 inline-flex items-center gap-2 rounded-md bg-coral px-5 py-2.5 text-sm text-white transition-colors hover:bg-coral-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral"
-        >
-          {standardsCta.label}
-          <Icon name="arrow-right" className="h-4 w-4" />
-        </Link>
-      </div>
     </section>
   );
 }

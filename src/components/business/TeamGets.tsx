@@ -62,6 +62,11 @@ export default function TeamGets() {
           <h2 className="title-50 text-balance text-brand-teal">
             {businessPage.employerTitle}
           </h2>
+          {businessPage.employerIntro && (
+            <p className="mt-4 max-w-2xl text-sm leading-relaxed text-pretty text-brand-teal/70">
+              {businessPage.employerIntro}
+            </p>
+          )}
         </div>
 
         {/* 1 -> 2 -> 3 columns. */}

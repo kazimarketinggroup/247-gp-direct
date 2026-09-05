@@ -8,7 +8,7 @@ import PricingHero from "@/components/pricing/PricingHero";
 export const metadata: Metadata = {
   title: "Pricing — 247 GP Direct",
   description:
-    "One price a year, everything included. No medical questionnaire, no per-call charges, and a 14-day cooling-off period in full.",
+    "One price a year, everything included. No medical questionnaire and no per-call charges.",
 };
 
 export default function PricingPage() {

@@ -9,7 +9,7 @@ const valueCards = [
   },
   {
     title: "Private access works in real life",
-    body: "Employees can get a same-day answer, a private prescription, or a referral without the patient admin burden that usually falls to managers.",
+    body: "Employees can get a same-day answer, a medical prescription, or a referral without the patient admin burden that usually falls to managers.",
   },
   {
     title: "Fast support, low friction",
@@ -20,7 +20,7 @@ const valueCards = [
 const teamBenefits = [
   "Unlimited GP consultations",
   "24/7 access by phone or video",
-  "Private prescriptions delivered to the door",
+  "Medical prescriptions delivered to the door",
   "Fast referral letters and clinical guidance",
   "Cover while travelling or away from home",
   "Support for mental health and routine concerns",
@@ -36,10 +36,6 @@ const employerBenefits = [
   {
     title: "No underwritten complexity",
     body: "Rolled out quickly with a low-touch onboarding and existing benefit workflows.",
-  },
-  {
-    title: "Utilisation reporting",
-    body: "Access to anonymised data that helps HR and benefits teams understand demand and value.",
   },
   {
     title: "Fast launch",
@@ -257,9 +253,8 @@ export default function ForBusinessPage() {
             </h2>
             <ul className="mt-6 space-y-3 text-sm text-white/80">
               <li>• 24/7 access to a UK-registered GP</li>
-              <li>• Private prescriptions and referral support</li>
+              <li>• Medical prescriptions and referral support</li>
               <li>• Simple rollout for whole teams</li>
-              <li>• Reporting to support HR and wellbeing planning</li>
             </ul>
           </div>
 

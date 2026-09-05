@@ -23,8 +23,7 @@ export default function PricingHero() {
           One price a year. Everything included.
         </h1>
         <p className="mx-auto mt-5 max-w-md text-sm leading-relaxed text-pretty text-brand-teal/70 sm:text-base">
-          No medical questionnaire, no per-call charges, and a 14-day cooling-off
-          period in full.
+          No medical questionnaire and no per-call charges.
         </p>
       </div>
     </section>

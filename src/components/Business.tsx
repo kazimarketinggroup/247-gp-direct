@@ -34,8 +34,7 @@ export default function Business() {
           </p>
 
           <p className="mt-4 max-w-xl text-sm leading-relaxed text-pretty text-brand-teal/75 sm:text-base">
-            Simple per-employee pricing. Rollout in days. Anonymised utilisation
-            reporting included.
+            Simple per-employee pricing. Rollout in days.
           </p>
 
           <div className="mt-7 flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center">

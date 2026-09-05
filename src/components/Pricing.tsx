@@ -136,17 +136,19 @@ export default function Pricing({
         ))}
       </div>
 
-      <ul className="mt-10 grid grid-cols-1 gap-4 border-t border-brand-teal/10 pt-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
-        {planAssurances.map((item) => (
-          <li
-            key={item}
-            className="flex items-start gap-2 text-xs leading-relaxed text-pretty text-brand-teal/60"
-          >
-            <Icon name="check" className="mt-0.5 h-3.5 w-3.5 shrink-0 text-coral" strokeWidth={2.5} />
-            {item}
-          </li>
-        ))}
-      </ul>
+      <div className="mt-10 border-t border-brand-teal/10 pt-8">
+        <ul className="mx-auto grid max-w-4xl grid-cols-1 gap-6 sm:grid-cols-3 sm:gap-8">
+          {planAssurances.map((item) => (
+            <li
+              key={item}
+              className="flex items-start gap-2 text-xs leading-relaxed text-pretty text-brand-teal/60"
+            >
+              <Icon name="check" className="mt-0.5 h-3.5 w-3.5 shrink-0 text-coral" strokeWidth={2.5} />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </section>
   );
 }

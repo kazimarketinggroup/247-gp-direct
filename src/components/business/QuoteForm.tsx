@@ -124,7 +124,7 @@ export default function QuoteForm() {
                   id="q-headcount"
                   name="headcount"
                   required
-                  defaultValue="1-24"
+                  defaultValue={businessPage.pricingRows[0].band}
                   className={`mt-2 ${FIELD}`}
                 >
                   {businessPage.pricingRows.map((row) => (

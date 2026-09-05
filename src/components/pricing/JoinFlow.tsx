@@ -92,8 +92,7 @@ export default function JoinFlow() {
           <p className="mt-2 text-2xl text-balance sm:text-3xl">{current?.name}</p>
           <p className="mt-2 text-sm text-white/80">{current?.summary}</p>
           <p className="mt-4 text-xs leading-relaxed text-pretty text-white/60">
-            14-day cooling-off period. This is not an emergency service call 999
-            or NHS 111 if it&apos;s urgent.
+            This is not an emergency service call 999 or NHS 111 if it&apos;s urgent.
           </p>
         </div>
       </div>

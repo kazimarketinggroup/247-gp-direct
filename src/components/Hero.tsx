@@ -31,9 +31,9 @@ export default function Hero() {
             </span>
 
             <h1 className="mt-5 title-50 text-balance text-brand-teal xl:text-[3.5rem]">
-              See a GP in minutes.
-              <br className="hidden sm:block" />{" "}
-              <span className="sm:inline">Any time, day or night.</span>
+              See a GP. Any time,
+              <br />
+              <span className="inline-block sm:whitespace-nowrap">day or night.</span>
             </h1>
 
             <p className="mt-5 max-w-xl text-sm leading-relaxed text-pretty text-brand-teal/75 sm:text-base lg:text-lg">

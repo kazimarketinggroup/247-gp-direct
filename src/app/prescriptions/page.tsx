@@ -8,7 +8,7 @@ import { prescriptionsPage } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Prescriptions — 247 GP Direct",
   description:
-    "Where a GP judges medication to be appropriate, they can issue a private prescription electronically during or immediately after your consultation.",
+    "Where a GP judges medication to be appropriate, they can issue a medical prescription electronically during or immediately after your consultation.",
 };
 
 export default function PrescriptionsPage() {

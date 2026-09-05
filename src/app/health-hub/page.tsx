@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import ArticleGrid from "@/components/health-hub/ArticleGrid";
 import FeaturedArticle from "@/components/health-hub/FeaturedArticle";
-import GovernanceCta from "@/components/GovernanceCta";
 import HubHero from "@/components/health-hub/HubHero";
 
 export const metadata: Metadata = {
@@ -16,7 +15,6 @@ export default function HealthHubPage() {
       <HubHero />
       <FeaturedArticle />
       <ArticleGrid />
-      <GovernanceCta />
     </>
   );
 }
