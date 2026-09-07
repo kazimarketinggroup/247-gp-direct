@@ -210,6 +210,7 @@ export const included = [
 
 export const plans = [
   {
+    id: "holiday" as const,
     name: "HOLIDAY COVER",
     price: "£30",
     period: "one-off",
@@ -223,10 +224,11 @@ export const plans = [
       "Referral letters",
       "Cover abroad",
     ],
-    cta: "Choose Individual & Family",
+    cta: "Get Holiday Cover",
     featured: false,
   },
   {
+    id: "family" as const,
     name: "INDIVIDUAL & FAMILY",
     price: "£100",
     period: "/year",
@@ -240,7 +242,7 @@ export const plans = [
       "All ages, one price",
       "One annual invoice",
     ],
-    cta: "Choose Holiday Cover",
+    cta: "Get Individual & Family",
     featured: true,
     badge: "Most popular",
   },

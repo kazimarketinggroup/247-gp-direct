@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import CallToAction from "@/components/CallToAction";
 import Pricing from "@/components/Pricing";
+import CanceledAlert from "@/components/pricing/CanceledAlert";
 import ComparisonTable from "@/components/pricing/ComparisonTable";
-import JoinFlow from "@/components/pricing/JoinFlow";
 import PricingHero from "@/components/pricing/PricingHero";
 
 export const metadata: Metadata = {
@@ -15,9 +15,9 @@ export default function PricingPage() {
   return (
     <>
       <PricingHero />
+      <CanceledAlert />
       <Pricing showHeading={false} />
       <ComparisonTable />
-      <JoinFlow />
       <CallToAction />
     </>
   );

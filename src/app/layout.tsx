@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Chivo } from "next/font/google";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import { MembershipModalProvider } from "@/components/pricing/MembershipModal";
 import "./globals.css";
 
 const chivo = Chivo({
@@ -27,9 +28,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${chivo.variable} h-full antialiased`}>
       <body className="bg-cream text-brand-teal flex min-h-full flex-col font-sans antialiased">
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <MembershipModalProvider>
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </MembershipModalProvider>
       </body>
     </html>
   );

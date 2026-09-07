@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Icon from "@/components/Icon";
 import SectionLabel from "@/components/SectionLabel";
+import CheckoutButton from "@/components/pricing/CheckoutButton";
 import { planAssurances, plans } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
@@ -121,17 +122,14 @@ export default function Pricing({
               ))}
             </ul>
 
-            <Link
-              href="/pricing#join"
-              className={cn(
-                "mt-7 block rounded-md px-5 py-3 text-center text-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral",
-                plan.featured
-                  ? "bg-coral text-white hover:bg-coral-dark"
-                  : "bg-brand-teal text-white hover:bg-brand-teal-dark",
-              )}
-            >
-              {plan.cta}
-            </Link>
+            <div className="mt-7">
+              <CheckoutButton
+                planId={plan.id}
+                featured={plan.featured}
+              >
+                {plan.cta}
+              </CheckoutButton>
+            </div>
           </div>
         ))}
       </div>

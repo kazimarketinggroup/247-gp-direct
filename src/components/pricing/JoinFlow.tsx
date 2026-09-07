@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import CheckoutButton from "./CheckoutButton";
 import { joinPlanOptions, joinSteps } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
@@ -97,12 +98,14 @@ export default function JoinFlow() {
         </div>
       </div>
 
-      <button
-        type="button"
-        className="mt-6 inline-flex rounded-md bg-coral px-5 py-2.5 text-sm text-white transition-colors hover:bg-coral-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral"
-      >
-        Continue
-      </button>
+      <div className="mt-6 max-w-xs">
+        <CheckoutButton
+          planId={selected as "holiday" | "family"}
+          featured={true}
+        >
+          Proceed to Checkout
+        </CheckoutButton>
+      </div>
     </section>
   );
 }
