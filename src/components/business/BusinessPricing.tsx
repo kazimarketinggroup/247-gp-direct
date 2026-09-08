@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Icon from "@/components/Icon";
 import { businessPage } from "@/lib/site";
 
@@ -57,21 +58,32 @@ export default function BusinessPricing() {
                     Per company, per year
                   </th>
                   <th scope="col" className="px-5 py-3.5 text-center text-xs text-white/60">
-                    Unlimited 24/7 access
+                    Family cover included
+                  </th>
+                  <th scope="col" className="px-4 py-3.5 text-right text-xs text-white/60">
+                    Action
                   </th>
                 </tr>
               </thead>
               <tbody>
                 {businessPage.pricingRows.map((row) => (
                   <tr key={row.band} className="border-b border-white/10 last:border-b-0">
-                    <th scope="row" className="px-5 py-4 text-sm text-white/85">
-                      {row.band}
+                    <th scope="row" className="px-5 py-4 text-sm font-semibold text-white/90">
+                      {row.band} employees
                     </th>
-                    <td className="px-3 py-4 text-center text-sm text-white/85">
+                    <td className="px-3 py-4 text-center text-sm font-bold text-coral">
                       {row.price}
                     </td>
                     <td className="px-5 py-4 text-center text-sm text-white/85">
                       {row.family}
+                    </td>
+                    <td className="px-4 py-4 text-right">
+                      <Link
+                        href={`/business/request-a-quote?headcount=${encodeURIComponent(row.band)}`}
+                        className="inline-flex rounded-md bg-coral px-3 py-1 text-xs font-semibold text-white hover:bg-coral-dark transition"
+                      >
+                        Enquire
+                      </Link>
                     </td>
                   </tr>
                 ))}

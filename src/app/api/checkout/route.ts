@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { stripe } from "@/lib/stripe";
-import { getStripePlan } from "@/lib/stripe-plans";
+import { getStripePlan, getPromoDiscount } from "@/lib/stripe-plans";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
     }
 
     const body = await req.json().catch(() => ({}));
-    const { planId, name, email, phone } = body;
+    const { planId, name, email, phone, promoCode } = body;
 
     if (!planId) {
       return NextResponse.json(
@@ -32,6 +32,11 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    // Check for promotional discount
+    const promo = plan.id === "family" ? getPromoDiscount(promoCode) : null;
+    const finalAmount = promo ? Math.max(0, plan.unitAmount - promo.discountAmount) : plan.unitAmount;
+    const finalPriceFormatted = promo ? promo.finalPriceFormatted : plan.priceFormatted;
+
     // Clean attendee inputs
     const cleanName = typeof name === "string" ? name.trim().slice(0, 120) : "";
     const cleanEmail = typeof email === "string" ? email.trim().toLowerCase().slice(0, 200) : "";
@@ -39,10 +44,10 @@ export async function POST(req: NextRequest) {
 
     // Create Stripe PaymentIntent for the in-website modal checkout
     const intent = await stripe.paymentIntents.create({
-      amount: plan.unitAmount,
+      amount: finalAmount,
       currency: plan.currency,
       receipt_email: cleanEmail && cleanEmail.includes("@") ? cleanEmail : undefined,
-      description: `247 GP Direct — ${plan.name}`,
+      description: `247 GP Direct — ${plan.name}${promo ? ` (Promo: ${promo.code})` : ""}`,
       automatic_payment_methods: { enabled: true },
       metadata: {
         planId: plan.id,
@@ -50,6 +55,8 @@ export async function POST(req: NextRequest) {
         customerName: cleanName,
         customerEmail: cleanEmail,
         customerPhone: cleanPhone,
+        promoCode: promo?.code || "",
+        discountPence: promo?.discountAmount ? String(promo.discountAmount) : "0",
         service: "247 GP Direct Private Medical Cover",
       },
     });
@@ -64,14 +71,23 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({
       clientSecret: intent.client_secret,
       paymentIntentId: intent.id,
-      amountPence: plan.unitAmount,
+      amountPence: finalAmount,
       currency: plan.currency,
+      promoApplied: promo
+        ? {
+            code: promo.code,
+            label: promo.label,
+            discountPence: promo.discountAmount,
+            finalPriceFormatted: promo.finalPriceFormatted,
+          }
+        : null,
       plan: {
         id: plan.id,
         name: plan.name,
-        priceFormatted: plan.priceFormatted,
+        priceFormatted: finalPriceFormatted,
+        originalPriceFormatted: plan.priceFormatted,
         periodFormatted: plan.periodFormatted,
-        sub: plan.sub,
+        sub: promo ? `Special promo rate (£75) · renews annually` : plan.sub,
         description: plan.description,
       },
     });

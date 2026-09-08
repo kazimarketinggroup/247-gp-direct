@@ -12,6 +12,28 @@ export interface StripePlanConfig {
   interval?: "year" | "month";
 }
 
+export interface PromoConfig {
+  code: string;
+  discountAmount: number; // in pence, e.g. 2500 = £25
+  finalPriceFormatted: string; // "£75"
+  label: string;
+}
+
+export const PROMO_CODES: Record<string, PromoConfig> = {
+  PROMO75: {
+    code: "PROMO75",
+    discountAmount: 2500,
+    finalPriceFormatted: "£75",
+    label: "Launch Promo: £25 off (Now £75/year)",
+  },
+};
+
+export function getPromoDiscount(code?: string): PromoConfig | null {
+  if (!code) return null;
+  const clean = code.trim().toUpperCase();
+  return PROMO_CODES[clean] || null;
+}
+
 export const STRIPE_PLANS: Record<string, StripePlanConfig> = {
   holiday: {
     id: "holiday",
@@ -26,12 +48,12 @@ export const STRIPE_PLANS: Record<string, StripePlanConfig> = {
   },
   family: {
     id: "family",
-    name: "Individual & Family Membership",
-    badge: "Most popular",
+    name: "Individual & Sole Trader (Family Package)",
+    badge: "Includes Family",
     priceFormatted: "£100",
     periodFormatted: "/year",
     sub: "a year · £8.33 a month equivalent",
-    description: "Unlimited 24/7 GP consultations for you, your partner, and dependent children.",
+    description: "Unlimited 24/7 GP consultations for you, your partner, and dependent children. Covers sole traders.",
     unitAmount: 10000, // £100.00
     currency: "gbp",
     mode: "subscription",

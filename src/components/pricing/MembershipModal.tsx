@@ -24,7 +24,7 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 import { stripePromise } from "@/lib/stripe-client";
-import { STRIPE_PLANS, StripePlanConfig } from "@/lib/stripe-plans";
+import { STRIPE_PLANS, StripePlanConfig, getPromoDiscount, PromoConfig } from "@/lib/stripe-plans";
 import { joinPlanOptions, joinSteps } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
@@ -35,10 +35,17 @@ interface PaymentSession {
   paymentIntentId: string;
   amountPence: number;
   currency: string;
+  promoApplied?: {
+    code: string;
+    label: string;
+    discountPence: number;
+    finalPriceFormatted: string;
+  } | null;
   plan: {
     id: "holiday" | "family";
     name: string;
     priceFormatted: string;
+    originalPriceFormatted?: string;
     periodFormatted: string;
     sub: string;
     description: string;
@@ -109,6 +116,27 @@ export function MembershipModal() {
   const [error, setError] = useState<string | null>(null);
   const [referenceId, setReferenceId] = useState("");
 
+  const [promoInput, setPromoInput] = useState("");
+  const [appliedPromo, setAppliedPromo] = useState<PromoConfig | null>(null);
+  const [promoError, setPromoError] = useState<string | null>(null);
+
+  const handleApplyPromo = (e: React.FormEvent) => {
+    e.preventDefault();
+    setPromoError(null);
+    const promo = getPromoDiscount(promoInput);
+    if (promo) {
+      setAppliedPromo(promo);
+    } else {
+      setPromoError("Invalid promo code. Try PROMO75.");
+    }
+  };
+
+  const handleRemovePromo = () => {
+    setAppliedPromo(null);
+    setPromoInput("");
+    setPromoError(null);
+  };
+
   // When modal opens, pre-select the detected plan and start on Step 1
   useEffect(() => {
     if (isOpen) {
@@ -116,6 +144,9 @@ export function MembershipModal() {
       setCurrentStep(1);
       setError(null);
       setSession(null);
+      setAppliedPromo(null);
+      setPromoInput("");
+      setPromoError(null);
     }
   }, [isOpen, activePlan]);
 
@@ -129,6 +160,9 @@ export function MembershipModal() {
       setFormData({ name: "", email: "", phone: "" });
       setSession(null);
       setError(null);
+      setAppliedPromo(null);
+      setPromoInput("");
+      setPromoError(null);
     }, 250);
   };
 
@@ -166,6 +200,7 @@ export function MembershipModal() {
           name: formData.name,
           email: formData.email,
           phone: formData.phone,
+          promoCode: appliedPromo?.code || undefined,
         }),
       });
 
@@ -526,9 +561,67 @@ export function MembershipModal() {
                       <p className="text-xs text-brand-teal/70">{currentPlan.sub}</p>
                     </div>
 
+                    {selectedPlanId === "family" && (
+                      <div className="border-t border-brand-teal/10 pt-2.5">
+                        {!appliedPromo ? (
+                          <div>
+                            <label className="block text-[11px] font-medium text-brand-teal/80 mb-1">
+                              Have a promo code? (e.g. PROMO75)
+                            </label>
+                            <div className="flex gap-2">
+                              <input
+                                type="text"
+                                value={promoInput}
+                                onChange={(e) => setPromoInput(e.target.value.toUpperCase())}
+                                placeholder="PROMO75"
+                                className="w-full rounded border border-brand-teal/20 bg-white px-2 py-1 text-xs uppercase font-mono text-brand-teal focus:border-brand-teal outline-none"
+                              />
+                              <button
+                                type="button"
+                                onClick={handleApplyPromo}
+                                className="rounded bg-brand-teal px-3 py-1 text-xs font-semibold text-white hover:bg-brand-teal-dark transition cursor-pointer"
+                              >
+                                Apply
+                              </button>
+                            </div>
+                            {promoError && <p className="mt-1 text-[10px] text-red-600">{promoError}</p>}
+                          </div>
+                        ) : (
+                          <div className="rounded-lg bg-emerald-50 border border-emerald-200 p-2 text-xs text-emerald-900">
+                            <div className="flex items-center justify-between">
+                              <span className="font-bold">{appliedPromo.code} applied</span>
+                              <button
+                                type="button"
+                                onClick={handleRemovePromo}
+                                className="text-[10px] text-red-600 hover:underline font-semibold"
+                              >
+                                Remove
+                              </button>
+                            </div>
+                            <p className="text-[11px] text-emerald-700 mt-0.5">{appliedPromo.label}</p>
+                          </div>
+                        )}
+                      </div>
+                    )}
+
                     <div className="border-t border-brand-teal/10 pt-2 flex items-baseline justify-between">
                       <span className="text-xs font-semibold text-brand-teal">Amount Due</span>
-                      <span className="text-2xl font-extrabold text-coral">{currentPlan.priceFormatted}</span>
+                      <div className="text-right">
+                        {appliedPromo && selectedPlanId === "family" ? (
+                          <div className="flex items-baseline gap-2">
+                            <span className="text-sm line-through text-brand-teal/40">
+                              {currentPlan.priceFormatted}
+                            </span>
+                            <span className="text-2xl font-extrabold text-coral">
+                              {appliedPromo.finalPriceFormatted}
+                            </span>
+                          </div>
+                        ) : (
+                          <span className="text-2xl font-extrabold text-coral">
+                            {currentPlan.priceFormatted}
+                          </span>
+                        )}
+                      </div>
                     </div>
 
                     <p className="text-[11px] text-brand-teal/60 pt-1">
@@ -741,7 +834,7 @@ function StripePaymentStep({
               ) : (
                 <>
                   <Lock className="w-4 h-4" />
-                  <span>Pay {currentPlan.priceFormatted}</span>
+                  <span>Pay {session.plan.priceFormatted}</span>
                 </>
               )}
             </button>
@@ -760,7 +853,7 @@ function StripePaymentStep({
           </span>
 
           <div className="bg-white rounded-lg p-3 border border-brand-teal/10 space-y-1 text-xs">
-            <p className="font-bold text-brand-teal">{currentPlan.name}</p>
+            <p className="font-bold text-brand-teal">{session.plan.name}</p>
             <p className="text-brand-teal/70 text-[11px]">Member: {formData.name}</p>
             <p className="text-brand-teal/70 text-[11px]">Email: {formData.email}</p>
           </div>
@@ -776,9 +869,16 @@ function StripePaymentStep({
             </div>
           </div>
 
+          {session.promoApplied && (
+            <div className="flex justify-between text-xs text-emerald-700 font-semibold bg-emerald-50 rounded p-1.5 border border-emerald-200">
+              <span>Promo applied ({session.promoApplied.code})</span>
+              <span>-£25.00</span>
+            </div>
+          )}
+
           <div className="border-t border-brand-teal/10 pt-2 flex items-baseline justify-between">
             <span className="text-xs font-semibold text-brand-teal">Amount Due</span>
-            <span className="text-2xl font-extrabold text-coral">{currentPlan.priceFormatted}</span>
+            <span className="text-2xl font-extrabold text-coral">{session.plan.priceFormatted}</span>
           </div>
         </div>
       </div>

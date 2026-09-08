@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Icon from "@/components/Icon";
 import SectionLabel from "@/components/SectionLabel";
 import { businessPage, howItWorksAssurances, siteConfig } from "@/lib/site";
@@ -13,6 +13,22 @@ const labelClass = "block text-[11px] text-brand-teal/70";
 
 export default function RequestQuote() {
   const [sent, setSent] = useState(false);
+  const [selectedHeadcount, setSelectedHeadcount] = useState(businessPage.pricingRows[0].band);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const headcountParam = params.get("headcount");
+      if (headcountParam) {
+        const match = businessPage.pricingRows.find(
+          (r) => r.band.toLowerCase() === headcountParam.toLowerCase()
+        );
+        if (match) {
+          setSelectedHeadcount(match.band);
+        }
+      }
+    }
+  }, []);
 
   return (
     <>
@@ -109,11 +125,14 @@ export default function RequestQuote() {
                   id="quote-headcount"
                   name="headcount"
                   required
-                  defaultValue={businessPage.pricingRows[0].band}
+                  value={selectedHeadcount}
+                  onChange={(e) => setSelectedHeadcount(e.target.value)}
                   className={`mt-2 ${fieldClass}`}
                 >
                   {businessPage.pricingRows.map((row) => (
-                    <option key={row.band} value={row.band}>{row.band}</option>
+                    <option key={row.band} value={row.band}>
+                      {row.band} employees {row.price !== "Bespoke" ? `(${row.price}/year)` : "(Bespoke quote)"}
+                    </option>
                   ))}
                 </select>
               </div>
@@ -133,8 +152,8 @@ export default function RequestQuote() {
             <div className="rounded-lg bg-brand-teal p-6 text-white sm:p-8">
               <h2 className="text-xl text-white sm:text-2xl">Company details</h2>
               <p className="mt-5 text-sm leading-relaxed text-white/80">
-                <strong>Company registration no.</strong> 00000000 (to be confirmed)<br />
-                <strong>Registered office:</strong> 1 Example Street, London, EC1A 0AA (to be confirmed)<br />
+                <strong>Company registration no.</strong> {siteConfig.companyNumber}<br />
+                <strong>Registered office:</strong> {siteConfig.registeredAddress}<br />
                 <strong>ICO registration no.</strong> ZA000000 (to be confirmed)
               </p>
               <p className="mt-6 text-sm leading-relaxed text-white/80">

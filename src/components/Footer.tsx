@@ -64,8 +64,8 @@ export default function Footer() {
           {/* Registration details and the emergency strapline share one row from lg. */}
           <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between lg:gap-8">
             <p className="text-[11px] leading-relaxed text-pretty text-white/45">
-              © {new Date().getFullYear()} 247 GP Direct Ltd. Company No. (TBC)
-              · Registered in England &amp; Wales · Registered address: (TBC) ·
+              © {new Date().getFullYear()} 247 GP Direct Ltd. Company No. {siteConfig.companyNumber}
+              · Registered in England &amp; Wales · Registered address: {siteConfig.registeredAddress} ·
               ICO Registration: (TBC) · CQC Registration: (TBC)
             </p>
             <p className="text-[11px] leading-relaxed text-white/45 lg:whitespace-nowrap">
