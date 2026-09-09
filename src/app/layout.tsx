@@ -16,6 +16,18 @@ export const metadata: Metadata = {
   title: "247 GP Direct — Healthcare that never closes",
   description:
     "Speak to a registered GP in minutes, any hour of the day. Video consultations, prescriptions and referrals — all from your phone.",
+  icons: {
+    icon: [
+      { url: "/favicon/favicon.ico" },
+      { url: "/favicon/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon/247 GP Direct Fav.png", sizes: "923x923", type: "image/png" },
+    ],
+    shortcut: "/favicon/favicon.ico",
+    apple: [
+      { url: "/favicon/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
 };
 
 export const viewport: Viewport = {
