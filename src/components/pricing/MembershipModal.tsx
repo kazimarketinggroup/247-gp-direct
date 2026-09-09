@@ -127,7 +127,7 @@ export function MembershipModal() {
     if (promo) {
       setAppliedPromo(promo);
     } else {
-      setPromoError("Invalid promo code. Try PROMO75.");
+      setPromoError("Invalid promo code.");
     }
   };
 
@@ -588,14 +588,14 @@ export function MembershipModal() {
                         {!appliedPromo ? (
                           <div>
                             <label className="block text-[11px] font-medium text-brand-teal/80 mb-1">
-                              Have a promo code? (e.g. PROMO75)
+                              Have a promo code?
                             </label>
                             <div className="flex gap-2">
                               <input
                                 type="text"
                                 value={promoInput}
                                 onChange={(e) => setPromoInput(e.target.value.toUpperCase())}
-                                placeholder="PROMO75"
+                                placeholder="Enter code"
                                 className="w-full rounded border border-brand-teal/20 bg-white px-2 py-1 text-xs uppercase font-mono text-brand-teal focus:border-brand-teal outline-none"
                               />
                               <button

@@ -244,12 +244,11 @@ export const plans = [
       "All ages covered at one price",
       "Electronic prescriptions to door/pharmacy",
       "Keep your NHS GP with no de-registration",
-      "Promo available: £75/yr with promo code",
+      "No hidden per-call charges, ever",
     ],
     cta: "Get Individual & Family Plan",
     featured: true,
     badge: "Includes Family",
-    promoNote: "Promo code available: £75/year",
   },
 ];
 
@@ -582,7 +581,7 @@ export const joinPlanOptions = [
     name: "Individual & Sole Trader (Family Package)",
     detail:
       "One adult or sole trader — partner and dependent children covered as standard",
-    summary: "£100 a year, renewing annually (promo code eligible for £75)",
+    summary: "£100 a year, renewing annually",
   },
   {
     id: "holiday",

@@ -86,21 +86,6 @@ export default function Pricing({
       {/* TAB 1: Personal, Sole Trader & Family */}
       {activeTab === "personal" && (
         <>
-          {/* Promo code launch banner */}
-          <div className="mx-auto mt-6 max-w-2xl rounded-xl border border-coral/30 bg-coral/10 px-4 py-3 text-center sm:px-6">
-            <p className="text-xs font-medium text-brand-teal sm:text-sm">
-              <span className="mr-2 inline-flex items-center rounded-md bg-coral px-2 py-0.5 text-[11px] font-bold text-white uppercase">
-                Launch Promo
-              </span>
-              Get the Individual &amp; Sole Trader family plan for{" "}
-              <strong className="font-bold text-coral">£75/year</strong> (was £100) with promo code{" "}
-              <code className="rounded bg-white px-1.5 py-0.5 font-mono text-xs font-bold text-brand-teal shadow-xs">
-                PROMO75
-              </code>{" "}
-              at checkout.
-            </p>
-          </div>
-
           <div className="mx-auto mt-8 grid max-w-md grid-cols-1 items-start gap-5 sm:max-w-xl md:max-w-none md:grid-cols-2 lg:gap-6">
             {plans.map((plan) => (
               <div
@@ -144,11 +129,6 @@ export default function Pricing({
                   >
                     {plan.period}
                   </span>
-                  {plan.id === "family" && (
-                    <span className="ml-2 rounded bg-coral/20 px-2 py-0.5 text-[11px] font-semibold text-coral">
-                      Promo: £75
-                    </span>
-                  )}
                 </p>
 
                 <p
