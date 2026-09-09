@@ -69,7 +69,7 @@ export default function BusinessPricing() {
                 {businessPage.pricingRows.map((row) => (
                   <tr key={row.band} className="border-b border-white/10 last:border-b-0">
                     <th scope="row" className="px-5 py-4 text-sm font-semibold text-white/90">
-                      {row.band} employees
+                      {row.label || row.band}
                     </th>
                     <td className="px-3 py-4 text-center text-sm font-bold text-coral">
                       {row.price}

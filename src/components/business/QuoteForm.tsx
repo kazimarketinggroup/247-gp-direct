@@ -129,7 +129,7 @@ export default function QuoteForm() {
                 >
                   {businessPage.pricingRows.map((row) => (
                     <option key={row.band} value={row.band}>
-                      {row.band}
+                      {row.label || row.band} {row.price.includes("POA") ? "(POA)" : `(${row.price}/yr)`}
                     </option>
                   ))}
                 </select>

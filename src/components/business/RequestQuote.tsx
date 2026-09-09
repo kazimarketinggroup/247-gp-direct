@@ -21,7 +21,11 @@ export default function RequestQuote() {
       const headcountParam = params.get("headcount");
       if (headcountParam) {
         const match = businessPage.pricingRows.find(
-          (r) => r.band.toLowerCase() === headcountParam.toLowerCase()
+          (r) =>
+            r.band.toLowerCase() === headcountParam.toLowerCase() ||
+            (r.label && r.label.toLowerCase() === headcountParam.toLowerCase()) ||
+            headcountParam.toLowerCase().includes(r.band.toLowerCase()) ||
+            r.band.toLowerCase().includes(headcountParam.toLowerCase())
         );
         if (match) {
           setSelectedHeadcount(match.band);
@@ -131,7 +135,7 @@ export default function RequestQuote() {
                 >
                   {businessPage.pricingRows.map((row) => (
                     <option key={row.band} value={row.band}>
-                      {row.band} employees {row.price !== "Bespoke" ? `(${row.price}/year)` : "(Bespoke quote)"}
+                      {row.label || row.band} {row.price.includes("POA") ? "(Price on application - POA)" : `(${row.price}/year)`}
                     </option>
                   ))}
                 </select>

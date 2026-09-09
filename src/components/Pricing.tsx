@@ -77,7 +77,7 @@ export default function Pricing({
           >
             <span>SME &amp; Business Cover</span>
             <span className="rounded-full bg-coral px-2 py-0.5 text-[10px] font-semibold text-white">
-              From £150
+              From £100
             </span>
           </button>
         </div>
@@ -206,7 +206,7 @@ export default function Pricing({
               onClick={() => setActiveTab("business")}
               className="text-xs font-medium text-brand-teal/75 underline-offset-4 hover:text-coral hover:underline sm:text-sm"
             >
-              Employing a team? View our SME packages starting from £150/year →
+              Employing a team or running a business? View our business packages starting from £100/year →
             </button>
           </div>
         </>
@@ -325,6 +325,58 @@ export default function Pricing({
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Quick Rate Card Summary Table */}
+          <div className="mt-10 overflow-hidden rounded-2xl border border-brand-teal/15 bg-white shadow-sm">
+            <div className="bg-brand-teal px-6 py-4 text-white">
+              <h3 className="text-base font-semibold sm:text-lg">Full Business &amp; SME Price List</h3>
+              <p className="text-xs text-white/75 sm:text-sm">
+                Banded by headcount, billed annually on one company invoice. Full family cover included on every tier.
+              </p>
+            </div>
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-[32rem] text-left text-sm">
+                <thead>
+                  <tr className="border-b border-brand-teal/10 bg-mint/30 text-xs font-semibold uppercase tracking-wider text-brand-teal">
+                    <th className="px-6 py-3.5">Business Tier / Headcount</th>
+                    <th className="px-6 py-3.5 text-center">Annual Price</th>
+                    <th className="px-6 py-3.5 text-center">Family Cover</th>
+                    <th className="px-6 py-3.5 text-right">Action</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-brand-teal/10">
+                  {smePlans.map((plan) => (
+                    <tr key={plan.band} className="transition-colors hover:bg-mint/10">
+                      <td className="px-6 py-4">
+                        <div className="font-semibold text-brand-teal">{plan.employees}</div>
+                        <div className="text-xs text-brand-teal/60">{plan.sub}</div>
+                      </td>
+                      <td className="px-6 py-4 text-center font-bold text-coral text-base">
+                        {plan.price}{" "}
+                        <span className="text-xs font-normal text-brand-teal/60">
+                          {plan.period === "tailored" ? "" : plan.period}
+                        </span>
+                      </td>
+                      <td className="px-6 py-4 text-center">
+                        <span className="inline-flex items-center gap-1 rounded-full bg-mint px-2.5 py-0.5 text-xs font-medium text-brand-teal">
+                          <Icon name="check" className="h-3 w-3 text-coral" strokeWidth={2.5} />
+                          Included
+                        </span>
+                      </td>
+                      <td className="px-6 py-4 text-right">
+                        <Link
+                          href={`/business/request-a-quote?headcount=${encodeURIComponent(plan.band)}`}
+                          className="inline-flex items-center justify-center rounded-md bg-coral px-3.5 py-1.5 text-xs font-medium text-white transition-colors hover:bg-coral-dark"
+                        >
+                          Enquire
+                        </Link>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
 
           <div className="mt-6 text-center">

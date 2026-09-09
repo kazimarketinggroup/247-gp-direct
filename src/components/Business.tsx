@@ -34,7 +34,7 @@ export default function Business() {
           </p>
 
           <p className="mt-4 max-w-xl text-sm leading-relaxed text-pretty text-brand-teal/75 sm:text-base">
-            SME packages start from just <strong className="font-semibold text-brand-teal">£150 a year</strong> for up to 25 employees, including full family cover for staff. Simple rollout in days.
+            Business packages start from just <strong className="font-semibold text-brand-teal">£100 a year</strong> for sole traders and £140 for teams, including full family cover for staff. Simple rollout in days.
           </p>
 
           <div className="mt-7 flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center">
@@ -42,7 +42,7 @@ export default function Business() {
               href="/pricing?tab=business"
               className="inline-flex items-center justify-center rounded-md bg-coral px-6 py-3 text-sm text-white transition-colors hover:bg-coral-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral sm:text-base"
             >
-              View SME Plans (from £150)
+              View Business Plans (from £100)
             </Link>
             <Link
               href="/business"
