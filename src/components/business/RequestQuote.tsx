@@ -13,22 +13,21 @@ const labelClass = "block text-[11px] text-brand-teal/70";
 
 export default function RequestQuote() {
   const [sent, setSent] = useState(false);
-  const [selectedHeadcount, setSelectedHeadcount] = useState(businessPage.pricingRows[0].band);
+  const [selectedHeadcount, setSelectedHeadcount] = useState(businessPage.headcountOptions[0]);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       const params = new URLSearchParams(window.location.search);
       const headcountParam = params.get("headcount");
       if (headcountParam) {
-        const match = businessPage.pricingRows.find(
-          (r) =>
-            r.band.toLowerCase() === headcountParam.toLowerCase() ||
-            (r.label && r.label.toLowerCase() === headcountParam.toLowerCase()) ||
-            headcountParam.toLowerCase().includes(r.band.toLowerCase()) ||
-            r.band.toLowerCase().includes(headcountParam.toLowerCase())
+        const match = businessPage.headcountOptions.find(
+          (opt) =>
+            opt.toLowerCase() === headcountParam.toLowerCase() ||
+            headcountParam.toLowerCase().includes(opt.toLowerCase()) ||
+            opt.toLowerCase().includes(headcountParam.toLowerCase())
         );
         if (match) {
-          setSelectedHeadcount(match.band);
+          setSelectedHeadcount(match);
         }
       }
     }
@@ -133,9 +132,9 @@ export default function RequestQuote() {
                   onChange={(e) => setSelectedHeadcount(e.target.value)}
                   className={`mt-2 ${fieldClass}`}
                 >
-                  {businessPage.pricingRows.map((row) => (
-                    <option key={row.band} value={row.band}>
-                      {row.label || row.band} {row.price.includes("POA") ? "(Price on application - POA)" : `(${row.price}/year)`}
+                  {businessPage.headcountOptions.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
                     </option>
                   ))}
                 </select>

@@ -1253,6 +1253,12 @@ export const businessPage = {
   quoteTitle: "Six fields. One conversation.",
   quoteIntro:
     "We reply within one working day with indicative pricing for your headcount.",
+  headcountOptions: [
+    "Up to 25",
+    "26-50",
+    "51-100",
+    "101+",
+  ],
   brokersTitle: "Brokers and benefits consultants",
   brokersBody:
     "We work with brokers on referral and commission terms. Get in touch for the partner pack and rate card.",

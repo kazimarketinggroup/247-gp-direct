@@ -124,12 +124,12 @@ export default function QuoteForm() {
                   id="q-headcount"
                   name="headcount"
                   required
-                  defaultValue={businessPage.pricingRows[0].band}
+                  defaultValue={businessPage.headcountOptions[0]}
                   className={`mt-2 ${FIELD}`}
                 >
-                  {businessPage.pricingRows.map((row) => (
-                    <option key={row.band} value={row.band}>
-                      {row.label || row.band} {row.price.includes("POA") ? "(POA)" : `(${row.price}/yr)`}
+                  {businessPage.headcountOptions.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
                     </option>
                   ))}
                 </select>
