@@ -24,9 +24,9 @@ export type NavItem = {
 
 export const siteConfig = {
   name: "247 GP Direct",
-  phone: "0800 123 4567",
-  phoneDisplay: "1234 567 8900",
-  bookingLine: "0800 123 4567",
+  phone: "0330 520 0089",
+  phoneDisplay: "0330 520 0089",
+  bookingLine: "0330 520 0089",
   membersNote: "Members: call any time, no appointment needed",
   companyNumber: "17371724",
   registeredAddress:
