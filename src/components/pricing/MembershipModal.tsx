@@ -264,12 +264,34 @@ export function MembershipModal() {
                 ".Tab": {
                   border: "1.5px solid #d4d4d4",
                   backgroundColor: "#faf7f2",
+                  color: "#0f3f3f",
                   padding: "8px 12px",
+                },
+                ".Tab:hover": {
+                  borderColor: "#0f3f3f",
+                  color: "#0f3f3f",
                 },
                 ".Tab--selected": {
                   border: "1.5px solid #0f3f3f",
                   backgroundColor: "#ffffff",
+                  color: "#0f3f3f",
                   boxShadow: "0 2px 6px rgba(15, 63, 63, 0.08)",
+                },
+                ".Tab--selected:focus": {
+                  border: "1.5px solid #0f3f3f",
+                  boxShadow: "0 0 0 3px rgba(15, 63, 63, 0.12)",
+                },
+                ".TabIcon": {
+                  color: "#0f3f3f",
+                },
+                ".TabIcon--selected": {
+                  color: "#0f3f3f",
+                },
+                ".TabLabel": {
+                  color: "#0f3f3f",
+                },
+                ".TabLabel--selected": {
+                  color: "#0f3f3f",
                 },
               },
             },
