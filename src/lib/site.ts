@@ -71,7 +71,7 @@ export const navItems: NavItem[] = [
         alt: "A woman video-calling a GP from her kitchen in the evening",
       },
       promo: {
-        caption: "Family package £100/year · Holiday cover £30/15 days",
+        caption: "Family package £100/year · Holiday cover £30/30 days",
         linkLabel: "See Plans",
         href: "/pricing",
       },
@@ -217,15 +217,15 @@ export const plans = [
     name: "HOLIDAY COVER",
     price: "£30",
     period: "one-off",
-    sub: "Per trip · 15 days abroad",
-    covers: "15 days of 24/7 medical advice with a UK GP while you're abroad",
+    sub: "Per trip · 30 days abroad",
+    covers: "30 days of 24/7 medical advice with a UK GP while you're abroad",
     features: [
       "Unlimited GP consultations abroad",
       "24/7 access (UK time)",
       "Phone or video appointments",
       "Medical prescriptions (as required)",
       "Referral letters & clinical guidance",
-      "Cover abroad for the full 15 days",
+      "Cover abroad for the full 30 days",
     ],
     cta: "Get Holiday Cover",
     featured: false,
@@ -547,7 +547,7 @@ export const comparisonRows: Array<{
   {
     label: "Unlimited appointments",
     family: true,
-    holiday: "Within the 15-day period",
+    holiday: "Within the 30-day period",
   },
   { label: "24/7, 365 days a year", family: true, holiday: true },
   { label: "Phone or video", family: true, holiday: true },
@@ -559,7 +559,7 @@ export const comparisonRows: Array<{
   { label: "Referral letters", family: true, holiday: "—" },
   { label: "Cover abroad", family: true, holiday: true },
   { label: "Notes to your NHS GP", family: true, holiday: true },
-  { label: "Contract length", family: "12 months", holiday: "15 days" },
+  { label: "Contract length", family: "12 months", holiday: "30 days" },
 ];
 
 export const pricingAssuranceCards = [
@@ -586,8 +586,8 @@ export const joinPlanOptions = [
   {
     id: "holiday",
     name: "Holiday Cover",
-    detail: "15 days of 24/7 medical advice with a GP while you're abroad",
-    summary: "£30 one-off, 15 days of cover abroad",
+    detail: "30 days of 24/7 medical advice with a GP while you're abroad",
+    summary: "£30 one-off, 30 days of cover abroad",
   },
 ];
 
@@ -607,7 +607,7 @@ export const aboutPage = {
   paragraphs: [
     "We provide unlimited access to UK-qualified private GPs, 24 hours a day, 365 days a year, by telephone and video consultation, on a single annual subscription. Members call one number and speak to a doctor — at 8am on a Tuesday or 2am on a Sunday.",
     "We do not ask members to leave their NHS surgery, and we never will. This service is the layer that sits underneath NHS care: the everyday questions, the sudden temperatures, the infections that need answering tonight rather than a fortnight from now.",
-    "Consultations are delivered by our clinical provider and prescriptions are dispensed by a registered UK pharmacy partner. Both are named here in full once contractual confirmation is received.",
+    "Consultations are delivered by our clinical provider and prescriptions are dispensed by a registered UK pharmacy partner.",
   ],
 };
 

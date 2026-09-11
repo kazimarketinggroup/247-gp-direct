@@ -96,10 +96,10 @@ export default function Navbar() {
             <Image
               src="/images/home/logo.png"
               alt={`${siteConfig.name} home`}
-              width={264}
-              height={66}
+              width={245}
+              height={240}
               priority
-              className="h-6 w-auto sm:h-7 lg:h-8"
+              className="h-10 w-auto sm:h-12 lg:h-14"
             />
           </Link>
 

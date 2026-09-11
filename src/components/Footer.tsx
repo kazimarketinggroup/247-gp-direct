@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import Icon from "@/components/Icon";
 import { footerSections, siteConfig } from "@/lib/site";
@@ -9,9 +10,18 @@ export default function Footer() {
         {/* Brand block and call card stack on mobile, split from lg. */}
         <div className="flex flex-col gap-8 border-b border-white/10 pb-10 lg:flex-row lg:items-start lg:justify-between lg:gap-12">
           <div className="max-w-md">
-            <p className="text-lg tracking-tight">
-              <span className="text-coral">247</span> GP Direct
-            </p>
+            <Link
+              href="/"
+              className="inline-block rounded-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-coral"
+            >
+              <Image
+                src="/images/home/logo-footer.png"
+                alt={`${siteConfig.name} home`}
+                width={245}
+                height={240}
+                className="h-14 w-auto sm:h-16"
+              />
+            </Link>
             <p className="mt-4 text-sm leading-relaxed text-pretty text-white/65">
               Unlimited private GP appointments, 24 hours a day, 365 days a year.
               For you, your family, or your team.

@@ -40,8 +40,8 @@ export const STRIPE_PLANS: Record<string, StripePlanConfig> = {
     name: "Holiday Cover",
     priceFormatted: "£30",
     periodFormatted: "one-off",
-    sub: "Per trip · 15 days abroad",
-    description: "15 days of medical advice with a UK-qualified GP while you're abroad.",
+    sub: "Per trip · 30 days abroad",
+    description: "30 days of medical advice with a UK-qualified GP while you're abroad.",
     unitAmount: 3000, // £30.00
     currency: "gbp",
     mode: "payment",

@@ -59,7 +59,7 @@ export default function AbroadPage() {
                 Holiday Package
               </span>
               <h2 className="mt-4 text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
-                15 Days Medical Advice with a UK GP Abroad
+                30 Days Medical Advice with a UK GP Abroad
               </h2>
               <p className="mt-3 max-w-xl text-sm leading-relaxed text-white/80 sm:text-base">
                 Going on holiday or traveling overseas? Speak with a GMC-registered UK GP 24 hours a day by phone or video whenever you or your travel companion feel unwell.
@@ -68,7 +68,7 @@ export default function AbroadPage() {
               <ul className="mt-6 grid grid-cols-1 gap-2.5 sm:grid-cols-2 text-xs sm:text-sm text-white/90">
                 <li className="flex items-center gap-2">
                   <Icon name="check" className="h-4 w-4 text-coral shrink-0" strokeWidth={3} />
-                  <span>Unlimited appointments during 15 days</span>
+                  <span>Unlimited appointments during 30 days</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <Icon name="check" className="h-4 w-4 text-coral shrink-0" strokeWidth={3} />
@@ -91,7 +91,7 @@ export default function AbroadPage() {
               </span>
               <p className="mt-2 flex items-baseline justify-center gap-1">
                 <span className="text-5xl font-extrabold text-white">£30</span>
-                <span className="text-sm text-white/70">/ 15 days</span>
+                <span className="text-sm text-white/70">/ 30 days</span>
               </p>
               <p className="mt-2 text-xs text-white/80">
                 Per trip · Cover starts when you need it

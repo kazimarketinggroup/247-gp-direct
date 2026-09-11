@@ -21,7 +21,7 @@ export const metadata: Metadata = {
       { url: "/favicon/favicon.ico" },
       { url: "/favicon/favicon-32x32.png", sizes: "32x32", type: "image/png" },
       { url: "/favicon/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicon/247 GP Direct Fav.png", sizes: "923x923", type: "image/png" },
+      { url: "/favicon/247 GP Direct Fav.png", sizes: "512x512", type: "image/png" },
     ],
     shortcut: "/favicon/favicon.ico",
     apple: [
