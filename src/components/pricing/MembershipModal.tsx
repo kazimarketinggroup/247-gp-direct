@@ -13,6 +13,7 @@ import {
   User,
   Mail,
   Phone,
+  Building2,
   ArrowLeft,
   ArrowRight,
   Check,
@@ -24,11 +25,63 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 import { stripePromise } from "@/lib/stripe-client";
-import { STRIPE_PLANS, StripePlanConfig, getPromoDiscount, PromoConfig } from "@/lib/stripe-plans";
+import {
+  STRIPE_PLANS,
+  StripePlanConfig,
+  StripePlanId,
+  getStripePlan,
+  getPromoDiscount,
+  PromoConfig,
+} from "@/lib/stripe-plans";
 import { joinPlanOptions, joinSteps } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 type StepIndex = 1 | 2 | 3 | 4;
+
+export const businessPlanOptions = [
+  {
+    id: "sme-5" as StripePlanId,
+    name: "Up to 5 Employees",
+    detail: "Affordable 24/7 private GP care for micro teams & startups",
+    summary: "£140 / year (One company invoice)",
+    priceTag: "£140 / year",
+  },
+  {
+    id: "sme-10" as StripePlanId,
+    name: "6–10 Employees",
+    detail: "Full private GP benefit for small teams · Family cover included",
+    summary: "£175 / year (£17.50/employee equivalent)",
+    priceTag: "£175 / year",
+  },
+  {
+    id: "sme-15" as StripePlanId,
+    name: "11–15 Employees",
+    detail: "Comprehensive benefit for growing teams · Family cover included",
+    summary: "£225 / year (£15.00/employee equivalent)",
+    priceTag: "£225 / year",
+  },
+  {
+    id: "sme-20" as StripePlanId,
+    name: "16–20 Employees",
+    detail: "Scalable healthcare package · Family cover included",
+    summary: "£275 / year (£13.75/employee equivalent)",
+    priceTag: "£275 / year",
+  },
+  {
+    id: "sme-25" as StripePlanId,
+    name: "21–25 Employees",
+    detail: "All-inclusive healthcare for established SME teams",
+    summary: "£325 / year (£13.00/employee equivalent)",
+    priceTag: "£325 / year",
+  },
+  {
+    id: "sme-50" as StripePlanId,
+    name: "26–50 Employees",
+    detail: "Full corporate SME cover · Family cover included",
+    summary: "£450 / year (£9.00/employee equivalent)",
+    priceTag: "£450 / year",
+  },
+];
 
 interface PaymentSession {
   clientSecret: string;
@@ -42,7 +95,7 @@ interface PaymentSession {
     finalPriceFormatted: string;
   } | null;
   plan: {
-    id: "holiday" | "family";
+    id: StripePlanId;
     name: string;
     priceFormatted: string;
     originalPriceFormatted?: string;
@@ -55,7 +108,7 @@ interface PaymentSession {
 interface MembershipModalContextType {
   isOpen: boolean;
   activePlan: StripePlanConfig;
-  openModal: (planId?: "holiday" | "family" | string) => void;
+  openModal: (planId?: StripePlanId | string) => void;
   closeModal: () => void;
 }
 
@@ -70,11 +123,16 @@ export const useMembershipModal = () => useContext(MembershipModalContext);
 
 export function MembershipModalProvider({ children }: { children: ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedPlanId, setSelectedPlanId] = useState<"holiday" | "family">("family");
+  const [selectedPlanId, setSelectedPlanId] = useState<StripePlanId>("family");
 
-  const openModal = (planId?: "holiday" | "family" | string) => {
-    if (planId === "holiday" || (typeof planId === "string" && planId.toLowerCase().includes("holiday"))) {
-      setSelectedPlanId("holiday");
+  const openModal = (planId?: StripePlanId | string) => {
+    if (planId) {
+      const plan = getStripePlan(planId);
+      if (plan) {
+        setSelectedPlanId(plan.id);
+      } else {
+        setSelectedPlanId("family");
+      }
     } else {
       setSelectedPlanId("family");
     }
@@ -104,11 +162,12 @@ export function MembershipModal() {
   const { isOpen, activePlan, closeModal } = useMembershipModal();
 
   const [currentStep, setCurrentStep] = useState<StepIndex>(1);
-  const [selectedPlanId, setSelectedPlanId] = useState<"holiday" | "family">("family");
+  const [selectedPlanId, setSelectedPlanId] = useState<StripePlanId>("family");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
+    companyName: "",
   });
 
   const [session, setSession] = useState<PaymentSession | null>(null);
@@ -137,11 +196,16 @@ export function MembershipModal() {
     setPromoError(null);
   };
 
-  // When modal opens, pre-select the detected plan and start on Step 1
+  // When modal opens, pre-select the detected plan
   useEffect(() => {
     if (isOpen) {
       setSelectedPlanId(activePlan.id);
-      setCurrentStep(1);
+      // For business plans, user already clicked their specific tier on the pricing page: start directly on Step 2
+      if (activePlan.isBusiness) {
+        setCurrentStep(2);
+      } else {
+        setCurrentStep(1);
+      }
       setError(null);
       setSession(null);
       setAppliedPromo(null);
@@ -157,7 +221,7 @@ export function MembershipModal() {
     closeModal();
     setTimeout(() => {
       setCurrentStep(1);
-      setFormData({ name: "", email: "", phone: "" });
+      setFormData({ name: "", email: "", phone: "", companyName: "" });
       setSession(null);
       setError(null);
       setAppliedPromo(null);
@@ -175,6 +239,10 @@ export function MembershipModal() {
   // Move from Step 2 (Your details) to Step 3 (Payment)
   const handleProceedToPayment = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (currentPlan.isBusiness && !formData.companyName.trim()) {
+      setError("Please enter your company or organisation name.");
+      return;
+    }
     if (!formData.name.trim()) {
       setError("Please enter your full name.");
       return;
@@ -200,6 +268,7 @@ export function MembershipModal() {
           name: formData.name,
           email: formData.email,
           phone: formData.phone,
+          companyName: formData.companyName,
           promoCode: appliedPromo?.code || undefined,
         }),
       });
@@ -376,9 +445,14 @@ export function MembershipModal() {
                   {/* Radio Plan Options */}
                   <fieldset className="lg:col-span-7 flex flex-col gap-3">
                     <legend className="sr-only">Choose your plan</legend>
-                    {joinPlanOptions.map((plan) => {
+                    {(currentPlan.isBusiness ? businessPlanOptions : joinPlanOptions).map((plan) => {
                       const isSelected = selectedPlanId === plan.id;
-                      const priceTag = plan.id === "family" ? "£100 / year" : "£30 one-off";
+                      const priceTag: string =
+                        "priceTag" in plan
+                          ? (plan as { priceTag: string }).priceTag
+                          : plan.id === "family"
+                          ? "£100 / year"
+                          : "£30 one-off";
 
                       return (
                         <label
@@ -408,7 +482,7 @@ export function MembershipModal() {
                               name="modal_plan"
                               value={plan.id}
                               checked={isSelected}
-                              onChange={() => setSelectedPlanId(plan.id as "holiday" | "family")}
+                              onChange={() => setSelectedPlanId(plan.id as StripePlanId)}
                               className="sr-only"
                             />
                             <span
@@ -442,10 +516,12 @@ export function MembershipModal() {
                   {/* Dark Teal Preview Card on the Right */}
                   <div className="lg:col-span-5 rounded-xl bg-brand-teal p-5 text-white">
                     <p className="text-[11px] tracking-widest text-white/55 uppercase font-medium">
-                      Your plan
+                      {currentPlan.isBusiness ? "Business Plan" : "Your plan"}
                     </p>
-                    <p className="mt-2 text-xl font-semibold sm:text-2xl">{currentPlanOption.name}</p>
-                    <p className="mt-1 text-sm text-white/80 font-medium">{currentPlanOption.summary}</p>
+                    <p className="mt-2 text-xl font-semibold sm:text-2xl">{currentPlan.name}</p>
+                    <p className="mt-1 text-sm text-white/80 font-medium">
+                      {currentPlan.priceFormatted} {currentPlan.periodFormatted} · {currentPlan.sub}
+                    </p>
 
                     <ul className="mt-4 space-y-1.5 text-xs text-white/85 border-t border-white/10 pt-3">
                       <li className="flex items-center gap-2">
@@ -454,16 +530,26 @@ export function MembershipModal() {
                       </li>
                       <li className="flex items-center gap-2">
                         <Check className="h-3.5 w-3.5 text-coral shrink-0" strokeWidth={2.5} />
-                        <span>Keep your NHS GP registration</span>
+                        <span>
+                          {currentPlan.isBusiness
+                            ? "Full family cover for each employee"
+                            : "Keep your NHS GP registration"}
+                        </span>
                       </li>
                       <li className="flex items-center gap-2">
                         <Check className="h-3.5 w-3.5 text-coral shrink-0" strokeWidth={2.5} />
-                        <span>No medical questionnaire</span>
+                        <span>
+                          {currentPlan.isBusiness
+                            ? "Single annual company invoice"
+                            : "No medical questionnaire"}
+                        </span>
                       </li>
                     </ul>
 
                     <p className="mt-4 text-[11px] leading-relaxed text-white/60">
-                      This is not an emergency service call 999 or NHS 111 if it&apos;s urgent.
+                      {currentPlan.isBusiness
+                        ? "Rollout in days with employer launch kit and dedicated support."
+                        : "This is not an emergency service call 999 or NHS 111 if it's urgent."}
                     </p>
                   </div>
                 </div>
@@ -476,13 +562,36 @@ export function MembershipModal() {
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
                   <div className="lg:col-span-7 space-y-4">
                     <h3 className="text-sm font-semibold text-brand-teal sm:text-base">
-                      Enter your details
+                      {currentPlan.isBusiness ? "Company & contact details" : "Enter your details"}
                     </h3>
 
                     <div className="space-y-3">
+                      {currentPlan.isBusiness && (
+                        <div>
+                          <label className="block text-xs font-medium text-brand-teal mb-1">
+                            Company / Organisation Name <span className="text-coral">*</span>
+                          </label>
+                          <div className="relative">
+                            <Building2 className="absolute left-3 top-2.5 h-4 w-4 text-brand-teal/40" />
+                            <input
+                              type="text"
+                              required
+                              value={formData.companyName}
+                              onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
+                              placeholder="e.g. Acme Health Ltd"
+                              className="w-full rounded-lg border border-brand-teal/20 bg-white py-2 pl-9 pr-3 text-xs sm:text-sm text-brand-teal placeholder:text-brand-teal/35 focus:border-brand-teal focus:ring-2 focus:ring-brand-teal/20 outline-none transition"
+                            />
+                          </div>
+                          <span className="text-[10px] text-brand-teal/60">
+                            Appears on company receipt and employee launch kit
+                          </span>
+                        </div>
+                      )}
+
                       <div>
                         <label className="block text-xs font-medium text-brand-teal mb-1">
-                          Full Name <span className="text-coral">*</span>
+                          {currentPlan.isBusiness ? "Contact / Manager Full Name" : "Full Name"}{" "}
+                          <span className="text-coral">*</span>
                         </label>
                         <div className="relative">
                           <User className="absolute left-3 top-2.5 h-4 w-4 text-brand-teal/40" />
@@ -500,7 +609,8 @@ export function MembershipModal() {
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <div>
                           <label className="block text-xs font-medium text-brand-teal mb-1">
-                            Email Address <span className="text-coral">*</span>
+                            {currentPlan.isBusiness ? "Work Email Address" : "Email Address"}{" "}
+                            <span className="text-coral">*</span>
                           </label>
                           <div className="relative">
                             <Mail className="absolute left-3 top-2.5 h-4 w-4 text-brand-teal/40" />
@@ -509,11 +619,13 @@ export function MembershipModal() {
                               required
                               value={formData.email}
                               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                              placeholder="sarah@example.com"
+                              placeholder={currentPlan.isBusiness ? "sarah@company.co.uk" : "sarah@example.com"}
                               className="w-full rounded-lg border border-brand-teal/20 bg-white py-2 pl-9 pr-3 text-xs sm:text-sm text-brand-teal placeholder:text-brand-teal/35 focus:border-brand-teal focus:ring-2 focus:ring-brand-teal/20 outline-none transition"
                             />
                           </div>
-                          <span className="text-[10px] text-brand-teal/60">Membership pack sent here</span>
+                          <span className="text-[10px] text-brand-teal/60">
+                            {currentPlan.isBusiness ? "Employer pack & receipt sent here" : "Membership pack sent here"}
+                          </span>
                         </div>
 
                         <div>
@@ -531,7 +643,9 @@ export function MembershipModal() {
                               className="w-full rounded-lg border border-brand-teal/20 bg-white py-2 pl-9 pr-3 text-xs sm:text-sm text-brand-teal placeholder:text-brand-teal/35 focus:border-brand-teal focus:ring-2 focus:ring-brand-teal/20 outline-none transition"
                             />
                           </div>
-                          <span className="text-[10px] text-brand-teal/60">For doctor callback</span>
+                          <span className="text-[10px] text-brand-teal/60">
+                            {currentPlan.isBusiness ? "For account confirmation" : "For doctor callback"}
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -647,7 +761,9 @@ export function MembershipModal() {
                     </div>
 
                     <p className="text-[11px] text-brand-teal/60 pt-1">
-                      No medical questionnaire and no per-call charges. Keep your NHS doctor.
+                      {currentPlan.isBusiness
+                        ? "Billed annually on one invoice. Family cover included for all eligible staff."
+                        : "No medical questionnaire and no per-call charges. Keep your NHS doctor."}
                     </p>
                   </div>
                 </div>
@@ -691,8 +807,16 @@ export function MembershipModal() {
                     <span className="text-brand-teal/60">Membership</span>
                     <span className="font-semibold text-brand-teal">{currentPlan.name}</span>
                   </div>
+                  {formData.companyName && (
+                    <div className="flex justify-between border-b border-brand-teal/10 pb-1.5">
+                      <span className="text-brand-teal/60">Company</span>
+                      <span className="font-semibold text-brand-teal">{formData.companyName}</span>
+                    </div>
+                  )}
                   <div className="flex justify-between border-b border-brand-teal/10 pb-1.5">
-                    <span className="text-brand-teal/60">Lead Member</span>
+                    <span className="text-brand-teal/60">
+                      {currentPlan.isBusiness ? "Account Contact" : "Lead Member"}
+                    </span>
                     <span className="font-semibold text-brand-teal">{formData.name}</span>
                   </div>
                   <div className="flex justify-between border-b border-brand-teal/10 pb-1.5">
@@ -710,7 +834,9 @@ export function MembershipModal() {
                 </div>
 
                 <p className="text-[11px] text-brand-teal/70 leading-relaxed">
-                  Your direct 24/7 doctor dial-in telephone number has been sent to your email. Your NHS GP registration remains unchanged.
+                  {currentPlan.isBusiness
+                    ? `Your company welcome kit, VAT receipt, and employee access instructions have been sent to ${formData.email}. Your team can begin accessing 24/7 private GP care immediately.`
+                    : "Your direct 24/7 doctor dial-in telephone number has been sent to your email. Your NHS GP registration remains unchanged."}
                 </p>
 
                 <button
@@ -738,7 +864,7 @@ function StripePaymentStep({
 }: {
   session: PaymentSession;
   currentPlan: StripePlanConfig;
-  formData: { name: string; email: string; phone: string };
+  formData: { name: string; email: string; phone: string; companyName?: string };
   onBack: () => void;
   onSuccess: () => void;
 }) {
@@ -763,7 +889,9 @@ function StripePaymentStep({
         receipt_email: formData.email.trim(),
         payment_method_data: {
           billing_details: {
-            name: formData.name.trim(),
+            name: formData.companyName
+              ? `${formData.name.trim()} (${formData.companyName.trim()})`
+              : formData.name.trim(),
             email: formData.email.trim(),
             phone: formData.phone.trim(),
           },
@@ -876,7 +1004,12 @@ function StripePaymentStep({
 
           <div className="bg-white rounded-lg p-3 border border-brand-teal/10 space-y-1 text-xs">
             <p className="font-bold text-brand-teal">{session.plan.name}</p>
-            <p className="text-brand-teal/70 text-[11px]">Member: {formData.name}</p>
+            {formData.companyName && (
+              <p className="text-brand-teal/70 text-[11px]">Company: {formData.companyName}</p>
+            )}
+            <p className="text-brand-teal/70 text-[11px]">
+              {currentPlan.isBusiness ? "Contact" : "Member"}: {formData.name}
+            </p>
             <p className="text-brand-teal/70 text-[11px]">Email: {formData.email}</p>
           </div>
 
@@ -886,7 +1019,7 @@ function StripePaymentStep({
               <span className="text-emerald-700 font-medium">Included</span>
             </div>
             <div className="flex justify-between text-brand-teal/80">
-              <span>Keep your NHS GP</span>
+              <span>{currentPlan.isBusiness ? "Full Family Cover for Team" : "Keep your NHS GP"}</span>
               <span className="text-emerald-700 font-medium">Included</span>
             </div>
           </div>

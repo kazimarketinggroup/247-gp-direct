@@ -4,8 +4,10 @@ import Icon from "@/components/Icon";
 import { cn } from "@/lib/utils";
 import { useMembershipModal } from "./MembershipModal";
 
+import { StripePlanId } from "@/lib/stripe-plans";
+
 interface CheckoutButtonProps {
-  planId: "holiday" | "family";
+  planId: StripePlanId | string;
   children: React.ReactNode;
   className?: string;
   featured?: boolean;

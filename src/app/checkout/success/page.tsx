@@ -16,6 +16,8 @@ interface SessionDetails {
   metadata?: {
     planId?: string;
     planName?: string;
+    isBusiness?: string;
+    companyName?: string;
   };
 }
 
@@ -57,9 +59,19 @@ function SuccessContent() {
       ? `£${(session.amount_total / 100).toFixed(2)}`
       : null;
 
+  const planId = session?.metadata?.planId || "";
+  const isBusiness =
+    session?.metadata?.isBusiness === "true" ||
+    planId.startsWith("sme-");
+  const companyName = session?.metadata?.companyName;
+
   const planName =
     session?.metadata?.planName ||
-    (session?.metadata?.planId === "holiday" ? "Holiday Cover" : "Individual & Family Membership");
+    (planId === "holiday"
+      ? "Holiday Cover"
+      : isBusiness
+      ? "Business SME Healthcare Plan"
+      : "Individual & Family Membership");
 
   return (
     <div className="mx-auto w-full max-w-3xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
@@ -77,7 +89,9 @@ function SuccessContent() {
           Welcome to 247 GP Direct
         </h1>
         <p className="mt-3 max-w-lg text-sm text-pretty text-brand-teal/70 sm:text-base">
-          Thank you for joining. Your private GP cover is now active and ready to support you 24 hours a day, 365 days a year.
+          {isBusiness
+            ? `Thank you for joining. Your company healthcare cover${companyName ? ` for ${companyName}` : ""} is confirmed and ready to protect your team.`
+            : "Thank you for joining. Your private GP cover is now active and ready to support you 24 hours a day, 365 days a year."}
         </p>
       </div>
 
@@ -107,9 +121,16 @@ function SuccessContent() {
             </span>
           </div>
 
+          {companyName && (
+            <div className="flex items-center justify-between py-3 text-xs sm:text-sm">
+              <span className="text-brand-teal/60">Company / Organisation</span>
+              <span className="font-medium text-brand-teal">{companyName}</span>
+            </div>
+          )}
+
           {session?.customer_email && (
             <div className="flex items-center justify-between py-3 text-xs sm:text-sm">
-              <span className="text-brand-teal/60">Confirmation sent to</span>
+              <span className="text-brand-teal/60">Confirmation & Receipt sent to</span>
               <span className="font-medium text-brand-teal">{session.customer_email}</span>
             </div>
           )}
@@ -125,7 +146,7 @@ function SuccessContent() {
 
           <div className="flex items-center justify-between py-3 text-xs sm:text-sm">
             <span className="text-brand-teal/60">NHS GP Registration</span>
-            <span className="font-medium text-brand-teal">Unchanged (You keep your NHS doctor)</span>
+            <span className="font-medium text-brand-teal">Unchanged (Staff keep their NHS GP)</span>
           </div>
         </div>
       </div>
@@ -140,7 +161,9 @@ function SuccessContent() {
             </span>
             <h3 className="mt-3 text-sm font-medium text-brand-teal">Check your email</h3>
             <p className="mt-1 text-xs text-brand-teal/70 leading-relaxed">
-              We&apos;ve sent your membership welcome pack and your direct doctor dial-in number.
+              {isBusiness
+                ? "We've sent your business onboarding pack, VAT receipt, and employee launch kit."
+                : "We've sent your membership welcome pack and your direct doctor dial-in number."}
             </p>
           </div>
 
@@ -148,9 +171,13 @@ function SuccessContent() {
             <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-brand-teal text-xs font-semibold text-white">
               2
             </span>
-            <h3 className="mt-3 text-sm font-medium text-brand-teal">Access anytime</h3>
+            <h3 className="mt-3 text-sm font-medium text-brand-teal">
+              {isBusiness ? "Distribute access" : "Access anytime"}
+            </h3>
             <p className="mt-1 text-xs text-brand-teal/70 leading-relaxed">
-              Book phone or video consultations 24/7 without waiting times or per-call charges.
+              {isBusiness
+                ? "Share access instructions and member credentials with your covered employees and staff."
+                : "Book phone or video consultations 24/7 without waiting times or per-call charges."}
             </p>
           </div>
 
@@ -158,9 +185,13 @@ function SuccessContent() {
             <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-brand-teal text-xs font-semibold text-white">
               3
             </span>
-            <h3 className="mt-3 text-sm font-medium text-brand-teal">Prescriptions & notes</h3>
+            <h3 className="mt-3 text-sm font-medium text-brand-teal">
+              {isBusiness ? "Family cover included" : "Prescriptions & notes"}
+            </h3>
             <p className="mt-1 text-xs text-brand-teal/70 leading-relaxed">
-              Prescriptions sent to your nearest pharmacy and referral letters delivered directly.
+              {isBusiness
+                ? "Employees' partners and children can also access 24/7 GP appointments with zero consultation fees."
+                : "Prescriptions sent to your nearest pharmacy and referral letters delivered directly."}
             </p>
           </div>
         </div>

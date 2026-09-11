@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
     }
 
     const body = await req.json().catch(() => ({}));
-    const { planId, name, email, phone, promoCode } = body;
+    const { planId, name, email, phone, companyName, promoCode } = body;
 
     if (!planId) {
       return NextResponse.json(
@@ -27,7 +27,7 @@ export async function POST(req: NextRequest) {
     const plan = getStripePlan(planId);
     if (!plan) {
       return NextResponse.json(
-        { error: `Invalid plan specified: "${planId}". Expected "holiday" or "family".` },
+        { error: `Invalid plan specified: "${planId}".` },
         { status: 400 }
       );
     }
@@ -41,17 +41,20 @@ export async function POST(req: NextRequest) {
     const cleanName = typeof name === "string" ? name.trim().slice(0, 120) : "";
     const cleanEmail = typeof email === "string" ? email.trim().toLowerCase().slice(0, 200) : "";
     const cleanPhone = typeof phone === "string" ? phone.trim().slice(0, 40) : "";
+    const cleanCompany = typeof companyName === "string" ? companyName.trim().slice(0, 150) : "";
 
     // Create Stripe PaymentIntent for the in-website modal checkout
     const intent = await stripe.paymentIntents.create({
       amount: finalAmount,
       currency: plan.currency,
       receipt_email: cleanEmail && cleanEmail.includes("@") ? cleanEmail : undefined,
-      description: `247 GP Direct — ${plan.name}${promo ? ` (Promo: ${promo.code})` : ""}`,
+      description: `247 GP Direct — ${plan.name}${cleanCompany ? ` (${cleanCompany})` : ""}${promo ? ` (Promo: ${promo.code})` : ""}`,
       automatic_payment_methods: { enabled: true },
       metadata: {
         planId: plan.id,
         planName: plan.name,
+        isBusiness: plan.isBusiness ? "true" : "false",
+        companyName: cleanCompany,
         customerName: cleanName,
         customerEmail: cleanEmail,
         customerPhone: cleanPhone,

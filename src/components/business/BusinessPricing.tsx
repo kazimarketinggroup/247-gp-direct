@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Icon from "@/components/Icon";
+import CheckoutButton from "@/components/pricing/CheckoutButton";
 import { businessPage } from "@/lib/site";
 
 export default function BusinessPricing() {
@@ -78,12 +79,23 @@ export default function BusinessPricing() {
                       {row.family}
                     </td>
                     <td className="px-4 py-4 text-right">
-                      <Link
-                        href={`/business/request-a-quote?headcount=${encodeURIComponent(row.band)}`}
-                        className="inline-flex rounded-md bg-coral px-3 py-1 text-xs font-semibold text-white hover:bg-coral-dark transition"
-                      >
-                        Enquire
-                      </Link>
+                      {row.id === "enterprise" || !row.id ? (
+                        <Link
+                          href={`/business/request-a-quote?headcount=${encodeURIComponent(row.band)}`}
+                          className="inline-flex rounded-md bg-coral px-3 py-1 text-xs font-semibold text-white hover:bg-coral-dark transition"
+                        >
+                          Enquire
+                        </Link>
+                      ) : (
+                        <div className="inline-block">
+                          <CheckoutButton
+                            planId={row.id}
+                            className="rounded-md bg-coral px-3 py-1 text-xs font-semibold text-white hover:bg-coral-dark transition w-auto"
+                          >
+                            Buy Cover
+                          </CheckoutButton>
+                        </div>
+                      )}
                     </td>
                   </tr>
                 ))}

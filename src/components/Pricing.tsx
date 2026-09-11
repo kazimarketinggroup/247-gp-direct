@@ -291,17 +291,23 @@ export default function Pricing({
                 </ul>
 
                 <div className="mt-7">
-                  <Link
-                    href={`/business/request-a-quote?headcount=${encodeURIComponent(plan.band)}`}
-                    className={cn(
-                      "inline-flex w-full items-center justify-center rounded-md px-4 py-2.5 text-xs font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 sm:text-sm",
-                      plan.featured
-                        ? "bg-coral text-white hover:bg-coral-dark focus-visible:outline-coral"
-                        : "border border-brand-teal/20 bg-mint/40 text-brand-teal hover:bg-brand-teal hover:text-white focus-visible:outline-brand-teal",
-                    )}
-                  >
-                    {plan.cta}
-                  </Link>
+                  {plan.id === "enterprise" ? (
+                    <Link
+                      href={`/business/request-a-quote?headcount=${encodeURIComponent(plan.band)}`}
+                      className={cn(
+                        "inline-flex w-full items-center justify-center rounded-md px-4 py-2.5 text-xs font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 sm:text-sm",
+                        plan.featured
+                          ? "bg-coral text-white hover:bg-coral-dark focus-visible:outline-coral"
+                          : "border border-brand-teal/20 bg-mint/40 text-brand-teal hover:bg-brand-teal hover:text-white focus-visible:outline-brand-teal",
+                      )}
+                    >
+                      {plan.cta}
+                    </Link>
+                  ) : (
+                    <CheckoutButton planId={plan.id} featured={plan.featured}>
+                      {plan.cta}
+                    </CheckoutButton>
+                  )}
                 </div>
               </div>
             ))}
@@ -345,12 +351,24 @@ export default function Pricing({
                         </span>
                       </td>
                       <td className="px-6 py-4 text-right">
-                        <Link
-                          href={`/business/request-a-quote?headcount=${encodeURIComponent(plan.band)}`}
-                          className="inline-flex items-center justify-center rounded-md bg-coral px-3.5 py-1.5 text-xs font-medium text-white transition-colors hover:bg-coral-dark"
-                        >
-                          Enquire
-                        </Link>
+                        {plan.id === "enterprise" ? (
+                          <Link
+                            href={`/business/request-a-quote?headcount=${encodeURIComponent(plan.band)}`}
+                            className="inline-flex items-center justify-center rounded-md bg-coral px-3.5 py-1.5 text-xs font-medium text-white transition-colors hover:bg-coral-dark"
+                          >
+                            Enquire
+                          </Link>
+                        ) : (
+                          <div className="inline-block">
+                            <CheckoutButton
+                              planId={plan.id}
+                              className="py-1 px-3 text-xs w-auto"
+                              featured={plan.featured}
+                            >
+                              Buy Cover
+                            </CheckoutButton>
+                          </div>
+                        )}
                       </td>
                     </tr>
                   ))}
