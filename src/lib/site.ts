@@ -1492,9 +1492,7 @@ export const featuredArticle = {
   category: "Featured · Access & waiting",
   title: "Can't get through to your surgery? What your options actually are",
   body: "A practical run-through of NHS routes, pharmacy first, 111 and private options and when each one is the right call.",
-  reviewer: "Reviewed by [Clinician name], [role] · [date]",
   poster: "/images/health-hub/featured-article.jpg",
-  duration: "0:15",
   href: "#featured-article",
 };
 

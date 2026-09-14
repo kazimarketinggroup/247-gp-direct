@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import Icon from "@/components/Icon";
 import { featuredArticle } from "@/lib/site";
 
 export default function FeaturedArticle() {
@@ -27,40 +28,27 @@ export default function FeaturedArticle() {
               {featuredArticle.body}
             </p>
 
-            <p className="mt-6 text-xs text-brand-teal/50">
-              {featuredArticle.reviewer}
-            </p>
+            <Link
+              href={featuredArticle.href}
+              className="mt-6 inline-flex items-center gap-2 text-sm text-brand-teal transition-colors hover:text-coral focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-coral"
+            >
+              <Icon name="arrow-right" className="h-3.5 w-3.5" />
+              Read Now
+            </Link>
           </div>
 
           <Link
             href={featuredArticle.href}
-            aria-label={`Play video: ${featuredArticle.title}`}
+            aria-label={featuredArticle.title}
             className="group relative block aspect-video w-full overflow-hidden rounded-xl bg-brand-teal/10 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-coral"
           >
             <Image
               src={featuredArticle.poster}
-              alt=""
+              alt={featuredArticle.title}
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover"
+              className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
             />
-            <span
-              aria-hidden
-              className="absolute inset-0 flex items-center justify-center bg-black/10 transition-colors group-hover:bg-black/20"
-            >
-              <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/85 shadow-lg transition-transform group-hover:scale-105 sm:h-16 sm:w-16">
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="ml-0.5 h-6 w-6 text-brand-teal sm:h-7 sm:w-7"
-                >
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              </span>
-            </span>
-            <span className="absolute bottom-3 right-3 rounded bg-black/55 px-2 py-0.5 text-[11px] text-white">
-              {featuredArticle.duration}
-            </span>
           </Link>
         </div>
       </div>
