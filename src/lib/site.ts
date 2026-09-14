@@ -1515,36 +1515,6 @@ export const articles = [
     meta: "6 min read · Reviewed : 12th August 2026",
     href: "#private-vs-nhs",
   },
-  {
-    category: "Private vs NHS",
-    title: "Do you have to leave your NHS GP?",
-    meta: "6 min read · Reviewed : 12th August 2026",
-    href: "/nhs-gp",
-  },
-  {
-    category: "Practical health",
-    title: "When to see a GP about a cough",
-    meta: "6 min read · Reviewed : 12th August 2026",
-    href: "#cough",
-  },
-  {
-    category: "Practical health",
-    title: "Children's fevers: when to worry",
-    meta: "6 min read · Reviewed : 12th August 2026",
-    href: "#childrens-fevers",
-  },
-  {
-    category: "Prescriptions",
-    title: "How medical prescriptions work",
-    meta: "6 min read · Reviewed : 12th August 2026",
-    href: "/prescriptions",
-  },
-  {
-    category: "Employers",
-    title: "The cost of sickness absence",
-    meta: "6 min read · Reviewed : 12th August 2026",
-    href: "/business/why-offer-private-gp-access",
-  },
 ];
 
 export const footerSections: Array<{ title: string; links: NavItem[] }> = [
