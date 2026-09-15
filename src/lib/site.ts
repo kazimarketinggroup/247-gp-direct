@@ -1493,29 +1493,285 @@ export const featuredArticle = {
   title: "Can't get through to your surgery? What your options actually are",
   body: "A practical run-through of NHS routes, pharmacy first, 111 and private options and when each one is the right call.",
   poster: "/images/health-hub/featured-article.jpg",
-  href: "#featured-article",
+  href: "/health-hub/cant-get-through-to-your-surgery",
+  slug: "cant-get-through-to-your-surgery",
 };
 
-export const articles = [
+export type Article = {
+  slug: string;
+  category: string;
+  title: string;
+  meta: string;
+  href: string;
+};
+
+export const articles: Article[] = [
   {
+    slug: "gp-waits",
     category: "Access & waiting",
     title: "How long are GP waits right now?",
     meta: "6 min read · Reviewed : 12th August 2026",
-    href: "#gp-waits",
+    href: "/health-hub/gp-waits",
   },
   {
+    slug: "no-appointment",
     category: "Access & waiting",
     title: "What to do when you can't get an appointment",
     meta: "6 min read · Reviewed : 12th August 2026",
-    href: "#no-appointment",
+    href: "/health-hub/no-appointment",
   },
   {
+    slug: "private-vs-nhs",
     category: "Private vs NHS",
     title: "Private GP vs NHS: what's the difference?",
     meta: "6 min read · Reviewed : 12th August 2026",
-    href: "#private-vs-nhs",
+    href: "/health-hub/private-vs-nhs",
   },
 ];
+
+export type ArticleSection = {
+  heading?: string;
+  headingColor?: "coral" | "teal";
+  paragraphs?: string[];
+  bullets?: string[];
+  callout?: string;
+  decisionTable?: { title: string; rows: [string, string][] };
+};
+
+export type ArticleContent = {
+  slug: string;
+  category: string;
+  title: string;
+  meta: string;
+  sections: ArticleSection[];
+};
+
+export const articleContent: Record<string, ArticleContent> = {
+  "gp-waits": {
+    slug: "gp-waits",
+    category: "Regulation & Compliance",
+    title: "How long are GP waits right now?",
+    meta: "6 min read · Reviewed : 12th August 2026",
+    sections: [
+      {
+        paragraphs: [
+          "\"I'll just book a GP appointment\" is rarely the quick fix it used to be. Here's what the current data actually shows and why.",
+        ],
+      },
+      {
+        heading: "The numbers",
+        headingColor: "coral",
+        bullets: [
+          "1 in 20 GP appointments in England took place 28 or more days after booking (NHS England, Appointments in General Practice, 2023 most recent full-year data).",
+          "1 in 3 patients report difficulty simply getting through to their surgery by phone (GP Patient Survey, NHS England).",
+          "2,200+ patients are on the list of a typical fully qualified, full-time GP (NHS Digital, General Practice Workforce statistics).",
+        ],
+      },
+      {
+        callout:
+          "Put together: even before you get to \"when can I be seen,\" a meaningful share of patients are stuck on \"can I even get through.\"",
+      },
+      {
+        heading: "Why waits look the way they do",
+        headingColor: "coral",
+        paragraphs: [
+          "It isn't one single cause. Patient lists have grown faster than GP numbers, demand for appointments has risen since the pandemic, and many surgeries still route booking through a single morning phone window which creates a rush at 8am and long queues behind it.",
+          "What \"waiting\" actually means in practice:",
+        ],
+      },
+      {
+        heading: "Waiting times aren't flat across the board:",
+        headingColor: "coral",
+        bullets: [
+          "Urgent, same-day need: most surgeries do hold same-day slots, but they're released once a day and often gone within minutes.",
+          "Routine, non-urgent: this is where the 28-day-plus figure tends to sit — reviews, non-urgent referrals, ongoing management.",
+          "Out of hours: NHS surgeries are largely closed evenings and weekends, funnelling everything through 111 or A&E.",
+        ],
+      },
+      {
+        heading: "What you can do about it",
+        headingColor: "coral",
+        bullets: [
+          "Try your surgery's online booking or e-consult form before phoning — some release slots outside the 8am rush.",
+          "Use Pharmacy First for common minor conditions rather than waiting on a GP slot.",
+          "Use NHS 111 online to get triaged and pointed at the right service.",
+          "For anything where timing genuinely matters and the wait doesn't work for you, a private GP service gives you an alternative route in — by phone or video, out of hours included — without needing to leave your NHS GP.",
+        ],
+      },
+    ],
+  },
+  "no-appointment": {
+    slug: "no-appointment",
+    category: "Health Hub",
+    title: "What to do when you can't get an appointment",
+    meta: "6 min read · Reviewed : 12th August 2026",
+    sections: [
+      {
+        paragraphs: [
+          "You've called, you're on hold, or you've been told everything's gone until next month. Here's a clear order of what to try next, depending on what you actually need.",
+        ],
+      },
+      {
+        heading: "Step 1: Check if you need a GP at all",
+        headingColor: "coral",
+        paragraphs: [
+          "A surprising number of common issues — UTIs, ear infections, sore throats, shingles, some skin conditions — can now be assessed and treated directly by a pharmacist under Pharmacy First, with no appointment needed.",
+        ],
+      },
+      {
+        heading: "Step 2: Try online booking before phoning",
+        headingColor: "coral",
+        paragraphs: [
+          "Many surgeries release a separate batch of appointments through their website or NHS App, on top of what's available by phone. It's worth checking before you join the queue.",
+        ],
+      },
+      {
+        heading: "Step 3: Call right when lines open — and ask for a callback if nothing's free",
+        headingColor: "coral",
+        paragraphs: [
+          "If same-day slots are gone, ask reception if a callback from a duty GP is possible. Many surgeries can offer a phone assessment even when in-person slots have run out. It's just not always volunteered.",
+        ],
+      },
+      {
+        heading: "Step 4: Use NHS 111 (online first, phone if needed)",
+        headingColor: "coral",
+        paragraphs: [
+          "111 will triage based on your symptoms and can point you to an urgent treatment centre, a pharmacy, or a same-day slot elsewhere — not just A&E. It's a genuinely useful \"what do I do now\" tool, not a last resort.",
+        ],
+      },
+      {
+        heading: "Step 5: Know your emergency line",
+        headingColor: "coral",
+        paragraphs: [
+          "Chest pain, breathing difficulty, suspected stroke, heavy bleeding, or anything you'd call serious — go straight to 999 or A&E. Don't wait on a callback for this.",
+        ],
+      },
+      {
+        heading: "Step 6: Use a private GP for everything in between",
+        headingColor: "coral",
+        paragraphs: [
+          "This is the gap most people hit: not an emergency, but not something that can wait two weeks either — a child unwell at night, a symptom that's bothering you, a prescription you need renewed before travelling. A 24/7 private GP service gives you a same-day or same-hour route by phone or video, without touching your NHS registration.",
+        ],
+      },
+      {
+        decisionTable: {
+          title: "A quick way to decide",
+          rows: [
+            ["Situation", "Try this first"],
+            ["Minor, common condition", "Pharmacy First"],
+            ["Not sure how urgent", "NHS 111 online"],
+            ["Routine, can wait", "NHS GP booking"],
+            ["Won't wait, not an emergency", "Private GP (24/7)"],
+            ["Life-threatening", "999 / A&E"],
+          ],
+        },
+      },
+    ],
+  },
+  "private-vs-nhs": {
+    slug: "private-vs-nhs",
+    category: "Health Hub",
+    title: "Private GP vs NHS: what's the difference?",
+    meta: "6 min read · Reviewed : 12th August 2026",
+    sections: [
+      {
+        paragraphs: [
+          "\"Private GP\" gets misunderstood a lot — usually as either \"just for people who can afford to skip the queue\" or \"not real healthcare.\" Neither is quite right. Here's what actually changes, and what doesn't.",
+        ],
+      },
+      {
+        heading: "What stays the same",
+        headingColor: "coral",
+        bullets: [
+          "Qualifications. Private GPs used by regulated services are the same GMC-registered doctors practising in the UK — many work across both NHS and private settings.",
+          "Your NHS registration. Using a private GP doesn't mean leaving your NHS surgery. You keep your NHS GP, your records, your ongoing care — nothing about that changes.",
+          "What they can do. A private GP can assess, diagnose, prescribe, and refer, in the same way an NHS GP can.",
+        ],
+      },
+      {
+        heading: "What actually differs",
+        headingColor: "coral",
+        bullets: [
+          "Speed of access. This is the main one. NHS booking is often limited to certain hours, with same-day slots released once daily. Private GP services — particularly 24/7 ones — let you speak to a doctor at 9pm on a Sunday or from a hotel room abroad.",
+          "Appointment length and continuity. NHS GP appointments are typically short by necessity, given patient volumes. Private consultations often allow more time to talk through a concern properly, though you may see a different GP each time rather than \"your\" GP.",
+          "Cost. NHS GP care is free at the point of use. Private GP access is paid for — either per consultation or, more commonly now, via an annual subscription that covers unlimited use.",
+          "Prescriptions and referrals. Both can issue prescriptions (private prescriptions are usually paid for at the pharmacy, unlike NHS ones) and both can write referral letters to specialists.",
+        ],
+      },
+      {
+        heading: "So which do you actually need?",
+        headingColor: "coral",
+        paragraphs: [
+          "For long-term condition management, repeat prescriptions tied to your history, and anything where continuity with one doctor matters — your NHS GP remains the right base.",
+          "For the gaps — evenings, weekends, travel, or simply not being able to get through when something's bothering you — a private GP is a genuine complement, not a replacement. Most people who use both aren't choosing one over the other; they're using whichever one answers the phone.",
+        ],
+      },
+    ],
+  },
+  "cant-get-through-to-your-surgery": {
+    slug: "cant-get-through-to-your-surgery",
+    category: "Health Hub",
+    title:
+      "Can't get through to your surgery? What your options actually are",
+    meta: "8 min read · Reviewed : 12th August 2026",
+    sections: [
+      {
+        paragraphs: [
+          "If you've spent a morning redialling your surgery, only to be told everything's booked when you finally get through, you're not imagining it. Getting seen by a GP has genuinely got harder — and knowing which route to take can save you hours of frustration.",
+          "Here's a practical run-through of what's actually available, and when each one makes sense.",
+        ],
+      },
+      {
+        heading: "1. Pharmacy First",
+        headingColor: "coral",
+        paragraphs: [
+          "For a growing list of common conditions — earache, sore throat, UTIs, shingles, infected insect bites and more — your local pharmacist can now assess you and, where appropriate, supply prescription-only medicine. No appointment, no referral, often same-day.",
+        ],
+        callout:
+          "Best for: minor, common conditions you'd normally need a quick prescription for.",
+      },
+      {
+        heading: "2. NHS 111 (online or by phone)",
+        headingColor: "coral",
+        paragraphs: [
+          "111 isn't just for emergencies. It's a triage service that can direct you to the right place — a pharmacy, an urgent treatment centre, a same-day GP slot, or A&E if it's genuinely serious.",
+        ],
+        callout:
+          "Best for: when you're not sure how urgent something is, especially out of hours.",
+      },
+      {
+        heading: "3. Your NHS surgery",
+        headingColor: "coral",
+        paragraphs: [
+          "Still the right first call for ongoing care, repeat prescriptions, and anything needing continuity with a doctor who knows your history. The challenge is speed — many surgeries release same-day slots at 8am and they go quickly, and non-urgent bookings can run into weeks.",
+        ],
+        callout:
+          "Best for: long-term conditions, medication reviews, anything non-urgent.",
+      },
+      {
+        heading: "4. A&E or 999",
+        headingColor: "coral",
+        paragraphs: [
+          "For chest pain, severe breathing difficulty, suspected stroke, serious injury or anything life-threatening — always A&E or 999. Don't wait on a callback for this.",
+        ],
+      },
+      {
+        heading: "5. Private GP services",
+        headingColor: "coral",
+        paragraphs: [
+          "Services like 247 GP Direct sit alongside all of the above. You keep your NHS GP for continuity — nothing changes there — but you get a UK-qualified GP by phone or video, any hour, any day, without the 8am scramble or the two-week wait. Useful for a worrying symptom at 9pm, a child who's unwell over a bank holiday, or simply not being able to get through during a working day.",
+        ],
+        callout:
+          "Best for: when timing matters and you need a second, faster route in — not a replacement for your NHS GP.",
+      },
+      {
+        paragraphs: [
+          "There's rarely just one option anymore. Matching the urgency of the problem to the right route — rather than defaulting to \"ring the surgery and hope\" — is usually what gets you seen fastest.",
+        ],
+      },
+    ],
+  },
+};
 
 export const footerSections: Array<{ title: string; links: NavItem[] }> = [
   {
