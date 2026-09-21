@@ -1315,7 +1315,7 @@ export const contactPage = {
     complaints: {
       label: "Complaints:",
       value:
-        "named contact and response timescales are set out in our complaints procedure.",
+        "named contact and response timescales are set out in our complaints policy.",
     },
   },
   notService: {
@@ -1397,12 +1397,12 @@ export const clinicalStandardsPage = {
     },
     {
       title: "Complaints",
-      body: "A named complaints contact, an acknowledgement timescale, a response timescale and a defined escalation route, all published in the complaints procedure.",
+      body: "A named complaints contact, an acknowledgement timescale, a response timescale and a defined escalation route.",
       icon: "sparkles",
     },
     {
       title: "Data protection",
-      body: "Health data is special category data under UK GDPR. Our privacy notice sets out the lawful basis, the retention period, who can access records and how to exercise your rights. ICO registration number is in the footer.",
+      body: "Health data is special category data under UK GDPR. Our privacy notice sets out the lawful basis, the retention period, who can access records and how to exercise your rights.",
       icon: "document",
     },
     {
@@ -1476,7 +1476,7 @@ export const regulationPage = {
       },
       {
         title: "Escalation beyond us",
-        body: "If a complaint cannot be resolved through our complaints procedure, independent private healthcare complaints can be escalated externally. The named escalation body is confirmed in the complaints policy.",
+        body: "If a complaint cannot be resolved internally, independent private healthcare complaints can be escalated externally. The named escalation body is confirmed in the complaints policy.",
       },
     ],
   },
@@ -1808,7 +1808,6 @@ export const footerSections: Array<{ title: string; links: NavItem[] }> = [
       { label: "Terms & Conditions", href: "#terms" },
       { label: "Privacy Policy", href: "#privacy" },
       { label: "Cookie Policy", href: "#cookies" },
-      { label: "Complaints Procedure", href: "#complaints" },
       { label: "Cancellation Policy", href: "#cancellation" },
     ],
   },

@@ -160,7 +160,7 @@ export default function RequestQuote() {
                 <strong>ICO registration no.</strong> ZA000000 (to be confirmed)
               </p>
               <p className="mt-6 text-sm leading-relaxed text-white/80">
-                <strong>Complaints:</strong> named contact and response timescales are set out in our complaints procedure.
+                <strong>Complaints:</strong> named contact and response timescales are set out in our complaints policy.
               </p>
             </div>
             <div className="rounded-lg bg-coral p-6 text-white sm:p-8">

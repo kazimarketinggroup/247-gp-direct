@@ -75,8 +75,7 @@ export default function Footer() {
           <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between lg:gap-8">
             <p className="text-[11px] leading-relaxed text-pretty text-white/45">
               © {new Date().getFullYear()} 247 GP Direct Ltd. Company No. {siteConfig.companyNumber}
-              · Registered in England &amp; Wales · Registered address: {siteConfig.registeredAddress} ·
-              ICO Registration: (TBC) · CQC Registration: (TBC)
+              · Registered in England &amp; Wales · Registered address: {siteConfig.registeredAddress}
             </p>
             <p className="text-[11px] leading-relaxed text-white/45 lg:whitespace-nowrap">
               Not for emergencies call 999 or NHS 111
