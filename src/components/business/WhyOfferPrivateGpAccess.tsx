@@ -76,9 +76,6 @@ export default function WhyOfferPrivateGpAccess() {
             <p className="mt-5 max-w-2xl text-sm leading-relaxed text-pretty text-brand-teal/70">
               A practical healthcare benefit can help people feel supported and reduce the friction of finding appropriate care. It complements, rather than replaces, existing NHS and workplace wellbeing provision.
             </p>
-            <p className="mt-5 max-w-2xl text-sm leading-relaxed text-pretty text-brand-teal/70">
-              The final employer proposition, eligibility rules, and reporting approach will be confirmed with each organisation.
-            </p>
           </div>
         </div>
 

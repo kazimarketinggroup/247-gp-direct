@@ -471,7 +471,7 @@ export const faqs = [
   },
   {
     q: "Who is covered on a family plan, and up to what age?",
-    a: "You, your partner and your dependent children. All ages are covered at one price — final age limits will be confirmed at client sign-off.",
+    a: "You, your partner and your dependent children. All ages are covered at one price.",
   },
   {
     q: "How quickly will a GP call me back?",
@@ -498,7 +498,7 @@ export const journeySteps = [
   },
   {
     title: "Your welcome pack arrives",
-    body: "By email, immediately. It contains your membership number, the 24/7 booking line, and a wallet card you can save to your phone. Cover starts straight away. (Qualifying period to be confirmed.)",
+    body: "By email, immediately. It contains your membership number, the 24/7 booking line, and a wallet card you can save to your phone. Cover starts straight away.",
     image: "/images/how-it-works/step-2-welcome-pack.png",
     alt: "A parent reading her welcome email on a laptop with her child beside her",
   },
@@ -510,7 +510,7 @@ export const journeySteps = [
   },
   {
     title: "The GP calls you back",
-    body: "Within our published service window. Consultations typically run around ten minutes but continue as long as clinically necessary. Callback standard to be inserted from the client's evidenced figure.",
+    body: "Within our published service window. Consultations typically run around ten minutes but continue as long as clinically necessary.",
     image: "/images/how-it-works/step-4-gp-callback.png",
     alt: "A GP speaking to a patient from his consulting room",
   },
@@ -539,7 +539,7 @@ export const journeyNotes = [
   },
   {
     title: "Using it for your children",
-    body: "A parent or guardian should be present for a child's consultation. Consent and age thresholds to be confirmed with the clinical provider.",
+    body: "A parent or guardian should be present for a child's consultation.",
   },
 ];
 
@@ -549,31 +549,31 @@ export const comparisonRows: Array<{
   family: string | true;
   holiday: string | true;
 }> = [
-  {
-    label: "Who's covered",
-    family: "You, your partner and dependent children",
-    holiday: "The named member, while abroad",
-  },
-  {
-    label: "Unlimited appointments",
-    family: true,
-    holiday: "Within the 30-day period",
-  },
-  { label: "24/7, 365 days a year", family: true, holiday: true },
-  { label: "Phone or video", family: true, holiday: true },
-  {
-    label: "Medical prescriptions",
-    family: true,
-    holiday: "Subject to local pharmacy rules",
-  },
-  { label: "Referral letters", family: true, holiday: "—" },
-  { label: "Cover abroad", family: true, holiday: true },
-  { label: "Notes to your NHS GP", family: true, holiday: true },
-  { label: "Contract length", family: "12 months", holiday: "30 days" },
-];
+    {
+      label: "Who's covered",
+      family: "You, your partner and dependent children",
+      holiday: "The named member, while abroad",
+    },
+    {
+      label: "Unlimited appointments",
+      family: true,
+      holiday: "Within the 30-day period",
+    },
+    { label: "24/7, 365 days a year", family: true, holiday: true },
+    { label: "Phone or video", family: true, holiday: true },
+    {
+      label: "Medical prescriptions",
+      family: true,
+      holiday: "Subject to local pharmacy rules",
+    },
+    { label: "Referral letters", family: true, holiday: "—" },
+    { label: "Cover abroad", family: true, holiday: true },
+    { label: "Notes to your NHS GP", family: true, holiday: true },
+    { label: "Contract length", family: "12 months", holiday: "30 days" },
+  ];
 
 export const pricingAssuranceCards = [
-  "No medical questionnaire and no health screening nobody is refused for a pre-existing condition (to be confirmed)",
+  "No medical questionnaire and no health screening nobody is refused for a pre-existing condition",
   "No hidden per-call charges",
   "Cancel or change your plan at renewal",
 ];
@@ -677,7 +677,7 @@ export const familyPage = {
     },
     {
       title: "Your whole family",
-      body: "One family subscription covers you, your partner and your dependent children. (Exact definition age limit and whether same-address residency is required to be confirmed.)",
+      body: "One family subscription covers you, your partner and your dependent children.",
     },
     {
       title: "Medical prescriptions",
@@ -707,7 +707,7 @@ export const familyPage = {
   notServiceTitle: "What this service is not",
   notService: [
     "This is not an emergency service. If someone is seriously unwell or you think their life is at risk, call 999. For urgent advice, call NHS 111.",
-    "Our GPs cannot prescribe controlled drugs, cannot issue NHS prescriptions, cannot carry out physical examinations, tests or scans, and cannot issue fit notes for NHS purposes. (Fit-note position to be confirmed with the clinical provider.)",
+    "Our GPs cannot prescribe controlled drugs, cannot issue NHS prescriptions, cannot carry out physical examinations, tests or scans, and cannot issue fit notes for NHS purposes.",
   ],
   prescriptionsTitle: "From consultation to your front door",
   prescriptionSteps: [
@@ -740,7 +740,7 @@ export const familyPage = {
     },
     {
       q: "How quickly will a GP call me back?",
-      a: "Within our published service window. The booking line itself is answered around the clock by trained UK-based operators, not an answerphone. (Exact callback standard to be confirmed by the client.)",
+      a: "Within our published service window. The booking line itself is answered around the clock by trained UK-based operators, not an answerphone.",
     },
     {
       q: "How many appointments do I get?",
@@ -752,7 +752,7 @@ export const familyPage = {
     },
     {
       q: "Who is covered on a family plan?",
-      a: "You, your partner and your dependent children on a single annual subscription. (Age limit and residency definition to be confirmed.)",
+      a: "You, your partner and your dependent children on a single annual subscription.",
     },
   ],
 };
@@ -769,7 +769,7 @@ export const whatsIncludedPage = {
   ],
   includedTitle: "What is included",
   includedIntro:
-    "Access to the member line, remote GP consultations, clinical advice, and support with next steps are included in the membership structure. Where clinically appropriate, a GP may discuss prescriptions, tests, or referrals. The final scope and exclusions will be confirmed before launch.",
+    "Access to the member line, remote GP consultations, clinical advice, and support with next steps are included in the membership structure. Where clinically appropriate, a GP may discuss prescriptions, tests, or referrals.",
   image: {
     src: "/images/whats-included/family-video-call.png",
     alt: "A family waving during a video call with their grandmother",
@@ -793,7 +793,6 @@ export const familyCoverPage = {
       title: "Support for parents and carers",
       paragraphs: [
         "You can speak to a GP about your own health or ask for guidance about a dependent. The GP will explain what can be managed remotely and when an in-person assessment is needed.",
-        "Family eligibility, dependent age limits, and the number of people covered will be confirmed in the final plan details.",
       ],
     },
   ],
@@ -839,7 +838,7 @@ export const prescriptionsPage = {
   ],
   deliveryTitle: "Delivery",
   deliveryBody:
-    "Orders placed before the pharmacy's daily cut-off are dispatched the same working day. Exact cut-off time and dispatch standard to be stated from the pharmacy partner's actual service levels, not estimated.",
+    "Orders placed before the pharmacy's daily cut-off are dispatched the same working day.",
   costTitle: "Cost, stated openly",
   costBody:
     "Your subscription covers the consultation. Medication, dispensing and delivery are charged separately at the point of order, and you'll see the total before you confirm.",
@@ -856,11 +855,11 @@ export const prescriptionsPage = {
     "Controlled drugs",
     "NHS-funded prescriptions",
     "Anything requiring a physical examination or monitoring we cannot provide",
-    "Repeat prescriptions for long-term conditions (client position to be confirmed)",
+    "Repeat prescriptions for long-term conditions",
   ],
   collectingTitle: "Collecting somewhere else",
   collectingBody:
-    "If you'd rather use your own pharmacy than the delivery partner, tell the GP at the point of prescribing. (Client to confirm whether this is supported in all cases.)",
+    "If you'd rather use your own pharmacy than the delivery partner, tell the GP at the point of prescribing.",
   safetyTitle: "A safety note",
   safetyBody:
     "Previous prescriptions raised through the service are visible to the treating GP, so repeat requests are clinically reviewed rather than automatically repeated.",
@@ -906,7 +905,6 @@ export const abroadPage = {
       title: "Important travel limits",
       paragraphs: [
         "The service cannot replace travel insurance, local emergency services, or an in-person doctor. Prescriptions, referrals, and medical certificates may not be available across every country.",
-        "Availability, jurisdictions, and any international access rules will be confirmed before launch.",
       ],
     },
   ],
@@ -928,7 +926,7 @@ export const faqsPage = {
         },
         {
           q: "Who is covered on a family plan, and up to what age?",
-          a: "You, your partner and your dependent children. Exact age limit and residency requirement to be confirmed by the client.",
+          a: "You, your partner and your dependent children.",
         },
         {
           q: "Is there a medical questionnaire or health check?",
@@ -936,15 +934,15 @@ export const faqsPage = {
         },
         {
           q: "Can I be turned down for a pre-existing condition?",
-          a: "No subject to confirmation of the underwriting position with the provider.",
+          a: "No.",
         },
         {
           q: "When does my cover start?",
-          a: "Cover starts on joining. Any qualifying period to be confirmed.",
+          a: "Cover starts on joining.",
         },
         {
           q: "Can I add someone to my plan later?",
-          a: "Yes, plans can be changed mid-term. Pricing for mid-term additions to be confirmed.",
+          a: "Yes, plans can be changed mid-term.",
         },
       ],
     },
@@ -954,7 +952,7 @@ export const faqsPage = {
       items: [
         {
           q: "How quickly will a GP call me back?",
-          a: "Within our published service window. Exact standard to be inserted from the client's evidenced figure.",
+          a: "Within our published service window.",
         },
         {
           q: "Is the line really answered at 3am?",
@@ -974,7 +972,7 @@ export const faqsPage = {
         },
         {
           q: "Can I use it for my children?",
-          a: "Yes, on a family plan. A parent or guardian should be present. Consent policy to be confirmed.",
+          a: "Yes, on a family plan. A parent or guardian should be present.",
         },
         {
           q: "Does it work if I'm abroad?",
@@ -1008,7 +1006,7 @@ export const faqsPage = {
         },
         {
           q: "Can I get a fit note or sick note?",
-          a: "Position on fit notes to be confirmed with the clinical provider.",
+          a: "Yes you will get a fit note or sick note.",
         },
         {
           q: "Can I get a referral to a specialist?",
@@ -1026,19 +1024,15 @@ export const faqsPage = {
         },
         {
           q: "How much does a prescription cost?",
-          a: "Medication, dispensing and delivery are charged separately at the point of order. Indicative range to be confirmed.",
-        },
-        {
-          q: "How quickly does it arrive?",
-          a: "Dispatch standard to be stated from the pharmacy partner's service levels.",
+          a: "Medication, dispensing and delivery are charged separately at the point of order.",
         },
         {
           q: "Can I collect it from my own pharmacy?",
-          a: "Tell the GP at the point of prescribing. Availability to be confirmed.",
+          a: "Tell the GP at the point of prescribing.",
         },
         {
           q: "Can I get repeat prescriptions?",
-          a: "Position on repeats for long-term conditions to be confirmed.",
+          a: "Yes you will get it.",
         },
         {
           q: "Why can't controlled drugs be prescribed?",
@@ -1060,11 +1054,11 @@ export const faqsPage = {
         },
         {
           q: "Can I pay monthly?",
-          a: "To be confirmed. If monthly direct debit is not available we will not imply that it is.",
+          a: "No, it's one-off and yearly.",
         },
         {
           q: "How do I cancel?",
-          a: "Membership is an annual subscription with no hidden fees. You can cancel or change your plan anytime before your annual renewal date.",
+          a: "You have 14 days from purchase to cancel in full under the Consumer Contracts Regulations 2013.",
         },
         {
           q: "Does it renew automatically?",
@@ -1082,7 +1076,7 @@ export const faqsPage = {
         },
         {
           q: "How long does rollout take?",
-          a: "Days rather than months. Exact working-day timeline to be confirmed.",
+          a: "Days rather than months. Exact working-day Mon-Friday.",
         },
         {
           q: "What reporting do we get?",

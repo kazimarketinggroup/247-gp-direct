@@ -76,9 +76,6 @@ export default function WhatYourTeamGets() {
             <p className="mt-5 max-w-2xl text-sm leading-relaxed text-pretty text-brand-teal/70">
               Employees can use the service for themselves and, depending on the plan, eligible family members. This makes the benefit relevant beyond the working day.
             </p>
-            <p className="mt-5 max-w-2xl text-sm leading-relaxed text-pretty text-brand-teal/70">
-              Eligibility, family access, consultation limits, and clinical scope will be confirmed in the final business plan.
-            </p>
           </div>
         </div>
 

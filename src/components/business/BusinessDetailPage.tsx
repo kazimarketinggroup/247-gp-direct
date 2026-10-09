@@ -33,7 +33,6 @@ const pageCopy: Record<PageKind, PageCopy> = {
     secondTitle: "From setup to launch",
     secondBody: [
       "The rollout journey may include agreeing eligibility, confirming member data, preparing communications, and sharing the member contact route.",
-      "Implementation stages, responsibilities, and lead times will be confirmed in the employer onboarding plan.",
     ],
   },
   utilisation: {
