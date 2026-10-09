@@ -49,7 +49,7 @@ const pageCopy: Record<PageKind, PageCopy> = {
     secondTitle: "Useful insight, respectful boundaries",
     secondBody: [
       "Reports may include aggregate usage trends, access volumes, or member engagement indicators. They should not identify individual consultations or diagnoses.",
-      "The exact reporting format, frequency, and minimum group thresholds are to be confirmed.",
+
     ],
   },
   sectors: {
@@ -81,7 +81,7 @@ const pageCopy: Record<PageKind, PageCopy> = {
     secondTitle: "A clear partner experience",
     secondBody: [
       "Partner support may include product information, client-ready materials, and a defined route for introducing organisations to the service.",
-      "Partner terms, materials, and referral arrangements are to be confirmed.",
+
     ],
     asideLabel: "Partner with 247 GP Direct",
     asideTitle: "Brokers and benefits consultants",
