@@ -27,8 +27,10 @@ export const siteConfig = {
   phone: "0330 520 0089",
   phoneDisplay: "0330 520 0089",
   bookingLine: "0330 520 0089",
-  membersNote: "Members: call any time, no appointment needed",
+  officeHours: "Monday – Friday, 9:00am – 5:00pm",
+  membersNote: "Members: 24/7 direct GP line provided in welcome pack",
   companyNumber: "17371724",
+  icoNumber: "ZC246856",
   registeredAddress:
     "Rock Centre, 27-31 Lichfield Street, Walsall, West Midlands, WS1 1TJ, United Kingdom",
 };
@@ -213,24 +215,6 @@ export const included = [
 
 export const plans = [
   {
-    id: "holiday" as const,
-    name: "HOLIDAY COVER",
-    price: "£30",
-    period: "one-off",
-    sub: "Per trip · 30 days abroad",
-    covers: "30 days of 24/7 medical advice with a UK GP while you're abroad",
-    features: [
-      "Unlimited GP consultations abroad",
-      "24/7 access (UK time)",
-      "Phone or video appointments",
-      "Medical prescriptions (as required)",
-      "Referral letters & clinical guidance",
-      "Cover abroad for the full 30 days",
-    ],
-    cta: "Get Holiday Cover",
-    featured: false,
-  },
-  {
     id: "family" as const,
     name: "INDIVIDUAL & SOLE TRADER",
     price: "£100",
@@ -249,6 +233,24 @@ export const plans = [
     cta: "Get Individual & Family Plan",
     featured: true,
     badge: "Includes Family",
+  },
+  {
+    id: "holiday" as const,
+    name: "HOLIDAY COVER",
+    price: "£30",
+    period: "one-off",
+    sub: "Per trip · 30 days abroad",
+    covers: "30 days of 24/7 medical advice with a UK GP while you're abroad",
+    features: [
+      "Unlimited GP consultations abroad",
+      "24/7 access (UK time)",
+      "Phone or video appointments",
+      "Medical prescriptions (as required)",
+      "Referral letters & clinical guidance",
+      "Cover abroad for the full 30 days",
+    ],
+    cta: "Get Holiday Cover",
+    featured: false,
   },
 ];
 
@@ -482,9 +484,9 @@ export const faqs = [
 ];
 
 export const howItWorksAssurances = [
-  "CQC-registered",
+  "Fully qualified UK GPs",
   "GMC-registered UK GPs",
-  "Data secured to NHS standards",
+  "Your data kept private and secure",
 ];
 
 export const journeySteps = [
@@ -1262,10 +1264,15 @@ export const businessPage = {
   quoteIntro:
     "We reply within one working day with indicative pricing for your headcount.",
   headcountOptions: [
-    "Up to 25",
-    "26-50",
-    "51-100",
-    "101+",
+    "Individual / Sole Trader",
+    "Up to 5 employees",
+    "6–10 employees",
+    "11–15 employees",
+    "16–20 employees",
+    "21–25 employees",
+    "26–50 employees",
+    "51–100 employees",
+    "101+ employees (Enterprise POA)",
   ],
   brokersTitle: "Brokers and benefits consultants",
   brokersBody:
@@ -1285,19 +1292,21 @@ export const contactPage = {
   title: "Three ways to reach us",
   routes: [
     {
-      title: "Members:",
-      subtitle: "book an appointment",
-      body: "Answered 24 hours a day, every day of the year. Have your membership number ready.",
-      cta: { label: siteConfig.phoneDisplay, href: `tel:${siteConfig.phoneDisplay.replace(/\s/g, "")}`, type: "tel" as const },
+      title: "Members: 24/7 GP Service",
+      subtitle: "24/7 / 365 GP Consultations",
+      body: "Our GP consultation service is available 24 hours a day, 365 days a year. Your dedicated doctor booking line is provided in your welcome pack upon joining.",
+      cta: { label: "Dedicated number in Welcome Pack", href: "/how-it-works", type: "link" as const },
     },
     {
       title: "General enquiries",
-      body: "Use the form and we'll reply within one working day.",
-      cta: { label: siteConfig.phoneDisplay, href: `tel:${siteConfig.phoneDisplay.replace(/\s/g, "")}`, type: "tel" as const },
+      subtitle: "Office hours: Mon–Fri, 9am–5pm",
+      body: "Our office team is available Monday to Friday from 9:00am to 5:00pm for membership and account enquiries. Call or submit the form below.",
+      cta: { label: `${siteConfig.phoneDisplay} (Office)`, href: `tel:${siteConfig.phoneDisplay.replace(/\s/g, "")}`, type: "tel" as const },
     },
     {
       title: "Business enquiries",
-      body: "Cover for a workforce, broker and partner arrangements.",
+      subtitle: "Office hours: Mon–Fri, 9am–5pm",
+      body: "Cover for your workforce, SME team health plans, broker and corporate partner arrangements.",
       cta: { label: "Request a quote", href: "/business/request-a-quote", type: "link" as const },
     },
   ],
@@ -1306,11 +1315,13 @@ export const contactPage = {
     title: "Company details",
     rows: [
       { label: "Company registration no.", value: siteConfig.companyNumber },
+      { label: "ICO registration no.", value: "ZC246856" },
+      { label: "Office hours:", value: "Monday to Friday, 9:00am – 5:00pm" },
+      { label: "GP consultation service:", value: "24/7/365 (Provided in Welcome Pack)" },
       {
         label: "Registered office:",
         value: siteConfig.registeredAddress,
       },
-      { label: "ICO registration no.", value: "ZA000000 (to be confirmed)" },
     ],
     complaints: {
       label: "Complaints:",
@@ -1419,34 +1430,29 @@ export const clinicalStandardsPage = {
 };
 
 export const regulationPage = {
-  title: "Who regulates us, and what that actually means",
+  title: "How we keep your care and data protected",
   intro:
-    "Clinical governance is how we run the service day to day. Regulation is the external framework we answer to. This page sets out the bodies involved, what each one covers, and the legal obligations attached.",
+    "Clinical governance is how we run the service day to day. This page sets out the standards our doctors, pharmacies and data handling are held to, and the legal obligations attached.",
   regulators: [
     {
-      name: "Care Quality Commission (CQC)",
-      role: "Regulator of the service in England",
-      body: "Remote consultation providers that carry out the regulated activity of 'treatment of disease, disorder or injury' must register with the CQC. Our registration status and provider ID are published here verbatim once written confirmation is received. Nothing is claimed before it is evidenced.",
+      name: "Qualified UK doctors",
+      role: "Who treats you",
+      body: "Every GP who takes a member call is fully qualified and licensed to practise in the UK, and must keep that licence up to date. Any member can check a doctor's registration on the public register.",
     },
     {
-      name: "General Medical Council (GMC)",
-      role: "Regulator of the individual doctors",
-      body: "The GMC licenses and revalidates every GP who takes a member call. GMC numbers can be checked by any member on the public register. The GMC regulates the doctor; the CQC regulates the service — the two are separate and both apply.",
+      name: "Registered pharmacies",
+      role: "Where prescriptions are dispensed",
+      body: "Private prescriptions raised by our GPs are dispensed by a registered UK pharmacy of your choice, operating under its own registration. We do not dispense medicines ourselves.",
     },
     {
-      name: "General Pharmaceutical Council (GPhC)",
-      role: "Regulator of the dispensing pharmacy",
-      body: "Medical prescriptions raised by our GPs are dispensed by a GPhC-registered pharmacy operating under its own registration. We do not dispense medicines ourselves.",
-    },
-    {
-      name: "MHRA and prescribing law",
-      role: "Medicines legislation",
-      body: "Prescribing follows the Human Medicines Regulations 2012 and GMC remote prescribing guidance. Controlled drugs, opioids and certain high-risk medicines are outside the scope of this service.",
+      name: "UK medicines law",
+      role: "How we prescribe",
+      body: "Prescribing follows UK medicines law and professional guidance on remote prescribing. Controlled drugs, opioids and certain high-risk medicines are outside the scope of this service.",
     },
     {
       name: "Information Commissioner's Office (ICO)",
       role: "Data protection regulator",
-      body: "We are registered as a data controller with the ICO. Health data is special category data under UK GDPR and the Data Protection Act 2018; our lawful bases, retention periods and your rights are set out in the privacy notice.",
+      body: "We are registered as a data controller with the ICO, reg. no. ZC 246856. Health data is special category data under UK GDPR and the Data Protection Act 2018; our lawful bases, retention periods and your rights are set out in the privacy notice.",
     },
   ],
   wider: {
@@ -1476,7 +1482,7 @@ export const regulationPage = {
       },
       {
         title: "Escalation beyond us",
-        body: "If a complaint cannot be resolved internally, independent private healthcare complaints can be escalated externally. The named escalation body is confirmed in the complaints policy.",
+        body: "If a complaint cannot be resolved through our complaints procedure, independent private healthcare complaints can be escalated externally. The named escalation body is confirmed in the complaints policy.",
       },
     ],
   },
@@ -1781,6 +1787,7 @@ export const footerSections: Array<{ title: string; links: NavItem[] }> = [
       { label: "For Business", href: "/business" },
       { label: "How It Works", href: "/how-it-works" },
       { label: "Prescriptions", href: "/prescriptions" },
+      { label: "Pricing & Join", href: "/pricing" },
       { label: "Health Hub", href: "/health-hub" },
     ],
   },
@@ -1791,24 +1798,24 @@ export const footerSections: Array<{ title: string; links: NavItem[] }> = [
       { label: "Case Studies", href: "/business/sectors" },
       { label: "Request a Quote", href: "/business/request-a-quote" },
       { label: "Brokers & Partners", href: "/business/brokers-partners" },
-      { label: "Sectors We Work With", href: "/business/sectors" },
     ],
   },
   {
     title: "COMPANY",
     links: [
       { label: "About Us", href: "/about" },
-      { label: "Pricing & Join", href: "/pricing" },
+      { label: "Blog", href: "/health-hub" },
       { label: "Contact", href: "/contact" },
     ],
   },
   {
     title: "LEGAL",
     links: [
-      { label: "Terms & Conditions", href: "#terms" },
-      { label: "Privacy Policy", href: "#privacy" },
-      { label: "Cookie Policy", href: "#cookies" },
-      { label: "Cancellation Policy", href: "#cancellation" },
+      { label: "Terms & Conditions", href: "/terms" },
+      { label: "Privacy Policy", href: "/privacy" },
+      { label: "Cookie Policy", href: "/cookies" },
+      { label: "Complaints Procedure", href: "/complaints" },
+      { label: "Cancellation Policy", href: "/cancellation" },
     ],
   },
 ];

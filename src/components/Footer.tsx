@@ -1,9 +1,15 @@
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 import Icon from "@/components/Icon";
+import Logo from "@/components/Logo";
 import { footerSections, siteConfig } from "@/lib/site";
 
 export default function Footer() {
+  const serviceSection = footerSections.find((s) => s.title === "SERVICE");
+  const businessSection = footerSections.find((s) => s.title === "BUSINESS");
+  const companySection = footerSections.find((s) => s.title === "COMPANY");
+  const legalSection = footerSections.find((s) => s.title === "LEGAL");
+
   return (
     <footer className="mt-auto bg-brand-teal-dark text-white">
       <div className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 sm:py-14 lg:px-8 lg:py-16">
@@ -14,13 +20,7 @@ export default function Footer() {
               href="/"
               className="inline-block rounded-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-coral"
             >
-              <Image
-                src="/images/home/logo-footer.png"
-                alt={`${siteConfig.name} home`}
-                width={245}
-                height={240}
-                className="h-14 w-auto sm:h-16"
-              />
+              <Logo variant="dark" />
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-pretty text-white/65">
               Unlimited private GP appointments, 24 hours a day, 365 days a year.
@@ -49,13 +49,17 @@ export default function Footer() {
 
         {/* 1 col on phones → 2 on tablets → 4 on desktop. */}
         <div className="grid grid-cols-1 gap-8 py-10 sm:grid-cols-2 sm:gap-10 lg:grid-cols-4 lg:gap-8">
-          {footerSections.map((section) => (
-            <nav key={section.title} aria-label={section.title} className="min-w-0">
+          {/* SERVICE */}
+          {serviceSection && (
+            <nav
+              aria-label={serviceSection.title}
+              className="min-w-0 lg:col-start-1 lg:row-start-1 lg:row-span-2"
+            >
               <h2 className="text-[11px] tracking-widest text-coral uppercase">
-                {section.title}
+                {serviceSection.title}
               </h2>
               <ul className="mt-4 flex flex-col gap-2.5">
-                {section.links.map((link) => (
+                {serviceSection.links.map((link) => (
                   <li key={link.label}>
                     <Link
                       href={link.href}
@@ -67,7 +71,126 @@ export default function Footer() {
                 ))}
               </ul>
             </nav>
-          ))}
+          )}
+
+          {/* BUSINESS */}
+          {businessSection && (
+            <nav
+              aria-label={businessSection.title}
+              className="min-w-0 lg:col-start-2 lg:row-start-1"
+            >
+              <h2 className="text-[11px] tracking-widest text-coral uppercase">
+                {businessSection.title}
+              </h2>
+              <ul className="mt-4 flex flex-col gap-2.5">
+                {businessSection.links.map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
+                      className="text-sm break-words text-white/65 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          )}
+
+          {/* COMPANY */}
+          {companySection && (
+            <nav
+              aria-label={companySection.title}
+              className="min-w-0 lg:col-start-3 lg:row-start-1"
+            >
+              <h2 className="text-[11px] tracking-widest text-coral uppercase">
+                {companySection.title}
+              </h2>
+              <ul className="mt-4 flex flex-col gap-2.5">
+                {companySection.links.map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
+                      className="text-sm break-words text-white/65 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          )}
+
+          {/* LEGAL */}
+          {legalSection && (
+            <nav
+              aria-label={legalSection.title}
+              className="min-w-0 lg:col-start-4 lg:row-start-1 lg:row-span-2"
+            >
+              <h2 className="text-[11px] tracking-widest text-coral uppercase">
+                {legalSection.title}
+              </h2>
+              <ul className="mt-4 flex flex-col gap-2.5">
+                {legalSection.links.map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
+                      className="text-sm break-words text-white/65 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          )}
+
+          {/* Trust & Assurance Badges */}
+          <div className="sm:col-span-2 lg:col-start-2 lg:col-span-2 lg:row-start-2 lg:self-end pt-2 sm:pt-4 lg:pt-0">
+            <div className="flex flex-wrap items-center gap-3">
+              {/* Badge 1: GMC Registered Doctors */}
+              <div
+                title="GMC Registered Doctors"
+                className="flex h-10 items-center justify-center rounded-lg bg-[#ced4d5] px-3.5 transition-opacity hover:opacity-95"
+              >
+                <Image
+                  src="/images/home/gmc-registered-transparent.png"
+                  alt="GMC Registered Doctors"
+                  width={112}
+                  height={28}
+                  className="h-6 w-auto object-contain"
+                />
+              </div>
+
+              {/* Badge 2: ICO Registered */}
+              <div
+                title="ICO Registered"
+                className="flex h-10 items-center justify-center rounded-lg bg-[#ced4d5] px-4 transition-opacity hover:opacity-95"
+              >
+                <Image
+                  src="/images/home/ico-registered.png"
+                  alt="ICO Registered"
+                  width={34}
+                  height={22}
+                  className="h-[18px] w-auto object-contain"
+                />
+              </div>
+
+              {/* Badge 3: Fully qualified UK GPs */}
+              <div className="flex h-10 items-center rounded-lg bg-[#ced4d5] px-3.5 text-left">
+                <span className="text-[11px] font-semibold leading-[1.25] text-brand-teal-dark">
+                  Fully qualified<br />UK GPs
+                </span>
+              </div>
+
+              {/* Badge 4: GMC-registered UK GPs */}
+              <div className="flex h-10 items-center rounded-lg bg-[#ced4d5] px-3.5 text-left">
+                <span className="text-[11px] font-semibold leading-[1.25] text-brand-teal-dark">
+                  GMC-registered<br />UK GPs
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="border-t border-white/10 pt-8">
@@ -76,6 +199,7 @@ export default function Footer() {
             <p className="text-[11px] leading-relaxed text-pretty text-white/45">
               © {new Date().getFullYear()} 247 GP Direct Ltd. Company No. {siteConfig.companyNumber}
               · Registered in England &amp; Wales · Registered address: {siteConfig.registeredAddress}
+              · ICO Reg No. {siteConfig.icoNumber}
             </p>
             <p className="text-[11px] leading-relaxed text-white/45 lg:whitespace-nowrap">
               Not for emergencies call 999 or NHS 111

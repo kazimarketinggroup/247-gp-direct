@@ -994,6 +994,19 @@ function StripePaymentStep({
             <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
             <span>Secured by Stripe · Your card details never touch our servers</span>
           </div>
+
+          <p className="text-[11px] text-center text-brand-teal/65 leading-relaxed pt-1">
+            By completing your purchase, you confirm that you have read, understood, and agree to our{" "}
+            <a
+              href="/terms"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium underline hover:text-coral transition-colors"
+            >
+              Terms and Conditions
+            </a>
+            .
+          </p>
         </div>
 
         {/* Right: Order Summary */}

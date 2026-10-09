@@ -3,9 +3,9 @@ import RegulatorList from "@/components/regulation/RegulatorList";
 import WiderObligations from "@/components/regulation/WiderObligations";
 
 export const metadata: Metadata = {
-  title: "Regulation & Compliance — 247 GP Direct",
+  title: "How we keep your care and data protected — 247 GP Direct",
   description:
-    "Who regulates us and what that actually means. The bodies involved, what each one covers, and the legal obligations attached.",
+    "Clinical governance is how we run the service day to day. This page sets out the standards our doctors, pharmacies and data handling are held to, and the legal obligations attached.",
 };
 
 export default function RegulationPage() {

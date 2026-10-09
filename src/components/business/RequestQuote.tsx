@@ -20,11 +20,12 @@ export default function RequestQuote() {
       const params = new URLSearchParams(window.location.search);
       const headcountParam = params.get("headcount");
       if (headcountParam) {
+        const normalize = (s: string) => s.toLowerCase().replace(/[–—\s-]/g, "");
         const match = businessPage.headcountOptions.find(
           (opt) =>
-            opt.toLowerCase() === headcountParam.toLowerCase() ||
-            headcountParam.toLowerCase().includes(opt.toLowerCase()) ||
-            opt.toLowerCase().includes(headcountParam.toLowerCase())
+            normalize(opt) === normalize(headcountParam) ||
+            normalize(headcountParam).includes(normalize(opt)) ||
+            normalize(opt).includes(normalize(headcountParam))
         );
         if (match) {
           setSelectedHeadcount(match);
@@ -157,7 +158,9 @@ export default function RequestQuote() {
               <p className="mt-5 text-sm leading-relaxed text-white/80">
                 <strong>Company registration no.</strong> {siteConfig.companyNumber}<br />
                 <strong>Registered office:</strong> {siteConfig.registeredAddress}<br />
-                <strong>ICO registration no.</strong> ZA000000 (to be confirmed)
+                <strong>ICO registration no.</strong> {siteConfig.icoNumber || "ZC246856"}<br />
+                <strong>Office hours:</strong> {siteConfig.officeHours || "Monday to Friday, 9:00am – 5:00pm"}<br />
+                <strong>GP consultation service:</strong> 24/7/365 (Dedicated number in Welcome Pack)
               </p>
               <p className="mt-6 text-sm leading-relaxed text-white/80">
                 <strong>Complaints:</strong> named contact and response timescales are set out in our complaints policy.
@@ -177,23 +180,23 @@ export default function RequestQuote() {
 
         <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-3 px-4 pb-12 sm:grid-cols-3 sm:px-6 sm:pb-16 lg:px-8 lg:pb-20">
           <ContactCard
-            title="Members"
-            subtitle="book an appointment"
-            body="Answered 24 hours a day, every day of the year. Have your membership number ready."
-            href={`tel:${siteConfig.phoneDisplay.replace(/\s/g, "")}`}
-            label={siteConfig.phoneDisplay}
+            title="Members: 24/7 GP Service"
+            subtitle="24/7 / 365 GP Consultations"
+            body="Available 24 hours a day, 365 days a year. Your dedicated doctor booking line is provided in your welcome pack upon joining."
+            href="/how-it-works"
+            label="In Welcome Pack"
           />
           <ContactCard
             title="General enquiries"
-            subtitle="Talk before deciding"
-            body="Use the form and we'll reply within one working day."
+            subtitle="Office hours: Mon–Fri, 9am–5pm"
+            body="Our office team is available Monday to Friday from 9:00am to 5:00pm for membership and general enquiries."
             href={`tel:${siteConfig.phoneDisplay.replace(/\s/g, "")}`}
-            label={siteConfig.phoneDisplay}
+            label={`${siteConfig.phoneDisplay} (Office)`}
           />
           <ContactCard
             title="Business enquiries"
-            subtitle="SME plan for your employees"
-            body="Cover for a workforce, broker and partner arrangements."
+            subtitle="Office hours: Mon–Fri, 9am–5pm"
+            body="Workforce healthcare cover, SME plans, broker and corporate partner arrangements."
             href="/business/request-a-quote"
             label="Request a quote"
             hideArrow

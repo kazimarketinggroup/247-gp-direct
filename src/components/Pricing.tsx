@@ -91,7 +91,7 @@ export default function Pricing({
               <div
                 key={plan.name}
                 className={cn(
-                  "relative flex h-full flex-col rounded-2xl p-6 sm:p-7",
+                  "relative flex h-full flex-col rounded-2xl p-5 sm:p-7",
                   plan.featured
                     ? "bg-brand-teal text-white shadow-xl lg:-mt-2 lg:pb-9"
                     : "border border-brand-teal/15 bg-white shadow-sm",
@@ -112,7 +112,7 @@ export default function Pricing({
                   {plan.name}
                 </p>
 
-                <p className="mt-4 flex items-baseline gap-1.5">
+                <p className="mt-3 flex items-baseline gap-1.5 sm:mt-4">
                   <span
                     className={cn(
                       "text-3xl font-bold tracking-tight sm:text-4xl",
@@ -141,27 +141,27 @@ export default function Pricing({
                 </p>
                 <p
                   className={cn(
-                    "mt-3 text-sm leading-relaxed",
+                    "mt-2.5 text-xs leading-relaxed sm:mt-3 sm:text-sm",
                     plan.featured ? "text-white/85" : "text-brand-teal/75",
                   )}
                 >
                   {plan.covers}
                 </p>
 
-                <ul className="mt-6 flex flex-1 flex-col gap-3">
+                <ul className="mt-4 flex flex-1 flex-col gap-2 sm:mt-6 sm:gap-3">
                   {plan.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-2.5">
                       <Icon
                         name="check"
                         className={cn(
-                          "mt-0.5 h-4 w-4 shrink-0",
+                          "mt-0.5 h-3.5 w-3.5 shrink-0 sm:h-4 sm:w-4",
                           plan.featured ? "text-coral" : "text-brand-teal/60",
                         )}
                         strokeWidth={2.5}
                       />
                       <span
                         className={cn(
-                          "text-sm text-pretty",
+                          "text-xs text-pretty sm:text-sm",
                           plan.featured ? "text-white/90" : "text-brand-teal/80",
                         )}
                       >
@@ -171,7 +171,7 @@ export default function Pricing({
                   ))}
                 </ul>
 
-                <div className="mt-7">
+                <div className="mt-5 sm:mt-7">
                   <CheckoutButton planId={plan.id} featured={plan.featured}>
                     {plan.cta}
                   </CheckoutButton>

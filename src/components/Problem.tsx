@@ -3,16 +3,16 @@ import { problemStats } from "@/lib/site";
 
 export default function Problem() {
   return (
-    <section className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
-      <div className="rounded-2xl bg-mint px-5 py-10 sm:rounded-3xl sm:px-8 sm:py-12 lg:px-12 lg:py-16">
+    <section className="mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 sm:py-14 lg:px-8">
+      <div className="rounded-2xl bg-mint px-5 py-7 sm:rounded-3xl sm:px-8 sm:py-12 lg:px-12 lg:py-16">
         <SectionLabel>The problem</SectionLabel>
 
-        <h2 className="mt-5 max-w-3xl title-50 text-balance text-brand-teal">
+        <h2 className="mt-4 max-w-3xl title-50 text-balance text-brand-teal sm:mt-5">
           Getting a GP appointment has never been harder.
         </h2>
 
         {/* Stacks on phones, 3-up from md. Dividers only where columns sit side by side. */}
-        <dl className="mt-8 grid grid-cols-1 gap-6 border-t border-brand-teal/10 pt-8 sm:mt-10 md:grid-cols-3 md:gap-0">
+        <dl className="mt-6 grid grid-cols-1 gap-5 border-t border-brand-teal/10 pt-6 sm:mt-10 sm:gap-6 sm:pt-8 md:grid-cols-3 md:gap-0">
           {problemStats.map((stat, i) => (
             <div
               key={stat.value}

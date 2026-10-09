@@ -11,10 +11,11 @@ export default function StandardsList() {
         {clinicalStandardsPage.standards.map((item) => (
           <li
             key={item.title}
+            id={item.title === "Complaints" ? "complaints" : undefined}
             className={cn(
               // On hover a plain card takes on the featured card's dark teal.
               // Motion is skipped for users who prefer reduced motion.
-              "group rounded-2xl px-5 py-6 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg motion-reduce:transform-none motion-reduce:transition-none sm:px-7 sm:py-7",
+              "group scroll-mt-28 rounded-2xl px-5 py-6 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg motion-reduce:transform-none motion-reduce:transition-none sm:px-7 sm:py-7",
               item.featured
                 ? "bg-brand-teal text-white hover:shadow-brand-teal/25"
                 : "bg-white hover:bg-brand-teal hover:shadow-brand-teal/25",

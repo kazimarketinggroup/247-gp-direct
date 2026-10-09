@@ -105,6 +105,12 @@ export default function JoinFlow() {
         >
           Proceed to Checkout
         </CheckoutButton>
+        <p className="mt-2 text-[11px] leading-relaxed text-brand-teal/60">
+          By completing your purchase, you confirm that you have read, understood, and agree to our{" "}
+          <a href="/terms" target="_blank" rel="noopener noreferrer" className="underline hover:text-coral font-medium">
+            Terms and Conditions
+          </a>.
+        </p>
       </div>
     </section>
   );

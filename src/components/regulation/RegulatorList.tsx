@@ -21,19 +21,19 @@ export default function RegulatorList() {
         {/* Regulator list takes the wide column; support cards sit alongside
             from lg and stack underneath on smaller screens. */}
         <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,17rem)] xl:gap-8">
-          <div className="rounded-2xl bg-white/70 p-5 sm:p-7 lg:p-8">
+          <div className="rounded-2xl bg-white/70 p-6 sm:p-8 lg:p-10 shadow-sm border border-brand-teal/5">
             <dl className="flex flex-col gap-8 sm:gap-9">
               {regulationPage.regulators.map((reg) => (
                 <div key={reg.name}>
                   <dt>
-                    <span className="block text-lg text-pretty text-brand-teal sm:text-xl">
+                    <span className="block text-lg font-semibold text-pretty text-brand-teal sm:text-xl">
                       {reg.name}
                     </span>
-                    <span className="mt-1 block text-sm text-brand-teal/80">
+                    <span className="mt-1 block text-sm font-medium text-brand-teal/70">
                       {reg.role}
                     </span>
                   </dt>
-                  <dd className="mt-3 max-w-2xl text-xs leading-relaxed text-pretty text-brand-teal/65 sm:text-sm">
+                  <dd className="mt-3 max-w-2xl text-xs leading-relaxed text-pretty text-brand-teal/75 sm:text-sm">
                     {reg.body}
                   </dd>
                 </div>

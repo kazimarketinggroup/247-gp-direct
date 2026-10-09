@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { businessPage } from "@/lib/site";
 
 const FIELD =
@@ -10,6 +10,28 @@ const LABEL = "block text-xs text-brand-teal/70";
 
 export default function QuoteForm() {
   const [sent, setSent] = useState(false);
+  const [selectedHeadcount, setSelectedHeadcount] = useState(
+    businessPage.headcountOptions[1] || businessPage.headcountOptions[0]
+  );
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const headcountParam = params.get("headcount");
+      if (headcountParam) {
+        const normalize = (s: string) => s.toLowerCase().replace(/[–—\s-]/g, "");
+        const match = businessPage.headcountOptions.find(
+          (opt) =>
+            normalize(opt) === normalize(headcountParam) ||
+            normalize(headcountParam).includes(normalize(opt)) ||
+            normalize(opt).includes(normalize(headcountParam))
+        );
+        if (match) {
+          setSelectedHeadcount(match);
+        }
+      }
+    }
+  }, []);
 
   return (
     <>
@@ -124,7 +146,8 @@ export default function QuoteForm() {
                   id="q-headcount"
                   name="headcount"
                   required
-                  defaultValue={businessPage.headcountOptions[0]}
+                  value={selectedHeadcount}
+                  onChange={(e) => setSelectedHeadcount(e.target.value)}
                   className={`mt-2 ${FIELD}`}
                 >
                   {businessPage.headcountOptions.map((option) => (

@@ -4,7 +4,6 @@ import Credentials from "@/components/Credentials";
 import Faq from "@/components/Faq";
 import Hero from "@/components/Hero";
 import HowItWorks from "@/components/HowItWorks";
-import Included from "@/components/Included";
 import Pricing from "@/components/Pricing";
 import Problem from "@/components/Problem";
 
@@ -14,7 +13,6 @@ export default function Home() {
       <Hero />
       <Problem />
       <HowItWorks />
-      <Included />
       <Pricing />
       <Business />
       <Credentials />

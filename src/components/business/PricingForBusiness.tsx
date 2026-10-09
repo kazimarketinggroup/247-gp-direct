@@ -72,9 +72,11 @@ export default function PricingForBusiness() {
             </h2>
             <p className="mt-5 max-w-2xl text-sm leading-relaxed text-pretty text-brand-teal/70">
               We will provide a clear proposal explaining what is included, how employees are enrolled, and which support services are available.
+
+
             </p>
             <p className="mt-5 max-w-2xl text-sm leading-relaxed text-pretty text-brand-teal/70">
-              Business pricing is banded by headcount, starting from £100/year for sole traders and £140/year for teams, billed annually on one company invoice.
+              Select your headcount band below to see standard SME pricing, or get in touch for a custom enterprise quote.
             </p>
           </div>
         </div>

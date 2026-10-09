@@ -21,7 +21,7 @@ export default function WiderObligations() {
       <ul className="mt-9 grid grid-cols-1 gap-x-10 gap-y-8 sm:mt-10 md:grid-cols-2 lg:gap-x-16">
         {wider.items.map((item) => (
           <li key={item.title}>
-            <h3 className="flex items-center gap-2.5 text-sm text-brand-teal sm:text-base">
+            <h3 className="flex items-center gap-2.5 text-sm font-semibold text-brand-teal sm:text-base">
               <Icon
                 name="check-circle"
                 className="h-4 w-4 shrink-0 text-brand-teal/70"

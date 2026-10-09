@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useState, useSyncExternalStore } from "react";
 import Icon from "@/components/Icon";
+import Logo from "@/components/Logo";
 import MegaMenu from "@/components/MegaMenu";
 import { navItems, siteConfig } from "@/lib/site";
 import { cn } from "@/lib/utils";
@@ -93,14 +94,7 @@ export default function Navbar() {
             onClick={closeAll}
             className="shrink-0 rounded-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-coral"
           >
-            <Image
-              src="/images/home/logo.png"
-              alt={`${siteConfig.name} home`}
-              width={245}
-              height={240}
-              priority
-              className="h-10 w-auto sm:h-12 lg:h-14"
-            />
+            <Logo variant="light" />
           </Link>
 
           {/* Desktop links */}
