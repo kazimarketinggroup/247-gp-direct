@@ -8,7 +8,48 @@ const FIELD =
 const LABEL = "block text-xs text-brand-teal/70";
 
 export default function ContactForm() {
+  const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setError(null);
+    setLoading(true);
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const payload = {
+      name: formData.get("name"),
+      phone: formData.get("phone"),
+      email: formData.get("email"),
+      message: formData.get("message"),
+    };
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || "Failed to send message.");
+      }
+
+      setSent(true);
+      form.reset();
+    } catch (err: unknown) {
+      setError(
+        err instanceof Error
+          ? err.message
+          : "An error occurred while sending your message. Please try again."
+      );
+    } finally {
+      setLoading(false);
+    }
+  }
 
   return (
     <div className="rounded-xl bg-white p-6 sm:p-7">
@@ -16,15 +57,7 @@ export default function ContactForm() {
         {contactPage.formTitle}
       </h2>
 
-      <form
-        className="mt-6 flex flex-col gap-5"
-        onSubmit={(e) => {
-          // No backend yet — surface a clear notice instead of silently
-          // doing nothing or pretending the message was delivered.
-          e.preventDefault();
-          setSent(true);
-        }}
-      >
+      <form className="mt-6 flex flex-col gap-5" onSubmit={handleSubmit}>
         <div>
           <label htmlFor="contact-name" className={LABEL}>
             Name
@@ -35,7 +68,7 @@ export default function ContactForm() {
             type="text"
             autoComplete="name"
             required
-            placeholder="Enter username"
+            placeholder="Your full name"
             className={`mt-2 ${FIELD}`}
           />
         </div>
@@ -65,7 +98,7 @@ export default function ContactForm() {
               type="email"
               autoComplete="email"
               required
-              placeholder="Your email"
+              placeholder="Your email address"
               className={`mt-2 ${FIELD}`}
             />
           </div>
@@ -73,31 +106,43 @@ export default function ContactForm() {
 
         <div>
           <label htmlFor="contact-message" className={LABEL}>
-            Write about your company
+            Message / Enquiry
           </label>
           <textarea
             id="contact-message"
             name="message"
             rows={3}
             required
-            placeholder="Write here"
+            placeholder="How can our clinical team help you?"
             className={`mt-2 resize-y ${FIELD}`}
           />
         </div>
 
         <button
           type="submit"
-          className="inline-flex w-fit rounded-md bg-coral px-5 py-2.5 text-sm text-white transition-colors hover:bg-coral-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral"
+          disabled={loading}
+          className="inline-flex w-fit items-center gap-2 rounded-md bg-coral px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-coral-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral disabled:opacity-60"
         >
-          Send Message
+          {loading ? "Sending..." : "Send Message"}
         </button>
 
-        {/* aria-live so screen readers announce the result. */}
-        <p aria-live="polite" className="min-h-5 text-xs text-brand-teal/70">
-          {sent
-            ? "Message form is not connected yet — please call the number above and we'll help straight away."
-            : ""}
-        </p>
+        {sent && (
+          <p
+            aria-live="polite"
+            className="rounded-md bg-mint/50 p-3 text-xs font-medium text-brand-teal"
+          >
+            ✓ Thank you! Your message has been sent to our office team. We will be in touch shortly.
+          </p>
+        )}
+
+        {error && (
+          <p
+            aria-live="assertive"
+            className="rounded-md bg-red-50 p-3 text-xs font-medium text-red-700"
+          >
+            {error}
+          </p>
+        )}
       </form>
     </div>
   );

@@ -9,7 +9,50 @@ const FIELD =
 const LABEL = "block text-xs text-brand-teal/70";
 
 export default function QuoteForm() {
+  const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setError(null);
+    setLoading(true);
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const payload = {
+      company: formData.get("company"),
+      phone: formData.get("phone"),
+      email: formData.get("email"),
+      contact: formData.get("contact"),
+      role: formData.get("role"),
+      headcount: selectedHeadcount,
+    };
+
+    try {
+      const res = await fetch("/api/quote", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || "Failed to submit quote request.");
+      }
+
+      setSent(true);
+      form.reset();
+    } catch (err: unknown) {
+      setError(
+        err instanceof Error
+          ? err.message
+          : "An error occurred submitting your quote. Please call our team."
+      );
+    } finally {
+      setLoading(false);
+    }
+  }
   const [selectedHeadcount, setSelectedHeadcount] = useState(
     businessPage.headcountOptions[1] || businessPage.headcountOptions[0]
   );
@@ -54,14 +97,7 @@ export default function QuoteForm() {
           </div>
 
           <div className="rounded-2xl bg-brand-teal/[0.04] p-6 sm:p-7">
-            <form
-              className="flex flex-col gap-4"
-              onSubmit={(e) => {
-                // No backend yet — say so rather than silently dropping it.
-                e.preventDefault();
-                setSent(true);
-              }}
-            >
+            <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
               <div>
                 <label htmlFor="q-company" className={LABEL}>
                   Company name
@@ -160,17 +196,29 @@ export default function QuoteForm() {
 
               <button
                 type="submit"
-                className="mt-1 inline-flex w-fit rounded-md bg-coral px-5 py-2.5 text-sm text-white transition-colors hover:bg-coral-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral"
+                disabled={loading}
+                className="mt-1 inline-flex w-fit items-center gap-2 rounded-md bg-coral px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-coral-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral disabled:opacity-60"
               >
-                Request a quote
+                {loading ? "Submitting..." : "Request a quote"}
               </button>
 
-              {/* aria-live so screen readers announce the result. */}
-              <p aria-live="polite" className="min-h-5 text-xs text-brand-teal/70">
-                {sent
-                  ? "Quote form is not connected yet — please call the number above and we'll help straight away."
-                  : ""}
-              </p>
+              {sent && (
+                <p
+                  aria-live="polite"
+                  className="rounded-md bg-mint/50 p-3 text-xs font-medium text-brand-teal"
+                >
+                  ✓ Thank you! Your quote request has been sent to our business team. We will reply within 1 working day.
+                </p>
+              )}
+
+              {error && (
+                <p
+                  aria-live="assertive"
+                  className="rounded-md bg-red-50 p-3 text-xs font-medium text-red-700"
+                >
+                  {error}
+                </p>
+              )}
             </form>
           </div>
         </div>

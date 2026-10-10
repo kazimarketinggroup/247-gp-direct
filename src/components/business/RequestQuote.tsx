@@ -12,8 +12,51 @@ const fieldClass =
 const labelClass = "block text-[11px] text-brand-teal/70";
 
 export default function RequestQuote() {
+  const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [selectedHeadcount, setSelectedHeadcount] = useState(businessPage.headcountOptions[0]);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setError(null);
+    setLoading(true);
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const payload = {
+      company: formData.get("company"),
+      phone: formData.get("phone"),
+      email: formData.get("email"),
+      contact: formData.get("contact"),
+      role: formData.get("role"),
+      headcount: selectedHeadcount,
+    };
+
+    try {
+      const res = await fetch("/api/quote", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || "Failed to submit quote request.");
+      }
+
+      setSent(true);
+      form.reset();
+    } catch (err: unknown) {
+      setError(
+        err instanceof Error
+          ? err.message
+          : "An error occurred submitting your quote. Please call our team."
+      );
+    } finally {
+      setLoading(false);
+    }
+  }
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -94,10 +137,7 @@ export default function RequestQuote() {
 
             <form
               className="mt-7 rounded-lg bg-white/45 p-5 sm:p-7"
-              onSubmit={(event) => {
-                event.preventDefault();
-                setSent(true);
-              }}
+              onSubmit={handleSubmit}
             >
               <div>
                 <label htmlFor="quote-company" className={labelClass}>Company name</label>
@@ -142,13 +182,21 @@ export default function RequestQuote() {
               </div>
               <button
                 type="submit"
-                className="mt-5 inline-flex rounded-md bg-coral px-5 py-2.5 text-xs text-white transition-colors hover:bg-coral-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral"
+                disabled={loading}
+                className="mt-5 inline-flex items-center gap-2 rounded-md bg-coral px-5 py-2.5 text-xs font-medium text-white transition-colors hover:bg-coral-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral disabled:opacity-60"
               >
-                Request a quote
+                {loading ? "Submitting..." : "Request a quote"}
               </button>
-              <p aria-live="polite" className="mt-3 min-h-5 text-xs text-brand-teal/70">
-                {sent ? "Thanks. We will be in touch within one working day." : ""}
-              </p>
+              {sent && (
+                <p aria-live="polite" className="mt-3 rounded-md bg-mint/50 p-2.5 text-xs font-medium text-brand-teal">
+                  ✓ Thanks! We will be in touch within one working day.
+                </p>
+              )}
+              {error && (
+                <p aria-live="assertive" className="mt-3 rounded-md bg-red-50 p-2.5 text-xs font-medium text-red-700">
+                  {error}
+                </p>
+              )}
             </form>
           </div>
 
