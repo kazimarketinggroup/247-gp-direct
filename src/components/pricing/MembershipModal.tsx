@@ -901,7 +901,17 @@ function StripePaymentStep({
     });
 
     if (stripeError) {
-      setError(stripeError.message || "Payment could not be completed. Please check card details.");
+      const rawMsg = stripeError.message || "";
+      const isTestOrInternalWarning =
+        rawMsg.toLowerCase().includes("test card") ||
+        rawMsg.toLowerCase().includes("live mode") ||
+        rawMsg.toLowerCase().includes("test mode");
+
+      const cleanMsg = isTestOrInternalWarning
+        ? "Your card was declined. Please check your card details and try again."
+        : rawMsg || "Payment could not be completed. Please check card details.";
+
+      setError(cleanMsg);
       setSubmitting(false);
       return;
     }
